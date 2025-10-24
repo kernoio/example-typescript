@@ -1,20 +1,27 @@
-# ![Node/Express/Prisma Example App](project-logo.png)
+# Kerno 
 
-[![Build Status](https://travis-ci.org/anishkny/node-express-realworld-example-app.svg?branch=master)](https://travis-ci.org/anishkny/node-express-realworld-example-app)
+## How to use Kerno extension
+1. Install the extension from the marketplace
 
-> ### Example Node (Express + Prisma) codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) API spec.
+4. Write the Kerno key to wakeup Kerno
 
-<a href="https://thinkster.io/tutorials/node-json-api" target="_blank"><img width="454" src="https://raw.githubusercontent.com/gothinkster/realworld/master/media/learn-btn-hr.png" /></a>
+3. Kerno will automatically start indexing the codebase
+
+2. When the codebase is indexed you can start creating integration test with Kerno
+
+4. To create an integration tests go to any python file that has an endpoint.
+
+5. When you identify the endpoint that you want to test, press the button **Run tests with kerno** that will be above the endpoint defintion line.
+
+6. Enjoy Kerno
+
+# ![Node/Express/Prisma Example App]
+
+### Example Node (Express + Prisma) codebase containing real world examples (CRUD, auth, advanced patterns, etc)
 
 ## Getting Started
 
 ## Quick Start
-
-```
-- Run Docker containers
-```
-
-cd examples/typescript/express-typescript && docker-compose up -d
 
 ### Prerequisites
 
