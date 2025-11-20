@@ -45,7 +45,13 @@ JWT_SECRET=
 NODE_ENV=production
 ```
 
-### Start the postgres database
+### Start the MySQL database
+
+You can run a local MySQL instance with Docker:
+
+```
+docker run --name example-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=example -p 3306:3306 -d mysql:8
+```
 
 ### Generate your Prisma client
 
@@ -55,12 +61,12 @@ Run the following command to generate the Prisma Client which will include types
 npx prisma generate
 ```
 
-### Apply any SQL migration script
+### Sync the database schema (Prisma → MySQL)
 
-Run the following command to create/update your database based on existing sql migration scripts:
+This project now targets MySQL. To create/update your database schema from the Prisma schema, run:
 
 ```shell
-npx prisma migrate deploy
+npx prisma db push
 ```
 
 ### Run the project
@@ -88,5 +94,5 @@ Run the following command to:
 - run the server
 
 ```shell
-npm ci && npx prisma migrate deploy && node dist/api/main.js
+npm ci && npx prisma db push && node dist/api/main.js
 ```
