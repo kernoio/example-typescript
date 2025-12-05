@@ -32,6 +32,7 @@ COPY --from=builder /app/dist/api .
 COPY package*.json ./
 COPY prisma prisma
 COPY startup.sh startup.sh
+RUN sed -i 's/\r$//' startup.sh && chmod +x startup.sh
 
 # You can remove this install step if you build with `--bundle` option.
 # The bundled output will include external dependencies.
