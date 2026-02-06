@@ -1,0 +1,122 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\"endpoints\": []}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:17:58.622062007Z",
+        "totalTokensCount": 1191,
+        "inputTokensCount": 1126,
+        "outputTokensCount": 5
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.913557637Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# README.md\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```md\n1|# Kerno \n2|\n3|## How to use Kerno extension\n4|1. Install the extension from the marketplace\n5|\n6|4. Write the Kerno key to wakeup Kerno\n7|\n8|3. Kerno will automatically start indexing the codebase\n9|\n10|2. When the codebase is indexed you can start creating integration test with Kerno\n11|\n12|4. To create an integration tests go to any python file that has an endpoint.\n13|\n14|5. When you identify the endpoint that you want to test, press the button **Run tests with kerno** that will be above the endpoint defintion line.\n15|\n16|6. Enjoy Kerno\n17|\n18|# ![Node/Express/Prisma Example App]\n19|\n20|### Example Node (Express + Prisma) codebase containing real world examples (CRUD, auth, advanced patterns, etc)\n21|\n22|## Getting Started\n23|\n24|## Quick Start\n25|\n26|### Prerequisites\n27|\n28|Run the following command to install dependencies:\n29|\n30|```shell\n31|npm install\n32|```\n33|\n34|### Environment variables\n35|\n36|This project depends on some environment variables.\n37|If you are running this project locally, create a `.env` file at the root for these variables.\n38|Your host provider should included a feature to set them there directly to avoid exposing them.\n39|\n40|Here are the required ones:\n41|\n42|```\n43|DATABASE_URL=\n44|JWT_SECRET=\n45|NODE_ENV=production\n46|```\n47|\n48|### Start the postgres database\n49|\n50|### Generate your Prisma client\n51|\n52|Run the following command to generate the Prisma Client which will include types based on your database schema:\n53|\n54|```shell\n55|npx prisma generate\n56|```\n57|\n58|### Apply any SQL migration script\n59|\n60|Run the following command to create/update your database based on existing sql migration scripts:\n61|\n62|```shell\n63|npx prisma migrate deploy\n64|```\n65|\n66|### Run the project\n67|\n68|Run the following command to run the project:\n69|\n70|```shell\n71|npx nx serve api\n72|```\n73|\n74|### Seed the database\n75|\n76|The project includes a seed script to populate the database:\n77|\n78|```shell\n79|npx prisma db seed\n80|```\n81|\n82|## Deploy on a remote server\n83|\n84|Run the following command to:\n85|\n86|- install dependencies\n87|- apply any new migration sql scripts\n88|- run the server\n89|\n90|```shell\n91|npm ci && npx prisma migrate deploy && node dist/api/main.js\n92|```\n93|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.913867668Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Identify Code Type\nFirst, identify if the attached file is code. If it is not code, return empty lists for all fields.\n\n# Task 2: Extract Endpoints\nIf this is code, identify (if any at all) blocks of code that directly register routes in this application's HTTP server.\nOnly extract endpoints where you can determine the concrete HTTP method and path - do not guess or speculate about what paths might exist.\nDo not extract code that merely creates a server or groups routes without binding a specific path to a handler.\nThese routes must be valid RFC HTTP verbs (GET, POST, PUT, DELETE, PATCH).\nParameterised URL path segments must be expressed in the {id} format. For example, /users/:id/config should be /users/{id}/config, and /users/<userId> should be /users/{userId}.\nIf you cannot confidently determine the path, return an empty list for endpoints.\nThe start and end line must capture the entire syntactic chunk registering the endpoint.\nThis includes the handler code for the endpoint if the line that registers it is immediately followed\nby a function/method/lambda that is the entrypoint for that endpoint when it's called\n\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.913942772Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedEndpoints",
+          "schema": {
+            "$id": "ExtractedEndpoints",
+            "$defs": {
+              "io.kerno.agent.index.EndpointMetadata": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "DELETE",
+                      "PATCH"
+                    ]
+                  },
+                  "path": {
+                    "type": "string",
+                    "description": "A valid RFC URL path e.g. / or /api/some/end/point"
+                  },
+                  "startLine": {
+                    "type": "integer",
+                    "description": "The first line of code registering this route, ignoring comments"
+                  },
+                  "endLine": {
+                    "type": "integer",
+                    "description": "The last line of code registering this route, ignoring comments"
+                  }
+                },
+                "required": [
+                  "method",
+                  "path",
+                  "startLine",
+                  "endLine"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedEndpoints": {
+                "type": "object",
+                "properties": {
+                  "endpoints": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.EndpointMetadata"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedEndpoints"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+add: []
+untouched:
+- id: get_current_user_authenticated_success
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_user/GET/get_current_user_authenticated_success
+- id: get_current_user_invalid_token
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_user/GET/get_current_user_invalid_token
+- id: get_current_user_no_authentication
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_user/GET/get_current_user_no_authentication
+check: []
+remove: []

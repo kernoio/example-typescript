@@ -1,0 +1,156 @@
+add:
+- id: register_user_whitespace_email_returns_422
+  description: Register user with whitespace-only email returns 422 with validation
+    error (email is trimmed to empty string)
+  subject:
+    type: Endpoint
+    method: POST
+    path: /api/users
+  steps:
+  - id: generate_user_data
+    description: Generate username and password with whitespace email
+    action:
+      type: Unimplemented
+      intended_type: Values
+  - id: register_user_whitespace_email
+    description: Call POST /api/users with whitespace-only email
+    action:
+      type: Unimplemented
+      intended_type: CallHttp
+  - id: assert_validation_error
+    description: Assert 422 response with error indicating email can't be blank
+    action:
+      type: Unimplemented
+      intended_type: HttpAssert
+- id: register_user_whitespace_username_returns_422
+  description: Register user with whitespace-only username returns 422 with validation
+    error (username is trimmed to empty string)
+  subject:
+    type: Endpoint
+    method: POST
+    path: /api/users
+  steps:
+  - id: generate_user_data
+    description: Generate email and password with whitespace username
+    action:
+      type: Unimplemented
+      intended_type: Values
+  - id: register_user_whitespace_username
+    description: Call POST /api/users with whitespace-only username
+    action:
+      type: Unimplemented
+      intended_type: CallHttp
+  - id: assert_validation_error
+    description: Assert 422 response with error indicating username can't be blank
+    action:
+      type: Unimplemented
+      intended_type: HttpAssert
+- id: register_user_whitespace_password_returns_422
+  description: Register user with whitespace-only password returns 422 with validation
+    error (password is trimmed to empty string)
+  subject:
+    type: Endpoint
+    method: POST
+    path: /api/users
+  steps:
+  - id: generate_user_data
+    description: Generate email and username with whitespace password
+    action:
+      type: Unimplemented
+      intended_type: Values
+  - id: register_user_whitespace_password
+    description: Call POST /api/users with whitespace-only password
+    action:
+      type: Unimplemented
+      intended_type: CallHttp
+  - id: assert_validation_error
+    description: Assert 422 response with error indicating password can't be blank
+    action:
+      type: Unimplemented
+      intended_type: HttpAssert
+- id: register_user_with_optional_bio_and_image_returns_201
+  description: Register user with optional bio and image fields returns 201 with those
+    fields included in response
+  subject:
+    type: Endpoint
+    method: POST
+    path: /api/users
+  steps:
+  - id: generate_user_data
+    description: Generate random user data including bio and image
+    action:
+      type: Unimplemented
+      intended_type: Values
+  - id: cleanup_existing_user
+    description: Defensively clean up any existing user with the same email/username
+    action:
+      type: Unimplemented
+      intended_type: ExecuteSql
+  - id: register_user_with_optional_fields
+    description: Call POST /api/users with bio and image fields
+    action:
+      type: Unimplemented
+      intended_type: CallHttp
+  - id: assert_registration_response
+    description: Assert 201 response with user object including bio and image values
+    action:
+      type: Unimplemented
+      intended_type: HttpAssert
+  - id: cleanup
+    description: Remove the created user from database
+    action:
+      type: Unimplemented
+      intended_type: ExecuteSql
+- id: register_user_duplicate_both_email_and_username_returns_422
+  description: Register user with both email and username that already exist returns
+    422 with errors for both fields
+  subject:
+    type: Endpoint
+    method: POST
+    path: /api/users
+  steps:
+  - id: generate_user_data
+    description: Generate random user data
+    action:
+      type: Unimplemented
+      intended_type: Values
+  - id: create_existing_user
+    description: Create a user in the database with both email and username we'll
+      try to register
+    action:
+      type: Unimplemented
+      intended_type: ExecuteSql
+  - id: register_duplicate_both
+    description: Call POST /api/users with the same email and username
+    action:
+      type: Unimplemented
+      intended_type: CallHttp
+  - id: assert_uniqueness_error
+    description: Assert 422 response with errors for both email and username
+    action:
+      type: Unimplemented
+      intended_type: HttpAssert
+  - id: cleanup
+    description: Remove the test user from database
+    action:
+      type: Unimplemented
+      intended_type: ExecuteSql
+untouched:
+- id: register_user_with_valid_data_returns_201
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_users/POST/register_user_with_valid_data_returns_201
+- id: register_user_missing_email_returns_422
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_users/POST/register_user_missing_email_returns_422
+- id: register_user_empty_email_returns_422
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_users/POST/register_user_empty_email_returns_422
+- id: register_user_missing_username_returns_422
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_users/POST/register_user_missing_username_returns_422
+- id: register_user_empty_username_returns_422
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_users/POST/register_user_empty_username_returns_422
+- id: register_user_missing_password_returns_422
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_users/POST/register_user_missing_password_returns_422
+- id: register_user_duplicate_email_returns_422
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_users/POST/register_user_duplicate_email_returns_422
+- id: register_user_duplicate_username_returns_422
+  path: /home/antoine/Documents/kerno/example-typescript/.kerno/scenarios/endpoints/_users/POST/register_user_duplicate_username_returns_422
+check: []
+remove: []

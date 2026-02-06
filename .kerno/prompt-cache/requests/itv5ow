@@ -1,0 +1,122 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\"endpoints\": []}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:17:59.631805171Z",
+        "totalTokensCount": 7097,
+        "inputTokensCount": 6859,
+        "outputTokensCount": 5
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.913487658Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# src/app/routes/article/article.service.ts\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```ts\n1|import slugify from 'slugify';\n2|import prisma from '../../../../prisma/prisma-client';\n3|import HttpException from '../../models/http-exception.model';\n4|import profileMapper from '../profile/profile.utils';\n5|import articleMapper from './article.mapper';\n6|import { Tag } from '../tag/tag.model';\n7|\n8|const buildFindAllQuery = (query: any, id: number | undefined) => {\n9|  const queries: any = [];\n10|  const orAuthorQuery = [];\n11|  const andAuthorQuery = [];\n12|\n13|  orAuthorQuery.push({\n14|    demo: {\n15|      equals: true,\n16|    },\n17|  });\n18|\n19|  if (id) {\n20|    orAuthorQuery.push({\n21|      id: {\n22|        equals: id,\n23|      },\n24|    });\n25|  }\n26|\n27|  if ('author' in query) {\n28|    andAuthorQuery.push({\n29|      username: {\n30|        equals: query.author,\n31|      },\n32|    });\n33|  }\n34|\n35|  const authorQuery = {\n36|    author: {\n37|      OR: orAuthorQuery,\n38|      AND: andAuthorQuery,\n39|    },\n40|  };\n41|\n42|  queries.push(authorQuery);\n43|\n44|  if ('tag' in query) {\n45|    queries.push({\n46|      tagList: {\n47|        some: {\n48|          name: query.tag,\n49|        },\n50|      },\n51|    });\n52|  }\n53|\n54|  if ('favorited' in query) {\n55|    queries.push({\n56|      favoritedBy: {\n57|        some: {\n58|          username: {\n59|            equals: query.favorited,\n60|          },\n61|        },\n62|      },\n63|    });\n64|  }\n65|\n66|  return queries;\n67|};\n68|\n69|export const getArticles = async (query: any, id?: number) => {\n70|  const andQueries = buildFindAllQuery(query, id);\n71|  const articlesCount = await prisma.article.count({\n72|    where: {\n73|      AND: andQueries,\n74|    },\n75|  });\n76|\n77|  const articles = await prisma.article.findMany({\n78|    where: { AND: andQueries },\n79|    orderBy: {\n80|      createdAt: 'desc',\n81|    },\n82|    skip: Number(query.offset) || 0,\n83|    take: Number(query.limit) || 10,\n84|    include: {\n85|      tagList: {\n86|        select: {\n87|          name: true,\n88|        },\n89|      },\n90|      author: {\n91|        select: {\n92|          username: true,\n93|          bio: true,\n94|          image: true,\n95|          followedBy: true,\n96|        },\n97|      },\n98|      favoritedBy: true,\n99|      _count: {\n100|        select: {\n101|          favoritedBy: true,\n102|        },\n103|      },\n104|    },\n105|  });\n106|\n107|  return {\n108|    articles: articles.map((article: any) => articleMapper(article, id)),\n109|    articlesCount,\n110|  };\n111|};\n112|\n113|export const getFeed = async (offset: number, limit: number, id: number) => {\n114|  const articlesCount = await prisma.article.count({\n115|    where: {\n116|      author: {\n117|        followedBy: { some: { id: id } },\n118|      },\n119|    },\n120|  });\n121|\n122|  const articles = await prisma.article.findMany({\n123|    where: {\n124|      author: {\n125|        followedBy: { some: { id: id } },\n126|      },\n127|    },\n128|    orderBy: {\n129|      createdAt: 'desc',\n130|    },\n131|    skip: offset || 0,\n132|    take: limit || 10,\n133|    include: {\n134|      tagList: {\n135|        select: {\n136|          name: true,\n137|        },\n138|      },\n139|      author: {\n140|        select: {\n141|          username: true,\n142|          bio: true,\n143|          image: true,\n144|          followedBy: true,\n145|        },\n146|      },\n147|      favoritedBy: true,\n148|      _count: {\n149|        select: {\n150|          favoritedBy: true,\n151|        },\n152|      },\n153|    },\n154|  });\n155|\n156|  return {\n157|    articles: articles.map((article: any) => articleMapper(article, id)),\n158|    articlesCount,\n159|  };\n160|};\n161|\n162|export const createArticle = async (article: any, id: number) => {\n163|  const { title, description, body, tagList } = article;\n164|  const tags = Array.isArray(tagList) ? tagList : [];\n165|\n166|  if (!title) {\n167|    throw new HttpException(422, { errors: { title: [\"can't be blank\"] } });\n168|  }\n169|\n170|  if (!description) {\n171|    throw new HttpException(422, {\n172|      errors: { description: [\"can't be blank\"] },\n173|    });\n174|  }\n175|\n176|  if (!body) {\n177|    throw new HttpException(422, { errors: { body: [\"can't be blank\"] } });\n178|  }\n179|\n180|  const slug = `${slugify(title)}-${id}`;\n181|\n182|  const existingTitle = await prisma.article.findUnique({\n183|    where: {\n184|      slug,\n185|    },\n186|    select: {\n187|      slug: true,\n188|    },\n189|  });\n190|\n191|  if (existingTitle) {\n192|    throw new HttpException(422, { errors: { title: ['must be unique'] } });\n193|  }\n194|\n195|  const {\n196|    authorId,\n197|    id: articleId,\n198|    ...createdArticle\n199|  } = await prisma.article.create({\n200|    data: {\n201|      title,\n202|      description,\n203|      body,\n204|      slug,\n205|      tagList: {\n206|        connectOrCreate: tags.map((tag: string) => ({\n207|          create: { name: tag },\n208|          where: { name: tag },\n209|        })),\n210|      },\n211|      author: {\n212|        connect: {\n213|          id: id,\n214|        },\n215|      },\n216|    },\n217|    include: {\n218|      tagList: {\n219|        select: {\n220|          name: true,\n221|        },\n222|      },\n223|      author: {\n224|        select: {\n225|          username: true,\n226|          bio: true,\n227|          image: true,\n228|          followedBy: true,\n229|        },\n230|      },\n231|      favoritedBy: true,\n232|      _count: {\n233|        select: {\n234|          favoritedBy: true,\n235|        },\n236|      },\n237|    },\n238|  });\n239|\n240|  return articleMapper(createdArticle, id);\n241|};\n242|\n243|export const getArticle = async (slug: string, id?: number) => {\n244|  const article = await prisma.article.findUnique({\n245|    where: {\n246|      slug,\n247|    },\n248|    include: {\n249|      tagList: {\n250|        select: {\n251|          name: true,\n252|        },\n253|      },\n254|      author: {\n255|        select: {\n256|          username: true,\n257|          bio: true,\n258|          image: true,\n259|          followedBy: true,\n260|        },\n261|      },\n262|      favoritedBy: true,\n263|      _count: {\n264|        select: {\n265|          favoritedBy: true,\n266|        },\n267|      },\n268|    },\n269|  });\n270|\n271|  if (!article) {\n272|    throw new HttpException(404, { errors: { article: ['not found'] } });\n273|  }\n274|\n275|  return articleMapper(article, id);\n276|};\n277|\n278|const disconnectArticlesTags = async (slug: string) => {\n279|  await prisma.article.update({\n280|    where: {\n281|      slug,\n282|    },\n283|    data: {\n284|      tagList: {\n285|        set: [],\n286|      },\n287|    },\n288|  });\n289|};\n290|\n291|export const updateArticle = async (article: any, slug: string, id: number) => {\n292|  let newSlug = null;\n293|\n294|  const existingArticle = await await prisma.article.findFirst({\n295|    where: {\n296|      slug,\n297|    },\n298|    select: {\n299|      author: {\n300|        select: {\n301|          id: true,\n302|          username: true,\n303|        },\n304|      },\n305|    },\n306|  });\n307|\n308|  if (!existingArticle) {\n309|    throw new HttpException(404, {});\n310|  }\n311|\n312|  if (existingArticle.author.id !== id) {\n313|    throw new HttpException(403, {\n314|      message: 'You are not authorized to update this article',\n315|    });\n316|  }\n317|\n318|  if (article.title) {\n319|    newSlug = `${slugify(article.title)}-${id}`;\n320|\n321|    if (newSlug !== slug) {\n322|      const existingTitle = await prisma.article.findFirst({\n323|        where: {\n324|          slug: newSlug,\n325|        },\n326|        select: {\n327|          slug: true,\n328|        },\n329|      });\n330|\n331|      if (existingTitle) {\n332|        throw new HttpException(422, { errors: { title: ['must be unique'] } });\n333|      }\n334|    }\n335|  }\n336|\n337|  const tagList =\n338|    Array.isArray(article.tagList) && article.tagList?.length\n339|      ? article.tagList.map((tag: string) => ({\n340|          create: { name: tag },\n341|          where: { name: tag },\n342|        }))\n343|      : [];\n344|\n345|  await disconnectArticlesTags(slug);\n346|\n347|  const updatedArticle = await prisma.article.update({\n348|    where: {\n349|      slug,\n350|    },\n351|    data: {\n352|      ...(article.title ? { title: article.title } : {}),\n353|      ...(article.body ? { body: article.body } : {}),\n354|      ...(article.description ? { description: article.description } : {}),\n355|      ...(newSlug ? { slug: newSlug } : {}),\n356|      updatedAt: new Date(),\n357|      tagList: {\n358|        connectOrCreate: tagList,\n359|      },\n360|    },\n361|    include: {\n362|      tagList: {\n363|        select: {\n364|          name: true,\n365|        },\n366|      },\n367|      author: {\n368|        select: {\n369|          username: true,\n370|          bio: true,\n371|          image: true,\n372|          followedBy: true,\n373|        },\n374|      },\n375|      favoritedBy: true,\n376|      _count: {\n377|        select: {\n378|          favoritedBy: true,\n379|        },\n380|      },\n381|    },\n382|  });\n383|\n384|  return articleMapper(updatedArticle, id);\n385|};\n386|\n387|export const deleteArticle = async (slug: string, id: number) => {\n388|  const existingArticle = await await prisma.article.findFirst({\n389|    where: {\n390|      slug,\n391|    },\n392|    select: {\n393|      author: {\n394|        select: {\n395|          id: true,\n396|          username: true,\n397|        },\n398|      },\n399|    },\n400|  });\n401|\n402|  if (!existingArticle) {\n403|    throw new HttpException(404, {});\n404|  }\n405|\n406|  if (existingArticle.author.id !== id) {\n407|    throw new HttpException(403, {\n408|      message: 'You are not authorized to delete this article',\n409|    });\n410|  }\n411|  await prisma.article.delete({\n412|    where: {\n413|      slug,\n414|    },\n415|  });\n416|};\n417|\n418|export const getCommentsByArticle = async (slug: string, id?: number) => {\n419|  const queries = [];\n420|\n421|  queries.push({\n422|    author: {\n423|      demo: true,\n424|    },\n425|  });\n426|\n427|  if (id) {\n428|    queries.push({\n429|      author: {\n430|        id,\n431|      },\n432|    });\n433|  }\n434|\n435|  const comments = await prisma.article.findUnique({\n436|    where: {\n437|      slug,\n438|    },\n439|    include: {\n440|      comments: {\n441|        where: {\n442|          OR: queries,\n443|        },\n444|        select: {\n445|          id: true,\n446|          createdAt: true,\n447|          updatedAt: true,\n448|          body: true,\n449|          author: {\n450|            select: {\n451|              username: true,\n452|              bio: true,\n453|              image: true,\n454|              followedBy: true,\n455|            },\n456|          },\n457|        },\n458|      },\n459|    },\n460|  });\n461|\n462|  const result = comments?.comments.map((comment: any) => ({\n463|    ...comment,\n464|    author: {\n465|      username: comment.author.username,\n466|      bio: comment.author.bio,\n467|      image: comment.author.image,\n468|      following: comment.author.followedBy.some(\n469|        (follow: any) => follow.id === id\n470|      ),\n471|    },\n472|  }));\n473|\n474|  return result;\n475|};\n476|\n477|export const addComment = async (body: string, slug: string, id: number) => {\n478|  if (!body) {\n479|    throw new HttpException(422, { errors: { body: [\"can't be blank\"] } });\n480|  }\n481|\n482|  const article = await prisma.article.findUnique({\n483|    where: {\n484|      slug,\n485|    },\n486|    select: {\n487|      id: true,\n488|    },\n489|  });\n490|\n491|  const comment = await prisma.comment.create({\n492|    data: {\n493|      body,\n494|      article: {\n495|        connect: {\n496|          id: article?.id,\n497|        },\n498|      },\n499|      author: {\n500|        connect: {\n501|          id: id,\n502|        },\n503|      },\n504|    },\n505|    include: {\n506|      author: {\n507|        select: {\n508|          username: true,\n509|          bio: true,\n510|          image: true,\n511|          followedBy: true,\n512|        },\n513|      },\n514|    },\n515|  });\n516|\n517|  return {\n518|    id: comment.id,\n519|    createdAt: comment.createdAt,\n520|    updatedAt: comment.updatedAt,\n521|    body: comment.body,\n522|    author: {\n523|      username: comment.author.username,\n524|      bio: comment.author.bio,\n525|      image: comment.author.image,\n526|      following: comment.author.followedBy.some(\n527|        (follow: any) => follow.id === id\n528|      ),\n529|    },\n530|  };\n531|};\n532|\n533|export const deleteComment = async (id: number, userId: number) => {\n534|  const comment = await prisma.comment.findFirst({\n535|    where: {\n536|      id,\n537|      author: {\n538|        id: userId,\n539|      },\n540|    },\n541|    select: {\n542|      author: {\n543|        select: {\n544|          id: true,\n545|          username: true,\n546|        },\n547|      },\n548|    },\n549|  });\n550|\n551|  if (!comment) {\n552|    throw new HttpException(404, {});\n553|  }\n554|\n555|  if (comment.author.id !== userId) {\n556|    throw new HttpException(403, {\n557|      message: 'You are not authorized to delete this comment',\n558|    });\n559|  }\n560|\n561|  await prisma.comment.delete({\n562|    where: {\n563|      id,\n564|    },\n565|  });\n566|};\n567|\n568|export const favoriteArticle = async (slugPayload: string, id: number) => {\n569|  const { _count, ...article } = await prisma.article.update({\n570|    where: {\n571|      slug: slugPayload,\n572|    },\n573|    data: {\n574|      favoritedBy: {\n575|        connect: {\n576|          id: id,\n577|        },\n578|      },\n579|    },\n580|    include: {\n581|      tagList: {\n582|        select: {\n583|          name: true,\n584|        },\n585|      },\n586|      author: {\n587|        select: {\n588|          username: true,\n589|          bio: true,\n590|          image: true,\n591|          followedBy: true,\n592|        },\n593|      },\n594|      favoritedBy: true,\n595|      _count: {\n596|        select: {\n597|          favoritedBy: true,\n598|        },\n599|      },\n600|    },\n601|  });\n602|\n603|  const result = {\n604|    ...article,\n605|    author: profileMapper(article.author, id),\n606|    tagList: article?.tagList.map((tag: Tag) => tag.name),\n607|    favorited: article.favoritedBy.some(\n608|      (favorited: any) => favorited.id === id\n609|    ),\n610|    favoritesCount: _count?.favoritedBy,\n611|  };\n612|\n613|  return result;\n614|};\n615|\n616|export const unfavoriteArticle = async (slugPayload: string, id: number) => {\n617|  const { _count, ...article } = await prisma.article.update({\n618|    where: {\n619|      slug: slugPayload,\n620|    },\n621|    data: {\n622|      favoritedBy: {\n623|        disconnect: {\n624|          id: id,\n625|        },\n626|      },\n627|    },\n628|    include: {\n629|      tagList: {\n630|        select: {\n631|          name: true,\n632|        },\n633|      },\n634|      author: {\n635|        select: {\n636|          username: true,\n637|          bio: true,\n638|          image: true,\n639|          followedBy: true,\n640|        },\n641|      },\n642|      favoritedBy: true,\n643|      _count: {\n644|        select: {\n645|          favoritedBy: true,\n646|        },\n647|      },\n648|    },\n649|  });\n650|\n651|  const result = {\n652|    ...article,\n653|    author: profileMapper(article.author, id),\n654|    tagList: article?.tagList.map((tag: Tag) => tag.name),\n655|    favorited: article.favoritedBy.some(\n656|      (favorited: any) => favorited.id === id\n657|    ),\n658|    favoritesCount: _count?.favoritedBy,\n659|  };\n660|\n661|  return result;\n662|};\n663|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.914159672Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Identify Code Type\nFirst, identify if the attached file is code. If it is not code, return empty lists for all fields.\n\n# Task 2: Extract Endpoints\nIf this is code, identify (if any at all) blocks of code that directly register routes in this application's HTTP server.\nOnly extract endpoints where you can determine the concrete HTTP method and path - do not guess or speculate about what paths might exist.\nDo not extract code that merely creates a server or groups routes without binding a specific path to a handler.\nThese routes must be valid RFC HTTP verbs (GET, POST, PUT, DELETE, PATCH).\nParameterised URL path segments must be expressed in the {id} format. For example, /users/:id/config should be /users/{id}/config, and /users/<userId> should be /users/{userId}.\nIf you cannot confidently determine the path, return an empty list for endpoints.\nThe start and end line must capture the entire syntactic chunk registering the endpoint.\nThis includes the handler code for the endpoint if the line that registers it is immediately followed\nby a function/method/lambda that is the entrypoint for that endpoint when it's called\n\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.91419698Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedEndpoints",
+          "schema": {
+            "$id": "ExtractedEndpoints",
+            "$defs": {
+              "io.kerno.agent.index.EndpointMetadata": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "DELETE",
+                      "PATCH"
+                    ]
+                  },
+                  "path": {
+                    "type": "string",
+                    "description": "A valid RFC URL path e.g. / or /api/some/end/point"
+                  },
+                  "startLine": {
+                    "type": "integer",
+                    "description": "The first line of code registering this route, ignoring comments"
+                  },
+                  "endLine": {
+                    "type": "integer",
+                    "description": "The last line of code registering this route, ignoring comments"
+                  }
+                },
+                "required": [
+                  "method",
+                  "path",
+                  "startLine",
+                  "endLine"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedEndpoints": {
+                "type": "object",
+                "properties": {
+                  "endpoints": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.EndpointMetadata"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedEndpoints"
+          }
+        }
+      }
+    }
+  }
+}

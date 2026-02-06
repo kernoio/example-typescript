@@ -1,0 +1,122 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\"endpoints\": []}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:17:58.870658388Z",
+        "totalTokensCount": 1408,
+        "inputTokensCount": 1291,
+        "outputTokensCount": 5
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.927960822Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# package.json\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```json\n1|{\n2|  \"name\": \"@api/source\",\n3|  \"version\": \"0.0.0\",\n4|  \"license\": \"MIT\",\n5|  \"scripts\": {\n6|    \"start\": \"nx serve\",\n7|    \"build\": \"nx build\",\n8|    \"test\": \"nx test\"\n9|  },\n10|  \"private\": true,\n11|  \"prisma\": {\n12|    \"seed\": \"ts-node --transpile-only --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} prisma/seed.ts\",\n13|    \"schema\": \"prisma/schema.prisma\"\n14|  },\n15|  \"dependencies\": {\n16|    \"@ngneat/falso\": \"^7.1.1\",\n17|    \"@prisma/client\": \"^4.16.1\",\n18|    \"axios\": \"^1.0.0\",\n19|    \"bcryptjs\": \"^2.4.3\",\n20|    \"body-parser\": \"^1.20.2\",\n21|    \"cors\": \"^2.8.5\",\n22|    \"express\": \"~4.18.1\",\n23|    \"express-jwt\": \"^8.4.1\",\n24|    \"jsonwebtoken\": \"^9.0.2\",\n25|    \"slugify\": \"^1.6.0\",\n26|    \"tslib\": \"^2.3.0\"\n27|  },\n28|  \"devDependencies\": {\n29|    \"@nx/esbuild\": \"17.2.6\",\n30|    \"@nx/eslint\": \"17.2.6\",\n31|    \"@nx/eslint-plugin\": \"17.2.6\",\n32|    \"@nx/jest\": \"17.2.6\",\n33|    \"@nx/js\": \"17.2.6\",\n34|    \"@nx/node\": \"17.2.6\",\n35|    \"@nx/workspace\": \"17.2.6\",\n36|    \"@swc-node/register\": \"~1.6.7\",\n37|    \"@swc/core\": \"~1.3.85\",\n38|    \"@types/bcryptjs\": \"^2.4.6\",\n39|    \"@types/cors\": \"^2.8.17\",\n40|    \"@types/express\": \"~4.17.13\",\n41|    \"@types/jest\": \"^29.4.0\",\n42|    \"@types/node\": \"18.16.9\",\n43|    \"@types/supertest\": \"^6.0.3\",\n44|    \"@typescript-eslint/eslint-plugin\": \"^6.9.1\",\n45|    \"@typescript-eslint/parser\": \"^6.9.1\",\n46|    \"esbuild\": \"^0.19.2\",\n47|    \"eslint\": \"~8.48.0\",\n48|    \"eslint-config-prettier\": \"^9.0.0\",\n49|    \"jest\": \"^29.4.1\",\n50|    \"jest-environment-node\": \"^29.4.1\",\n51|    \"jest-mock-extended\": \"^3.0.5\",\n52|    \"nx\": \"17.2.6\",\n53|    \"prettier\": \"^2.6.2\",\n54|    \"prisma\": \"^4.16.1\",\n55|    \"supertest\": \"^7.1.4\",\n56|    \"ts-jest\": \"^29.1.0\",\n57|    \"ts-node\": \"10.9.1\",\n58|    \"typescript\": \"~5.2.2\"\n59|  }\n60|}\n61|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.927987581Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Identify Code Type\nFirst, identify if the attached file is code. If it is not code, return empty lists for all fields.\n\n# Task 2: Extract Endpoints\nIf this is code, identify (if any at all) blocks of code that directly register routes in this application's HTTP server.\nOnly extract endpoints where you can determine the concrete HTTP method and path - do not guess or speculate about what paths might exist.\nDo not extract code that merely creates a server or groups routes without binding a specific path to a handler.\nThese routes must be valid RFC HTTP verbs (GET, POST, PUT, DELETE, PATCH).\nParameterised URL path segments must be expressed in the {id} format. For example, /users/:id/config should be /users/{id}/config, and /users/<userId> should be /users/{userId}.\nIf you cannot confidently determine the path, return an empty list for endpoints.\nThe start and end line must capture the entire syntactic chunk registering the endpoint.\nThis includes the handler code for the endpoint if the line that registers it is immediately followed\nby a function/method/lambda that is the entrypoint for that endpoint when it's called\n\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.927999603Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedEndpoints",
+          "schema": {
+            "$id": "ExtractedEndpoints",
+            "$defs": {
+              "io.kerno.agent.index.EndpointMetadata": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "DELETE",
+                      "PATCH"
+                    ]
+                  },
+                  "path": {
+                    "type": "string",
+                    "description": "A valid RFC URL path e.g. / or /api/some/end/point"
+                  },
+                  "startLine": {
+                    "type": "integer",
+                    "description": "The first line of code registering this route, ignoring comments"
+                  },
+                  "endLine": {
+                    "type": "integer",
+                    "description": "The last line of code registering this route, ignoring comments"
+                  }
+                },
+                "required": [
+                  "method",
+                  "path",
+                  "startLine",
+                  "endLine"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedEndpoints": {
+                "type": "object",
+                "properties": {
+                  "endpoints": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.EndpointMetadata"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedEndpoints"
+          }
+        }
+      }
+    }
+  }
+}

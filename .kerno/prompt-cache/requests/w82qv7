@@ -1,0 +1,77 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "```\nDATABASE_URL\nJWT_SECRET\nNODE_ENV\nHOST\nPORT\n```"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:23.939894702Z",
+        "totalTokensCount": 510,
+        "inputTokensCount": 488,
+        "outputTokensCount": 22
+      },
+      "finishReason": "end_turn"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a knowledgeable polyglot engineer and able to understand what external dependencies a software application\nrequires from reading the source files of an application."
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:21.734484822Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "# Relevant Code Context\n### Dockerfile\n#### Lines:21-21\n```text\nENV HOST=0.0.0.0\n```\n#### Lines:22-22\n```text\nENV PORT=3000\n```\n### README.md\n#### Lines:43-43\n```md\nDATABASE_URL=\n```\n#### Lines:44-44\n```md\nJWT_SECRET=\n```\n#### Lines:45-45\n```md\nNODE_ENV=production\n```\n### env.example\n#### Lines:1-1\n```example\nDATABASE_URL=<URL>\n```\n#### Lines:2-2\n```example\nJWT_SECRET=<JWT_SECRET>\n```\n#### Lines:3-3\n```example\nNODE_ENV=production\n```\n### prisma/prisma-client.ts\n#### Lines:19-19\n```ts\nif (process.env.NODE_ENV === 'development') {\n```\n### prisma/schema.prisma\n#### Lines:3-3\n```prisma\n  url      = env(\"DATABASE_URL\")\n```\n### src/app/routes/auth/auth.ts\n#### Lines:16-16\n```ts\n    secret: process.env.JWT_SECRET || 'superSecret',\n```\n#### Lines:21-21\n```ts\n    secret: process.env.JWT_SECRET || 'superSecret',\n```\n### src/app/routes/auth/token.utils.ts\n#### Lines:4-4\n```ts\n  jwt.sign({ user: { id } }, process.env.JWT_SECRET || 'superSecret', {\n```\n### src/main.ts\n#### Lines:53-53\n```ts\nconst PORT = process.env.PORT || 3000;\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:21.736751996Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Your task will follow next:"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:21.73677401Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Task\nDetermine which environment variables are for configuring the SUT\n# Desired Outcomes\nReturn in the format <KEY> with one per line with NOTHING ELSE in your output\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:21.736788574Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "maxTokens": 64000
+      }
+    }
+  }
+}

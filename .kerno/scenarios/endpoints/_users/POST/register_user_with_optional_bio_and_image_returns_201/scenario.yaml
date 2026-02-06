@@ -1,0 +1,66 @@
+id: register_user_with_optional_bio_and_image_returns_201
+description: Register user with optional bio and image fields returns 201 with those
+  fields included in response
+subject:
+  type: "Endpoint"
+  method: POST
+  path: /api/users
+steps:
+- id: generate_user_data
+  description: Generate random user data including bio and image
+  action:
+    type: "Values"
+    outputs:
+      email:
+        type: "RandomUuid"
+      username:
+        type: "RandomUuid"
+      password:
+        type: "StaticString"
+        value: TestPass123!
+      bio:
+        type: "StaticString"
+        value: Test bio
+      image:
+        type: "StaticString"
+        value: https://example.com/image.jpg
+- id: cleanup_existing_user
+  description: Defensively clean up any existing user with the same email/username
+  action:
+    type: "ExecuteSql"
+    sql: |-
+      DELETE FROM "User" WHERE email = '{{ generate_user_data.email }}';
+      DELETE FROM "User" WHERE username = '{{ generate_user_data.username }}';
+- id: register_user_with_optional_fields
+  description: Call POST /api/users with bio and image fields
+  action:
+    type: "CallHttp"
+    request: |-
+      POST /api/users HTTP/1.1
+      Content-Type: application/json
+
+      {
+        "user": {
+          "email": "{{ generate_user_data.email }}",
+          "username": "{{ generate_user_data.username }}",
+          "password": "{{ generate_user_data.password }}",
+          "bio": "{{ generate_user_data.bio }}",
+          "image": "{{ generate_user_data.image }}"
+        }
+      }
+- id: assert_registration_response
+  description: Assert 201 response with user object including bio and image values
+  action:
+    type: "HttpAssert"
+    actual: '{{ register_user_with_optional_fields }}'
+    expected: |-
+      HTTP/1.1 201 Created
+      Content-Type: application/json; charset=utf-8
+
+      {"user":{"bio":"Test bio","image":"https://example.com/image.jpg"}}
+    body_match: json_lenient
+- id: cleanup
+  description: Remove the created user from database
+  action:
+    type: "ExecuteSql"
+    sql: DELETE FROM "User" WHERE email = '{{ generate_user_data.email }}';

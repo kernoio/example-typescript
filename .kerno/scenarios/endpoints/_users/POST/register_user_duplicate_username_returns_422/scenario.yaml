@@ -1,0 +1,67 @@
+id: register_user_duplicate_username_returns_422
+description: Register user with username that already exists returns 422 with error
+  indicating username has already been taken
+subject:
+  type: Endpoint
+  method: POST
+  path: /api/users
+steps:
+- id: generate_user_data
+  description: Generate random user data
+  action:
+    type: Values
+    outputs:
+      username:
+        type: RandomUuid
+      email:
+        type: RandomUuid
+      duplicate_email:
+        type: RandomUuid
+      password:
+        type: StaticString
+        value: TestPass123!
+- id: create_existing_user
+  description: Create a user in the database with the username we'll try to register
+  action:
+    type: ExecuteSql
+    sql: "DELETE FROM \"User\" WHERE username = '{{ generate_user_data.username }}';\n\
+      INSERT INTO \"User\" (email, username, password) \nVALUES (\n  '{{ generate_user_data.email\
+      \ }}@test.com', \n  '{{ generate_user_data.username }}', \n  '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy'\n\
+      );\nSELECT 'user_id' as key, id as value FROM \"User\" WHERE username = '{{\
+      \ generate_user_data.username }}';"
+- id: register_duplicate_username
+  description: Call POST /api/users with the same username but different email
+  action:
+    type: CallHttp
+    request: |-
+      POST /api/users HTTP/1.1
+      Content-Type: application/json
+
+      {
+        "user": {
+          "email": "{{ generate_user_data.duplicate_email }}@test.com",
+          "username": "{{ generate_user_data.username }}",
+          "password": "{{ generate_user_data.password }}"
+        }
+      }
+- id: assert_uniqueness_error
+  description: Assert 422 response with error indicating username has already been
+    taken
+  action:
+    type: HttpAssert
+    actual: '{{ register_duplicate_username }}'
+    expected: |-
+      HTTP/1.1 422 Unprocessable Entity
+      Content-Type: application/json; charset=utf-8
+
+      {
+        "errors": {
+          "username": ["has already been taken"]
+        }
+      }
+    body_match: json_lenient
+- id: cleanup
+  description: Remove the test user from database
+  action:
+    type: ExecuteSql
+    sql: DELETE FROM "User" WHERE id = {{ create_existing_user.user_id }};

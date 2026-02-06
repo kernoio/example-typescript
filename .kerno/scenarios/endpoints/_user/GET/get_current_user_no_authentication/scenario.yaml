@@ -1,0 +1,22 @@
+id: get_current_user_no_authentication
+description: Request without authentication token returns 401 Unauthorized
+subject:
+  type: Endpoint
+  method: GET
+  path: /api/user
+steps:
+- id: call_get_user_no_auth
+  description: Call GET /api/user without Authorization header
+  action:
+    type: CallHttp
+    request: GET /api/user HTTP/1.1
+- id: assert_unauthorized
+  description: Assert 401 Unauthorized response
+  action:
+    type: HttpAssert
+    actual: '{{ call_get_user_no_auth }}'
+    expected: |-
+      HTTP/1.1 401 Unauthorized
+      Content-Type: application/json
+
+      {"status":"error","message":"missing authorization credentials"}

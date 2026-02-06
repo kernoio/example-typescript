@@ -1,0 +1,110 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\n  \"paths\": [\n    {\n      \"lineEnd\": 37,\n      \"lineStart\": 30,\n      \"baseUrlPath\": \"/articles\"\n    },\n    {\n      \"lineEnd\": 60,\n      \"lineStart\": 45,\n      \"baseUrlPath\": \"/articles/feed\"\n    },\n    {\n      \"lineEnd\": 78,\n      \"lineStart\": 71,\n      \"baseUrlPath\": \"/articles\"\n    },\n    {\n      \"lineEnd\": 98,\n      \"lineStart\": 88,\n      \"baseUrlPath\": \"/articles/{slug}\"\n    },\n    {\n      \"lineEnd\": 120,\n      \"lineStart\": 111,\n      \"baseUrlPath\": \"/articles/{slug}\"\n    },\n    {\n      \"lineEnd\": 140,\n      \"lineStart\": 129,\n      \"baseUrlPath\": \"/articles/{slug}\"\n    },\n    {\n      \"lineEnd\": 159,\n      \"lineStart\": 150,\n      \"baseUrlPath\": \"/articles/{slug}/comments\"\n    },\n    {\n      \"lineEnd\": 180,\n      \"lineStart\": 171,\n      \"baseUrlPath\": \"/articles/{slug}/comments\"\n    },\n    {\n      \"lineEnd\": 200,\n      \"lineStart\": 191,\n      \"baseUrlPath\": \"/articles/{slug}/comments/{id}\"\n    },\n    {\n      \"lineEnd\": 220,\n      \"lineStart\": 211,\n      \"baseUrlPath\": \"/articles/{slug}/favorite\"\n    },\n    {\n      \"lineEnd\": 240,\n      \"lineStart\": 231,\n      \"baseUrlPath\": \"/articles/{slug}/favorite\"\n    }\n  ]\n}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:13.272690436Z",
+        "totalTokensCount": 4891,
+        "inputTokensCount": 2891,
+        "outputTokensCount": 441
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:05.528526197Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# src/app/routes/article/article.controller.ts\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```ts\n1|import { NextFunction, Request, Response, Router } from 'express';\n2|import auth from '../auth/auth';\n3|import {\n4|  addComment,\n5|  createArticle,\n6|  deleteArticle,\n7|  deleteComment,\n8|  favoriteArticle,\n9|  getArticle,\n10|  getArticles,\n11|  getCommentsByArticle,\n12|  getFeed,\n13|  unfavoriteArticle,\n14|  updateArticle,\n15|} from './article.service';\n16|\n17|const router = Router();\n18|\n19|/**\n20| * Get paginated articles\n21| * @auth optional\n22| * @route {GET} /articles\n23| * @queryparam offset number of articles dismissed from the first one\n24| * @queryparam limit number of articles returned\n25| * @queryparam tag\n26| * @queryparam author\n27| * @queryparam favorited\n28| * @returns articles: list of articles\n29| */\n30|router.get('/articles', auth.optional, async (req: Request, res: Response, next: NextFunction) => {\n31|  try {\n32|    const result = await getArticles(req.query, req.auth?.user?.id);\n33|    res.json(result);\n34|  } catch (error) {\n35|    next(error);\n36|  }\n37|});\n38|\n39|/**\n40| * Get paginated feed articles\n41| * @auth required\n42| * @route {GET} /articles/feed\n43| * @returns articles list of articles\n44| */\n45|router.get(\n46|  '/articles/feed',\n47|  auth.required,\n48|  async (req: Request, res: Response, next: NextFunction) => {\n49|    try {\n50|      const result = await getFeed(\n51|        Number(req.query.offset),\n52|        Number(req.query.limit),\n53|        req.auth?.user?.id,\n54|      );\n55|      res.json(result);\n56|    } catch (error) {\n57|      next(error);\n58|    }\n59|  },\n60|);\n61|\n62|/**\n63| * Create article\n64| * @route {POST} /articles\n65| * @bodyparam  title\n66| * @bodyparam  description\n67| * @bodyparam  body\n68| * @bodyparam  tagList list of tags\n69| * @returns article created article\n70| */\n71|router.post('/articles', auth.required, async (req: Request, res: Response, next: NextFunction) => {\n72|  try {\n73|    const article = await createArticle(req.body.article, req.auth?.user?.id);\n74|    res.status(201).json({ article });\n75|  } catch (error) {\n76|    next(error);\n77|  }\n78|});\n79|\n80|/**\n81| * Get unique article\n82| * @auth optional\n83| * @route {GET} /article/:slug\n84| * @param slug slug of the article (based on the title)\n85| * @returns article\n86| */\n87|router.get(\n88|  '/articles/:slug',\n89|  auth.optional,\n90|  async (req: Request, res: Response, next: NextFunction) => {\n91|    try {\n92|      const article = await getArticle(req.params.slug, req.auth?.user?.id);\n93|      res.json({ article });\n94|    } catch (error) {\n95|      next(error);\n96|    }\n97|  },\n98|);\n99|\n100|/**\n101| * Update article\n102| * @auth required\n103| * @route {PUT} /articles/:slug\n104| * @param slug slug of the article (based on the title)\n105| * @bodyparam title new title\n106| * @bodyparam description new description\n107| * @bodyparam body new content\n108| * @returns article updated article\n109| */\n110|router.put(\n111|  '/articles/:slug',\n112|  auth.required,\n113|  async (req: Request, res: Response, next: NextFunction) => {\n114|    try {\n115|      const article = await updateArticle(req.body.article, req.params.slug, req.auth?.user?.id);\n116|      res.json({ article });\n117|    } catch (error) {\n118|      next(error);\n119|    }\n120|  },\n121|);\n122|\n123|/**\n124| * Delete article\n125| * @auth required\n126| * @route {DELETE} /article/:id\n127| * @param slug slug of the article\n128| */\n129|router.delete(\n130|  '/articles/:slug',\n131|  auth.required,\n132|  async (req: Request, res: Response, next: NextFunction) => {\n133|    try {\n134|      await deleteArticle(req.params.slug, req.auth?.user!.id);\n135|      res.sendStatus(204);\n136|    } catch (error) {\n137|      next(error);\n138|    }\n139|  },\n140|);\n141|\n142|/**\n143| * Get comments from an article\n144| * @auth optional\n145| * @route {GET} /articles/:slug/comments\n146| * @param slug slug of the article (based on the title)\n147| * @returns comments list of comments\n148| */\n149|router.get(\n150|  '/articles/:slug/comments',\n151|  auth.optional,\n152|  async (req: Request, res: Response, next: NextFunction) => {\n153|    try {\n154|      const comments = await getCommentsByArticle(req.params.slug, req.auth?.user?.id);\n155|      res.json({ comments });\n156|    } catch (error) {\n157|      next(error);\n158|    }\n159|  },\n160|);\n161|\n162|/**\n163| * Add comment to article\n164| * @auth required\n165| * @route {POST} /articles/:slug/comments\n166| * @param slug slug of the article (based on the title)\n167| * @bodyparam body content of the comment\n168| * @returns comment created comment\n169| */\n170|router.post(\n171|  '/articles/:slug/comments',\n172|  auth.required,\n173|  async (req: Request, res: Response, next: NextFunction) => {\n174|    try {\n175|      const comment = await addComment(req.body.comment.body, req.params.slug, req.auth?.user?.id);\n176|      res.json({ comment });\n177|    } catch (error) {\n178|      next(error);\n179|    }\n180|  },\n181|);\n182|\n183|/**\n184| * Delete comment\n185| * @auth required\n186| * @route {DELETE} /articles/:slug/comments/:id\n187| * @param slug slug of the article (based on the title)\n188| * @param id id of the comment\n189| */\n190|router.delete(\n191|  '/articles/:slug/comments/:id',\n192|  auth.required,\n193|  async (req: Request, res: Response, next: NextFunction) => {\n194|    try {\n195|      await deleteComment(Number(req.params.id), req.auth?.user?.id);\n196|      res.status(200).json({});\n197|    } catch (error) {\n198|      next(error);\n199|    }\n200|  },\n201|);\n202|\n203|/**\n204| * Favorite article\n205| * @auth required\n206| * @route {POST} /articles/:slug/favorite\n207| * @param slug slug of the article (based on the title)\n208| * @returns article favorited article\n209| */\n210|router.post(\n211|  '/articles/:slug/favorite',\n212|  auth.required,\n213|  async (req: Request, res: Response, next: NextFunction) => {\n214|    try {\n215|      const article = await favoriteArticle(req.params.slug, req.auth?.user?.id);\n216|      res.json({ article });\n217|    } catch (error) {\n218|      next(error);\n219|    }\n220|  },\n221|);\n222|\n223|/**\n224| * Unfavorite article\n225| * @auth required\n226| * @route {DELETE} /articles/:slug/favorite\n227| * @param slug slug of the article (based on the title)\n228| * @returns article unfavorited article\n229| */\n230|router.delete(\n231|  '/articles/:slug/favorite',\n232|  auth.required,\n233|  async (req: Request, res: Response, next: NextFunction) => {\n234|    try {\n235|      const article = await unfavoriteArticle(req.params.slug, req.auth?.user?.id);\n236|      res.json({ article });\n237|    } catch (error) {\n238|      next(error);\n239|    }\n240|  },\n241|);\n242|\n243|export default router;\n244|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:05.528602635Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Identify Code Type\nFirst, identify if the attached file is code. If it is not code, return empty lists for all fields.\n\n# Task 2: Extract Base URL Path\nIf this is code, identify (if any at all) blocks of code that define a base url that this application uses in its own HTTP servers.\nParameterised URL path segments must be expressed in the {id} format. For example, /users/:id/config should be /users/{id}/config, and /users/<userId> should be /users/{userId}.\nThe start and end line must capture the entire syntactic chunk defining the base url\n\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:05.528613958Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedBasePaths",
+          "schema": {
+            "$id": "ExtractedBasePaths",
+            "$defs": {
+              "io.kerno.agent.index.BaseURLPath": {
+                "type": "object",
+                "properties": {
+                  "baseUrlPath": {
+                    "type": "string"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code implying this base path, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code implying this base path, ignoring comments"
+                  }
+                },
+                "required": [
+                  "baseUrlPath",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedBasePaths": {
+                "type": "object",
+                "properties": {
+                  "paths": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.BaseURLPath"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedBasePaths"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\"paths\": []}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:00.498321135Z",
+        "totalTokensCount": 580,
+        "inputTokensCount": 419,
+        "outputTokensCount": 5
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:59.316575681Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# src/app/routes/auth/user.model.ts\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```ts\n1|import { Article } from '../article/article.model';\n2|import { Comment } from '../article/comment.model';\n3|\n4|export interface User {\n5|  id: number;\n6|  username: string;\n7|  email: string;\n8|  password: string;\n9|  bio: string | null;\n10|  image: any | null;\n11|  articles: Article[];\n12|  favorites: Article[];\n13|  followedBy: User[];\n14|  following: User[];\n15|  comments: Comment[];\n16|  demo: boolean;\n17|}\n18|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:59.316612032Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Identify Code Type\nFirst, identify if the attached file is code. If it is not code, return empty lists for all fields.\n\n# Task 2: Extract Base URL Path\nIf this is code, identify (if any at all) blocks of code that define a base url that this application uses in its own HTTP servers.\nParameterised URL path segments must be expressed in the {id} format. For example, /users/:id/config should be /users/{id}/config, and /users/<userId> should be /users/{userId}.\nThe start and end line must capture the entire syntactic chunk defining the base url\n\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:59.316624697Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedBasePaths",
+          "schema": {
+            "$id": "ExtractedBasePaths",
+            "$defs": {
+              "io.kerno.agent.index.BaseURLPath": {
+                "type": "object",
+                "properties": {
+                  "baseUrlPath": {
+                    "type": "string"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code implying this base path, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code implying this base path, ignoring comments"
+                  }
+                },
+                "required": [
+                  "baseUrlPath",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedBasePaths": {
+                "type": "object",
+                "properties": {
+                  "paths": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.BaseURLPath"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedBasePaths"
+          }
+        }
+      }
+    }
+  }
+}

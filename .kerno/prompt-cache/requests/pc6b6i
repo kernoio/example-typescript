@@ -1,0 +1,77 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "postgresql:17.2.0\nnode:22.12.0\nopenssl:3.4.0"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:26.829051441Z",
+        "totalTokensCount": 408,
+        "inputTokensCount": 381,
+        "outputTokensCount": 27
+      },
+      "finishReason": "end_turn"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a knowledgeable polyglot engineer and able to understand what external dependencies a software application\nrequires from reading the source files of an application."
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:24.674251474Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "# Relevant Code Context\n### Dockerfile\n#### Lines:8-8\n```text\nFROM docker.io/node:lts-alpine AS builder\n```\n#### Lines:19-19\n```text\nFROM docker.io/node:lts-alpine\n```\n#### Lines:26-26\n```text\nRUN apk add --no-cache openssl\n```\n### package.json\n#### Lines:11-14\n```json\n  \"prisma\": {\n    \"seed\": \"ts-node --transpile-only --compiler-options {\\\"module\\\":\\\"CommonJS\\\"} prisma/seed.ts\",\n    \"schema\": \"prisma/schema.prisma\"\n  },\n```\n### prisma/schema.prisma\n#### Lines:1-4\n```prisma\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:24.67436101Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Your task will follow next:"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:24.674366865Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Task\nSpecify the most recent server version for every external service that is compatible with this project\nIf there is a more modern version you can pick that would still work with this application at runtime then you MUST pick that\nNormalize external services names that effectively the same\nExclude external services that do not have a free version that could in local environments\n# Desired Outcomes\nReturn in the format <external_service>:<semver_version> with one per line with NOTHING ELSE in your output. Use full versions where available (i.e. X.Y.Z instead of just X.Y)\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:24.674376806Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "maxTokens": 64000
+      }
+    }
+  }
+}

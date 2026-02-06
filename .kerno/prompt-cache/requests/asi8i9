@@ -1,0 +1,173 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\n  \"envVars\": [],\n  \"externalServices\": [\n    {\n      \"lineEnd\": 181,\n      \"lineStart\": 10,\n      \"name\": \"Prisma Database\"\n    }\n  ],\n  \"securitySchemes\": [\n    {\n      \"lineEnd\": 186,\n      \"lineStart\": 83,\n      \"type\": \"http\"\n    }\n  ]\n}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:07.840699615Z",
+        "totalTokensCount": 3461,
+        "inputTokensCount": 2196,
+        "outputTokensCount": 103
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:01.357057316Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# src/app/routes/auth/auth.service.ts\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```ts\n1|import * as bcrypt from 'bcryptjs';\n2|import { RegisterInput } from './register-input.model';\n3|import prisma from '../../../../prisma/prisma-client';\n4|import HttpException from '../../models/http-exception.model';\n5|import { RegisteredUser } from './registered-user.model';\n6|import generateToken from './token.utils';\n7|import { User } from './user.model';\n8|\n9|const checkUserUniqueness = async (email: string, username: string) => {\n10|  const existingUserByEmail = await prisma.user.findUnique({\n11|    where: {\n12|      email,\n13|    },\n14|    select: {\n15|      id: true,\n16|    },\n17|  });\n18|\n19|  const existingUserByUsername = await prisma.user.findUnique({\n20|    where: {\n21|      username,\n22|    },\n23|    select: {\n24|      id: true,\n25|    },\n26|  });\n27|\n28|  if (existingUserByEmail || existingUserByUsername) {\n29|    throw new HttpException(422, {\n30|      errors: {\n31|        ...(existingUserByEmail ? { email: ['has already been taken'] } : {}),\n32|        ...(existingUserByUsername\n33|          ? { username: ['has already been taken'] }\n34|          : {}),\n35|      },\n36|    });\n37|  }\n38|};\n39|\n40|export const createUser = async (\n41|  input: RegisterInput\n42|): Promise<RegisteredUser> => {\n43|  const email = input.email?.trim();\n44|  const username = input.username?.trim();\n45|  const password = input.password?.trim();\n46|  const { image, bio, demo } = input;\n47|\n48|  if (!email) {\n49|    throw new HttpException(422, { errors: { email: [\"can't be blank\"] } });\n50|  }\n51|\n52|  if (!username) {\n53|    throw new HttpException(422, { errors: { username: [\"can't be blank\"] } });\n54|  }\n55|\n56|  if (!password) {\n57|    throw new HttpException(422, { errors: { password: [\"can't be blank\"] } });\n58|  }\n59|\n60|  await checkUserUniqueness(email, username);\n61|\n62|  const hashedPassword = await bcrypt.hash(password, 10);\n63|\n64|  const user = await prisma.user.create({\n65|    data: {\n66|      username,\n67|      email,\n68|      password: hashedPassword,\n69|      ...(image ? { image } : {}),\n70|      ...(bio ? { bio } : {}),\n71|      ...(demo ? { demo } : {}),\n72|    },\n73|    select: {\n74|      id: true,\n75|      email: true,\n76|      username: true,\n77|      bio: true,\n78|      image: true,\n79|    },\n80|  });\n81|\n82|  return {\n83|    ...user,\n84|    token: generateToken(user.id),\n85|  };\n86|};\n87|\n88|export const login = async (userPayload: any) => {\n89|  const email = userPayload.email?.trim();\n90|  const password = userPayload.password?.trim();\n91|\n92|  if (!email) {\n93|    throw new HttpException(422, { errors: { email: [\"can't be blank\"] } });\n94|  }\n95|\n96|  if (!password) {\n97|    throw new HttpException(422, { errors: { password: [\"can't be blank\"] } });\n98|  }\n99|\n100|  const user = await prisma.user.findUnique({\n101|    where: {\n102|      email,\n103|    },\n104|    select: {\n105|      id: true,\n106|      email: true,\n107|      username: true,\n108|      password: true,\n109|      bio: true,\n110|      image: true,\n111|    },\n112|  });\n113|\n114|  if (user) {\n115|    const match = await bcrypt.compare(password, user.password);\n116|\n117|    if (match) {\n118|      return {\n119|        email: user.email,\n120|        username: user.username,\n121|        bio: user.bio,\n122|        image: user.image,\n123|        token: generateToken(user.id),\n124|      };\n125|    }\n126|  }\n127|\n128|  throw new HttpException(403, {\n129|    errors: {\n130|      'email or password': ['is invalid'],\n131|    },\n132|  });\n133|};\n134|\n135|export const getCurrentUser = async (id: number) => {\n136|  const user = (await prisma.user.findUnique({\n137|    where: {\n138|      id,\n139|    },\n140|    select: {\n141|      id: true,\n142|      email: true,\n143|      username: true,\n144|      bio: true,\n145|      image: true,\n146|    },\n147|  })) as User;\n148|\n149|  return {\n150|    ...user,\n151|    token: generateToken(user.id),\n152|  };\n153|};\n154|\n155|export const updateUser = async (userPayload: any, id: number) => {\n156|  const { email, username, password, image, bio } = userPayload;\n157|  let hashedPassword;\n158|\n159|  if (password) {\n160|    hashedPassword = await bcrypt.hash(password, 10);\n161|  }\n162|\n163|  const user = await prisma.user.update({\n164|    where: {\n165|      id: id,\n166|    },\n167|    data: {\n168|      ...(email ? { email } : {}),\n169|      ...(username ? { username } : {}),\n170|      ...(password ? { password: hashedPassword } : {}),\n171|      ...(image ? { image } : {}),\n172|      ...(bio ? { bio } : {}),\n173|    },\n174|    select: {\n175|      id: true,\n176|      email: true,\n177|      username: true,\n178|      bio: true,\n179|      image: true,\n180|    },\n181|  });\n182|\n183|  return {\n184|    ...user,\n185|    token: generateToken(user.id),\n186|  };\n187|};\n188|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:01.357158268Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Extract External Services\nList all ExternalTcpService that can be inferred from this code.\nIf the name of external service used cannot be determined, then do not include it.\nIf this code does not perform any registration of routes in an HTTP server, return an empty list for endpoints.\nThe start and end line must capture the entire syntactic chunk that infers the external service\n\n# Task 2: Extract Security Schemes\nList all the HttpSecurityScheme that are configured by this code.\nList all the HttpSecurityScheme that are configured by this code.\nThe start and end line must capture the entire syntactic configuring the scheme\n\n# Task 4: Extract Environment Variables\nList all EnvVars accessed by this code.\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:01.357178193Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedSemanticOutput",
+          "schema": {
+            "$id": "ExtractedSemanticOutput",
+            "$defs": {
+              "io.kerno.agent.index.ExternalTcpService": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code communicating with this external service, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code communicating with this external service, ignoring comments"
+                  }
+                },
+                "required": [
+                  "name",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.HttpSecurityScheme": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "http",
+                      "apiKey",
+                      "openIdConnect",
+                      "oauth2"
+                    ],
+                    "description": "The first line of code implying this security scheme, ignoring comments"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code implying this security scheme, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code implying this security scheme, ignoring comments"
+                  }
+                },
+                "required": [
+                  "type",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.EnvVar": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code reading this environment variable, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code reading this environment variable, ignoring comments"
+                  }
+                },
+                "required": [
+                  "key",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedSemanticOutput": {
+                "type": "object",
+                "properties": {
+                  "externalServices": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.ExternalTcpService"
+                    }
+                  },
+                  "securitySchemes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.HttpSecurityScheme"
+                    }
+                  },
+                  "envVars": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.EnvVar"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedSemanticOutput"
+          }
+        }
+      }
+    }
+  }
+}
