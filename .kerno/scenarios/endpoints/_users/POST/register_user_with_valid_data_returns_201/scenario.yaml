@@ -1,0 +1,58 @@
+id: register_user_with_valid_data_returns_201
+description: Register a new user with all required fields returns 201 Created with
+  user object and JWT token
+subject:
+  type: "Endpoint"
+  method: POST
+  path: /api/users
+steps:
+- id: generate_user_data
+  description: Generate random user data for registration
+  action:
+    type: "Values"
+    outputs:
+      email:
+        type: "RandomUuid"
+      username:
+        type: "RandomUuid"
+      password:
+        type: "StaticString"
+        value: Test123!
+- id: cleanup_existing_user
+  description: Defensively clean up any existing user with the same email/username
+  action:
+    type: "ExecuteSql"
+    sql: DELETE FROM "User" WHERE email = '{{ generate_user_data.email }}@test.com'
+      OR username = '{{ generate_user_data.username }}';
+- id: register_user
+  description: Call POST /api/users to register new user
+  action:
+    type: "CallHttp"
+    request: |-
+      POST /api/users HTTP/1.1
+      Content-Type: application/json
+
+      {
+        "user": {
+          "email": "{{ generate_user_data.email }}@test.com",
+          "username": "{{ generate_user_data.username }}",
+          "password": "{{ generate_user_data.password }}"
+        }
+      }
+- id: assert_registration_response
+  description: Assert 201 response with user object containing id, email, username,
+    bio, image, and token
+  action:
+    type: "HttpAssert"
+    actual: '{{ register_user }}'
+    expected: |-
+      HTTP/1.1 201 Created
+      Content-Type: application/json; charset=utf-8
+
+      {"user":{"bio":null,"image":"https://api.realworld.io/images/smiley-cyrus.jpeg"}}
+    body_match: json_lenient
+- id: cleanup
+  description: Remove the created user from database
+  action:
+    type: "ExecuteSql"
+    sql: DELETE FROM "User" WHERE email = '{{ generate_user_data.email }}@test.com';

@@ -18,7 +18,7 @@ node_modules
 *.sublime-workspace
 
 # Kerno files
-.kerno
+
 
 # IDE - VSCode
 .vscode/extensions.json

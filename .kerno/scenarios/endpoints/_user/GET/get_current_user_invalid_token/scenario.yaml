@@ -1,0 +1,24 @@
+id: get_current_user_invalid_token
+description: Request with invalid or malformed JWT token returns 401 Unauthorized
+subject:
+  type: Endpoint
+  method: GET
+  path: /api/user
+steps:
+- id: call_get_user_invalid_token
+  description: Call GET /api/user with malformed/invalid token in Authorization header
+  action:
+    type: CallHttp
+    request: |-
+      GET /api/user HTTP/1.1
+      Authorization: Bearer invalid_token_12345
+- id: assert_unauthorized_invalid
+  description: Assert 401 Unauthorized response for invalid token
+  action:
+    type: HttpAssert
+    actual: '{{ call_get_user_invalid_token }}'
+    expected: |-
+      HTTP/1.1 401 Unauthorized
+      Content-Type: application/json
+
+      {"status":"error","message":"missing authorization credentials"}

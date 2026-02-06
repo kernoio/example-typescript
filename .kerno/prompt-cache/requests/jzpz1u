@@ -1,0 +1,173 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\"externalServices\": [], \"securitySchemes\": [], \"envVars\": []}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:03.195222403Z",
+        "totalTokensCount": 2076,
+        "inputTokensCount": 1557,
+        "outputTokensCount": 17
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:00.048723999Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# prisma/migrations/20210924225358_initial/migration.sql\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```sql\n1|-- CreateTable\n2|CREATE TABLE \"Article\" (\n3|    \"id\" SERIAL NOT NULL,\n4|    \"slug\" TEXT NOT NULL,\n5|    \"title\" TEXT NOT NULL,\n6|    \"description\" TEXT NOT NULL,\n7|    \"body\" TEXT NOT NULL,\n8|    \"createdAt\" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,\n9|    \"updatedAt\" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,\n10|    \"authorId\" INTEGER NOT NULL,\n11|\n12|    PRIMARY KEY (\"id\")\n13|);\n14|\n15|-- CreateTable\n16|CREATE TABLE \"ArticleTags\" (\n17|    \"articleId\" INTEGER NOT NULL,\n18|    \"tagId\" INTEGER NOT NULL,\n19|\n20|    PRIMARY KEY (\"articleId\",\"tagId\")\n21|);\n22|\n23|-- CreateTable\n24|CREATE TABLE \"Comment\" (\n25|    \"id\" SERIAL NOT NULL,\n26|    \"createdAt\" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,\n27|    \"updatedAt\" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,\n28|    \"body\" TEXT NOT NULL,\n29|    \"articleId\" INTEGER NOT NULL,\n30|    \"authorId\" INTEGER NOT NULL,\n31|\n32|    PRIMARY KEY (\"id\")\n33|);\n34|\n35|-- CreateTable\n36|CREATE TABLE \"Tag\" (\n37|    \"id\" SERIAL NOT NULL,\n38|    \"name\" TEXT NOT NULL,\n39|\n40|    PRIMARY KEY (\"id\")\n41|);\n42|\n43|-- CreateTable\n44|CREATE TABLE \"User\" (\n45|    \"id\" SERIAL NOT NULL,\n46|    \"email\" TEXT NOT NULL,\n47|    \"username\" TEXT NOT NULL,\n48|    \"password\" TEXT NOT NULL,\n49|    \"image\" TEXT DEFAULT E'https://realworld-temp-api.herokuapp.com/images/smiley-cyrus.jpeg',\n50|    \"bio\" TEXT,\n51|    \"demo\" BOOLEAN NOT NULL DEFAULT false,\n52|\n53|    PRIMARY KEY (\"id\")\n54|);\n55|\n56|-- CreateTable\n57|CREATE TABLE \"_UserFavorites\" (\n58|    \"A\" INTEGER NOT NULL,\n59|    \"B\" INTEGER NOT NULL\n60|);\n61|\n62|-- CreateTable\n63|CREATE TABLE \"_UserFollows\" (\n64|    \"A\" INTEGER NOT NULL,\n65|    \"B\" INTEGER NOT NULL\n66|);\n67|\n68|-- CreateIndex\n69|CREATE UNIQUE INDEX \"Article.slug_unique\" ON \"Article\"(\"slug\");\n70|\n71|-- CreateIndex\n72|CREATE UNIQUE INDEX \"User.email_unique\" ON \"User\"(\"email\");\n73|\n74|-- CreateIndex\n75|CREATE UNIQUE INDEX \"User.username_unique\" ON \"User\"(\"username\");\n76|\n77|-- CreateIndex\n78|CREATE UNIQUE INDEX \"_UserFavorites_AB_unique\" ON \"_UserFavorites\"(\"A\", \"B\");\n79|\n80|-- CreateIndex\n81|CREATE INDEX \"_UserFavorites_B_index\" ON \"_UserFavorites\"(\"B\");\n82|\n83|-- CreateIndex\n84|CREATE UNIQUE INDEX \"_UserFollows_AB_unique\" ON \"_UserFollows\"(\"A\", \"B\");\n85|\n86|-- CreateIndex\n87|CREATE INDEX \"_UserFollows_B_index\" ON \"_UserFollows\"(\"B\");\n88|\n89|-- AddForeignKey\n90|ALTER TABLE \"Article\" ADD FOREIGN KEY (\"authorId\") REFERENCES \"User\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n91|\n92|-- AddForeignKey\n93|ALTER TABLE \"ArticleTags\" ADD FOREIGN KEY (\"articleId\") REFERENCES \"Article\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n94|\n95|-- AddForeignKey\n96|ALTER TABLE \"ArticleTags\" ADD FOREIGN KEY (\"tagId\") REFERENCES \"Tag\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n97|\n98|-- AddForeignKey\n99|ALTER TABLE \"Comment\" ADD FOREIGN KEY (\"articleId\") REFERENCES \"Article\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n100|\n101|-- AddForeignKey\n102|ALTER TABLE \"Comment\" ADD FOREIGN KEY (\"authorId\") REFERENCES \"User\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n103|\n104|-- AddForeignKey\n105|ALTER TABLE \"_UserFavorites\" ADD FOREIGN KEY (\"A\") REFERENCES \"Article\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n106|\n107|-- AddForeignKey\n108|ALTER TABLE \"_UserFavorites\" ADD FOREIGN KEY (\"B\") REFERENCES \"User\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n109|\n110|-- AddForeignKey\n111|ALTER TABLE \"_UserFollows\" ADD FOREIGN KEY (\"A\") REFERENCES \"User\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n112|\n113|-- AddForeignKey\n114|ALTER TABLE \"_UserFollows\" ADD FOREIGN KEY (\"B\") REFERENCES \"User\"(\"id\") ON DELETE CASCADE ON UPDATE CASCADE;\n115|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:00.048763179Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Extract External Services\nList all ExternalTcpService that can be inferred from this code.\nIf the name of external service used cannot be determined, then do not include it.\nIf this code does not perform any registration of routes in an HTTP server, return an empty list for endpoints.\nThe start and end line must capture the entire syntactic chunk that infers the external service\n\n# Task 2: Extract Security Schemes\nList all the HttpSecurityScheme that are configured by this code.\nList all the HttpSecurityScheme that are configured by this code.\nThe start and end line must capture the entire syntactic configuring the scheme\n\n# Task 4: Extract Environment Variables\nList all EnvVars accessed by this code.\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:00.048778104Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedSemanticOutput",
+          "schema": {
+            "$id": "ExtractedSemanticOutput",
+            "$defs": {
+              "io.kerno.agent.index.ExternalTcpService": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code communicating with this external service, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code communicating with this external service, ignoring comments"
+                  }
+                },
+                "required": [
+                  "name",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.HttpSecurityScheme": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "http",
+                      "apiKey",
+                      "openIdConnect",
+                      "oauth2"
+                    ],
+                    "description": "The first line of code implying this security scheme, ignoring comments"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code implying this security scheme, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code implying this security scheme, ignoring comments"
+                  }
+                },
+                "required": [
+                  "type",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.EnvVar": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code reading this environment variable, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code reading this environment variable, ignoring comments"
+                  }
+                },
+                "required": [
+                  "key",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedSemanticOutput": {
+                "type": "object",
+                "properties": {
+                  "externalServices": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.ExternalTcpService"
+                    }
+                  },
+                  "securitySchemes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.HttpSecurityScheme"
+                    }
+                  },
+                  "envVars": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.EnvVar"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedSemanticOutput"
+          }
+        }
+      }
+    }
+  }
+}

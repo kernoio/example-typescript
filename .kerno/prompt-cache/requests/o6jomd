@@ -1,0 +1,122 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\"endpoints\":[{\"endLine\":23,\"method\":\"GET\",\"path\":\"/\",\"startLine\":21}]}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:01.151963308Z",
+        "totalTokensCount": 1530,
+        "inputTokensCount": 939,
+        "outputTokensCount": 23
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.78827964Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# src/main.ts\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```ts\n1|import express from 'express';\n2|import cors from 'cors';\n3|import * as bodyParser from 'body-parser';\n4|import routes from './app/routes/routes';\n5|import HttpException from './app/models/http-exception.model';\n6|\n7|const app = express();\n8|\n9|/**\n10| * App Configuration\n11| */\n12|\n13|app.use(cors());\n14|app.use(bodyParser.json());\n15|app.use(bodyParser.urlencoded({ extended: true }));\n16|app.use(routes);\n17|\n18|// Serves images\n19|app.use(express.static(__dirname + '/assets'));\n20|\n21|app.get('/', (req: express.Request, res: express.Response) => {\n22|  res.json({ status: 'API is running on /api' });\n23|});\n24|\n25|/* eslint-disable */\n26|app.use(\n27|  (\n28|    err: Error | HttpException,\n29|    req: express.Request,\n30|    res: express.Response,\n31|    next: express.NextFunction,\n32|  ) => {\n33|    // @ts-ignore\n34|    if (err && err.name === 'UnauthorizedError') {\n35|      return res.status(401).json({\n36|        status: 'error',\n37|        message: 'missing authorization credentials',\n38|      });\n39|      // @ts-ignore\n40|    } else if (err && err.errorCode) {\n41|      // @ts-ignore\n42|      res.status(err.errorCode).json(err.message);\n43|    } else if (err) {\n44|      res.status(500).json(err.message);\n45|    }\n46|  },\n47|);\n48|\n49|/**\n50| * Server activation\n51| */\n52|\n53|const PORT = process.env.PORT || 3000;\n54|\n55|app.listen(PORT, () => {\n56|  console.info(`server up on port ${PORT}`);\n57|});\n58|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.792971505Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Identify Code Type\nFirst, identify if the attached file is code. If it is not code, return empty lists for all fields.\n\n# Task 2: Extract Endpoints\nIf this is code, identify (if any at all) blocks of code that directly register routes in this application's HTTP server.\nOnly extract endpoints where you can determine the concrete HTTP method and path - do not guess or speculate about what paths might exist.\nDo not extract code that merely creates a server or groups routes without binding a specific path to a handler.\nThese routes must be valid RFC HTTP verbs (GET, POST, PUT, DELETE, PATCH).\nParameterised URL path segments must be expressed in the {id} format. For example, /users/:id/config should be /users/{id}/config, and /users/<userId> should be /users/{userId}.\nIf you cannot confidently determine the path, return an empty list for endpoints.\nThe start and end line must capture the entire syntactic chunk registering the endpoint.\nThis includes the handler code for the endpoint if the line that registers it is immediately followed\nby a function/method/lambda that is the entrypoint for that endpoint when it's called\n\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:17:56.79299415Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedEndpoints",
+          "schema": {
+            "$id": "ExtractedEndpoints",
+            "$defs": {
+              "io.kerno.agent.index.EndpointMetadata": {
+                "type": "object",
+                "properties": {
+                  "method": {
+                    "type": "string",
+                    "enum": [
+                      "GET",
+                      "POST",
+                      "PUT",
+                      "DELETE",
+                      "PATCH"
+                    ]
+                  },
+                  "path": {
+                    "type": "string",
+                    "description": "A valid RFC URL path e.g. / or /api/some/end/point"
+                  },
+                  "startLine": {
+                    "type": "integer",
+                    "description": "The first line of code registering this route, ignoring comments"
+                  },
+                  "endLine": {
+                    "type": "integer",
+                    "description": "The last line of code registering this route, ignoring comments"
+                  }
+                },
+                "required": [
+                  "method",
+                  "path",
+                  "startLine",
+                  "endLine"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedEndpoints": {
+                "type": "object",
+                "properties": {
+                  "endpoints": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.EndpointMetadata"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedEndpoints"
+          }
+        }
+      }
+    }
+  }
+}

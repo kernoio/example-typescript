@@ -1,0 +1,65 @@
+id: register_user_duplicate_email_returns_422
+description: Register user with email that already exists returns 422 with error indicating
+  email has already been taken
+subject:
+  type: Endpoint
+  method: POST
+  path: /api/users
+steps:
+- id: generate_user_data
+  description: Generate random user data
+  action:
+    type: Values
+    outputs:
+      email:
+        type: RandomUuid
+      username:
+        type: RandomUuid
+      username2:
+        type: RandomUuid
+      password:
+        type: StaticString
+        value: TestPass123!
+- id: create_existing_user
+  description: Create a user in the database with the email we'll try to register
+  action:
+    type: ExecuteSql
+    sql: "DELETE FROM \"User\" WHERE email = '{{ generate_user_data.email }}@test.com';\n\
+      INSERT INTO \"User\" (email, username, password) \nVALUES (\n  '{{ generate_user_data.email\
+      \ }}@test.com', \n  '{{ generate_user_data.username }}', \n  '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy'\n\
+      );"
+- id: register_duplicate_email
+  description: Call POST /api/users with the same email but different username
+  action:
+    type: CallHttp
+    request: |-
+      POST /api/users HTTP/1.1
+      Content-Type: application/json
+
+      {
+        "user": {
+          "email": "{{ generate_user_data.email }}@test.com",
+          "username": "{{ generate_user_data.username2 }}",
+          "password": "{{ generate_user_data.password }}"
+        }
+      }
+- id: assert_uniqueness_error
+  description: Assert 422 response with error indicating email has already been taken
+  action:
+    type: HttpAssert
+    actual: '{{ register_duplicate_email }}'
+    expected: |-
+      HTTP/1.1 422 Unprocessable Entity
+      Content-Type: application/json; charset=utf-8
+
+      {
+        "errors": {
+          "email": ["has already been taken"]
+        }
+      }
+    body_match: json_lenient
+- id: cleanup
+  description: Remove the test user from database
+  action:
+    type: ExecuteSql
+    sql: DELETE FROM "User" WHERE email = '{{ generate_user_data.email }}@test.com';

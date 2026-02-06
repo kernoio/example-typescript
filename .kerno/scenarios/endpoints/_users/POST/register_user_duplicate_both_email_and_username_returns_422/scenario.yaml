@@ -1,0 +1,54 @@
+id: register_user_duplicate_both_email_and_username_returns_422
+description: Register user with both email and username that already exist returns
+  422 with errors for both fields
+subject:
+  type: Endpoint
+  method: POST
+  path: /api/users
+steps:
+- id: generate_user_data
+  description: Generate random user data
+  action:
+    type: Values
+    outputs:
+      email:
+        type: RandomUuid
+      username:
+        type: RandomUuid
+      password:
+        type: StaticString
+        value: Test123!
+- id: create_existing_user
+  description: Create a user in the database with both email and username we'll try
+    to register
+  action:
+    type: ExecuteSql
+    sql: |-
+      DELETE FROM "User" WHERE email = '{{ generate_user_data.email }}@test.com' OR username = '{{ generate_user_data.username }}';
+      INSERT INTO "User" (email, username, password) VALUES ('{{ generate_user_data.email }}@test.com', '{{ generate_user_data.username }}', '$2b$10$abcdefghijklmnopqrstuv');
+      SELECT 'user_id' as key, id as value FROM "User" WHERE username = '{{ generate_user_data.username }}';
+- id: register_duplicate_both
+  description: Call POST /api/users with the same email and username
+  action:
+    type: CallHttp
+    request: |-
+      POST /api/users HTTP/1.1
+      Content-Type: application/json
+
+      {"user": {"email": "{{ generate_user_data.email }}@test.com", "username": "{{ generate_user_data.username }}", "password": "{{ generate_user_data.password }}"}}
+- id: assert_uniqueness_error
+  description: Assert 422 response with errors for both email and username
+  action:
+    type: HttpAssert
+    actual: '{{ register_duplicate_both }}'
+    expected: |-
+      HTTP/1.1 422 Unprocessable Entity
+      Content-Type: application/json; charset=utf-8
+
+      {"errors": {"email": ["has already been taken"], "username": ["has already been taken"]}}
+    body_match: json_lenient
+- id: cleanup
+  description: Remove the test user from database
+  action:
+    type: ExecuteSql
+    sql: DELETE FROM "User" WHERE username = '{{ generate_user_data.username }}';

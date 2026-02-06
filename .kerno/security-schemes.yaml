@@ -1,0 +1,8 @@
+Components:
+  SecuritySchemes:
+    "BearerAuth":
+      type: "http"
+      Scheme: "bearer"
+      BearerFormat: "JWT"
+      Algorithm: "HS256"
+      Secret: "this_is_a_secret_meeting_all_requirements_of_any_hs_algorithms"

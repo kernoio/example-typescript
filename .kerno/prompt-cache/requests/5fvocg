@@ -1,0 +1,173 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "{\"envVars\": [],\"externalServices\": [],\"securitySchemes\": []}"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:04.51053958Z",
+        "totalTokensCount": 1156,
+        "inputTokensCount": 782,
+        "outputTokensCount": 17
+      },
+      "finishReason": "stop"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a precise code analyzer. Extract only what is explicitly present in the code or derivable from the file path.\nDo not speculate, infer, or guess about what might exist - only report what you can directly observe.\nWhen uncertain, return empty results rather than guessing.\n"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:01.302465485Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# nx.json\nNote: the following text has been prefixed with line numbers and a | which is not part of the original content\n```json\n1|{\n2|  \"$schema\": \"./node_modules/nx/schemas/nx-schema.json\",\n3|  \"targetDefaults\": {\n4|    \"build\": {\n5|      \"cache\": true,\n6|      \"dependsOn\": [\"^build\"],\n7|      \"inputs\": [\"production\", \"^production\"]\n8|    },\n9|    \"lint\": {\n10|      \"cache\": true,\n11|      \"inputs\": [\n12|        \"default\",\n13|        \"{workspaceRoot}/.eslintrc.json\",\n14|        \"{workspaceRoot}/.eslintignore\",\n15|        \"{workspaceRoot}/eslint.config.js\"\n16|      ]\n17|    },\n18|    \"@nx/jest:jest\": {\n19|      \"cache\": true,\n20|      \"inputs\": [\"default\", \"^production\", \"{workspaceRoot}/jest.preset.js\"],\n21|      \"options\": {\n22|        \"passWithNoTests\": true\n23|      },\n24|      \"configurations\": {\n25|        \"ci\": {\n26|          \"ci\": true,\n27|          \"codeCoverage\": true\n28|        }\n29|      }\n30|    }\n31|  },\n32|  \"namedInputs\": {\n33|    \"default\": [\"{projectRoot}/**/*\", \"sharedGlobals\"],\n34|    \"production\": [\n35|      \"default\",\n36|      \"!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)\",\n37|      \"!{projectRoot}/tsconfig.spec.json\",\n38|      \"!{projectRoot}/jest.config.[jt]s\",\n39|      \"!{projectRoot}/src/test-setup.[jt]s\",\n40|      \"!{projectRoot}/test-setup.[jt]s\",\n41|      \"!{projectRoot}/.eslintrc.json\",\n42|      \"!{projectRoot}/eslint.config.js\"\n43|    ],\n44|    \"sharedGlobals\": []\n45|  }\n46|}\n47|\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:01.302504064Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Constraints\nIn the following tasks, do not extract meaning from comments within files\n\n# Task 1: Extract External Services\nList all ExternalTcpService that can be inferred from this code.\nIf the name of external service used cannot be determined, then do not include it.\nIf this code does not perform any registration of routes in an HTTP server, return an empty list for endpoints.\nThe start and end line must capture the entire syntactic chunk that infers the external service\n\n# Task 2: Extract Security Schemes\nList all the HttpSecurityScheme that are configured by this code.\nList all the HttpSecurityScheme that are configured by this code.\nThe start and end line must capture the entire syntactic configuring the scheme\n\n# Task 4: Extract Environment Variables\nList all EnvVars accessed by this code.\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:01.302517076Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "schema": {
+          "type": "ai.koog.prompt.params.LLMParams.Schema.JSON.Standard",
+          "name": "ExtractedSemanticOutput",
+          "schema": {
+            "$id": "ExtractedSemanticOutput",
+            "$defs": {
+              "io.kerno.agent.index.ExternalTcpService": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code communicating with this external service, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code communicating with this external service, ignoring comments"
+                  }
+                },
+                "required": [
+                  "name",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.HttpSecurityScheme": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "http",
+                      "apiKey",
+                      "openIdConnect",
+                      "oauth2"
+                    ],
+                    "description": "The first line of code implying this security scheme, ignoring comments"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code implying this security scheme, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code implying this security scheme, ignoring comments"
+                  }
+                },
+                "required": [
+                  "type",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.EnvVar": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "lineStart": {
+                    "type": "integer",
+                    "description": "The first line of code reading this environment variable, ignoring comments"
+                  },
+                  "lineEnd": {
+                    "type": "integer",
+                    "description": "The last line of code reading this environment variable, ignoring comments"
+                  }
+                },
+                "required": [
+                  "key",
+                  "lineStart",
+                  "lineEnd"
+                ],
+                "additionalProperties": false
+              },
+              "io.kerno.agent.index.ExtractedSemanticOutput": {
+                "type": "object",
+                "properties": {
+                  "externalServices": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.ExternalTcpService"
+                    }
+                  },
+                  "securitySchemes": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.HttpSecurityScheme"
+                    }
+                  },
+                  "envVars": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/io.kerno.agent.index.EnvVar"
+                    }
+                  }
+                },
+                "required": [],
+                "additionalProperties": false
+              }
+            },
+            "$ref": "#/$defs/io.kerno.agent.index.ExtractedSemanticOutput"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "/api/users"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:29:22.18216584Z",
+        "totalTokensCount": 10,
+        "inputTokensCount": 3,
+        "outputTokensCount": 7
+      },
+      "finishReason": "end_turn"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Determine which base path (if any) applies to this endpoint.\n\nEndpoint: POST /users\n\nReturn the fully qualified path. If no base path applies, return the endpoint path unchanged.\nReturn ONLY the path, nothing else (no markdown, no explanation).\n\nAvailable base paths:\n# /\n## src/main.ts\n```ts\napp.use(routes);\n```\n# /api\n## src/app/routes/routes.ts\n```ts\nexport default Router().use('/api', api);\n```\n# /articles\n## src/app/routes/article/article.controller.ts\n```ts\nrouter.get('/articles', auth.optional, async (req: Request, res: Response, next: NextFunction) => {\n  try {\n    const result = await getArticles(req.query, req.auth?.user?.id);\n    res.json(result);\n  } catch (error) {\n    next(error);\n  }\n});\n```\n## src/app/routes/article/article.controller.ts\n```ts\nrouter.post('/articles', auth.required, async (req: Request, res: Response, next: NextFunction) => {\n  try {\n    const article = await createArticle(req.body.article, req.auth?.user?.id);\n    res.status(201).json({ article });\n  } catch (error) {\n    next(error);\n  }\n});\n```\n# /articles/feed\n## src/app/routes/article/article.controller.ts\n```ts\nrouter.get(\n  '/articles/feed',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const result = await getFeed(\n        Number(req.query.offset),\n        Number(req.query.limit),\n        req.auth?.user?.id,\n      );\n      res.json(result);\n    } catch (error) {\n      next(error);\n    }\n  },\n);\n```\n# /articles/{slug}\n## src/app/routes/article/article.controller.ts\n```ts\n  '/articles/:slug',\n  auth.optional,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const article = await getArticle(req.params.slug, req.auth?.user?.id);\n      res.json({ article });\n    } catch (error) {\n      next(error);\n    }\n  },\n);\n```\n## src/app/routes/article/article.controller.ts\n```ts\n  '/articles/:slug',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const article = await updateArticle(req.body.article, req.params.slug, req.auth?.user?.id);\n      res.json({ article });\n    } catch (error) {\n      next(error);\n    }\n  },\n```\n## src/app/routes/article/article.controller.ts\n```ts\nrouter.delete(\n  '/articles/:slug',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      await deleteArticle(req.params.slug, req.auth?.user!.id);\n      res.sendStatus(204);\n    } catch (error) {\n      next(error);\n    }\n  },\n);\n```\n# /articles/{slug}/comments\n## src/app/routes/article/article.controller.ts\n```ts\n  '/articles/:slug/comments',\n  auth.optional,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const comments = await getCommentsByArticle(req.params.slug, req.auth?.user?.id);\n      res.json({ comments });\n    } catch (error) {\n      next(error);\n    }\n  },\n```\n## src/app/routes/article/article.controller.ts\n```ts\n  '/articles/:slug/comments',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const comment = await addComment(req.body.comment.body, req.params.slug, req.auth?.user?.id);\n      res.json({ comment });\n    } catch (error) {\n      next(error);\n    }\n  },\n```\n# /articles/{slug}/comments/{id}\n## src/app/routes/article/article.controller.ts\n```ts\n  '/articles/:slug/comments/:id',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      await deleteComment(Number(req.params.id), req.auth?.user?.id);\n      res.status(200).json({});\n    } catch (error) {\n      next(error);\n    }\n  },\n```\n# /articles/{slug}/favorite\n## src/app/routes/article/article.controller.ts\n```ts\n  '/articles/:slug/favorite',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const article = await favoriteArticle(req.params.slug, req.auth?.user?.id);\n      res.json({ article });\n    } catch (error) {\n      next(error);\n    }\n  },\n```\n## src/app/routes/article/article.controller.ts\n```ts\n  '/articles/:slug/favorite',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const article = await unfavoriteArticle(req.params.slug, req.auth?.user?.id);\n      res.json({ article });\n    } catch (error) {\n      next(error);\n    }\n  },\n```\n# /profiles/{username}\n## src/app/routes/profile/profile.controller.ts\n```ts\nrouter.get(\n  '/profiles/:username',\n  auth.optional,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const profile = await getProfile(req.params.username, req.auth?.user?.id);\n      res.json({ profile });\n    } catch (error) {\n      next(error);\n    }\n  },\n);\n```\n# /profiles/{username}/follow\n## src/app/routes/profile/profile.controller.ts\n```ts\nrouter.post(\n  '/profiles/:username/follow',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const profile = await followUser(req.params?.username, req.auth?.user?.id);\n      res.json({ profile });\n    } catch (error) {\n      next(error);\n    }\n  },\n);\n```\n## src/app/routes/profile/profile.controller.ts\n```ts\nrouter.delete(\n  '/profiles/:username/follow',\n  auth.required,\n  async (req: Request, res: Response, next: NextFunction) => {\n    try {\n      const profile = await unfollowUser(req.params.username, req.auth?.user?.id);\n      res.json({ profile });\n    } catch (error) {\n      next(error);\n    }\n  },\n);\n```\n# /tags\n## src/app/routes/tag/tag.controller.ts\n```ts\nrouter.get('/tags', auth.optional, async (req: Request, res: Response, next: NextFunction) => {\n  try {\n    const tags = await getTags(req.auth?.user?.id);\n    res.json({ tags });\n  } catch (error) {\n    next(error);\n  }\n});\n```\n# /user\n## src/app/routes/auth/auth.controller.ts\n```ts\nrouter.get('/user', auth.required, async (req: Request, res: Response, next: NextFunction) => {\n  try {\n    const user = await getCurrentUser(req.auth?.user?.id);\n    res.json({ user });\n  } catch (error) {\n    next(error);\n  }\n});\n```\n## src/app/routes/auth/auth.controller.ts\n```ts\nrouter.put('/user', auth.required, async (req: Request, res: Response, next: NextFunction) => {\n  try {\n    const user = await updateUser(req.body.user, req.auth?.user?.id);\n    res.json({ user });\n  } catch (error) {\n    next(error);\n  }\n});\n```\n# /users\n## src/app/routes/auth/auth.controller.ts\n```ts\nrouter.post('/users', async (req: Request, res: Response, next: NextFunction) => {\n  try {\n    const user = await createUser({ ...req.body.user, demo: false });\n    res.status(201).json({ user });\n  } catch (error) {\n    next(error);\n  }\n});\n```\n# /users/login\n## src/app/routes/auth/auth.controller.ts\n```ts\nrouter.post('/users/login', async (req: Request, res: Response, next: NextFunction) => {\n  try {\n    const user = await login(req.body.user);\n    res.json({ user });\n  } catch (error) {\n    next(error);\n  }\n});\n```"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:29:19.993363584Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "maxTokens": 64000
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "response": [
+    {
+      "type": "ai.koog.prompt.message.Message.Assistant",
+      "parts": [
+        {
+          "type": "text",
+          "text": "```\npackage.json\nprisma/schema.prisma\nsrc/main.ts\nDockerfile\nenv.example\n```"
+        }
+      ],
+      "metaInfo": {
+        "timestamp": "2026-02-06T14:18:24.662386476Z",
+        "totalTokensCount": 655,
+        "inputTokensCount": 624,
+        "outputTokensCount": 31
+      },
+      "finishReason": "end_turn"
+    }
+  ],
+  "request": {
+    "prompt": {
+      "messages": [
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "You are a knowledgeable polyglot engineer and able to understand what external dependencies a software application\nrequires from reading the source files of an application."
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:21.734875663Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.System",
+          "parts": [
+            {
+              "text": "# Supporting information\nHere is a complete list in markdown format of the filesystem\n- prisma\n  - migrations\n    - 20210924225358_initial\n      - migration.sql\n    - 20211001143221_implicit_tags\n      - migration.sql\n    - 20211105153605_api_url\n      - migration.sql\n    - 20211221184529_deprecated_preview\n      - migration.sql\n    - migration_lock.toml\n  - prisma-client.ts\n  - schema.prisma\n  - seed.ts\n- src\n  - app\n    - models\n      - http-exception.model.ts\n    - routes\n      - article\n        - article.controller.ts\n        - article.mapper.ts\n        - article.model.ts\n        - article.service.ts\n        - author.mapper.ts\n        - comment.model.ts\n      - auth\n        - auth.controller.ts\n        - auth.service.ts\n        - auth.ts\n        - register-input.model.ts\n        - registered-user.model.ts\n        - token.utils.ts\n        - user-request.d.ts\n        - user.model.ts\n      - profile\n        - profile.controller.ts\n        - profile.model.ts\n        - profile.service.ts\n        - profile.utils.ts\n      - routes.ts\n      - tag\n        - tag.controller.ts\n        - tag.model.ts\n        - tag.service.ts\n  - main.ts\n  - tests\n    - prisma-mock.ts\n    - services\n      - article.service.test.ts\n      - auth.service.test.ts\n      - profile.service.test.ts\n      - tag.service.test.ts\n    - utils\n      - profile.utils.test.ts\n- .eslintignore\n- .eslintrc.json\n- .gitignore\n- .prettierignore\n- .prettierrc\n- Dockerfile\n- env.example\n- jest.config.ts\n- jest.preset.js\n- nx.json\n- package-lock.json\n- package.json\n- project.json\n- README.md\n- startup.sh\n- tsconfig.app.json\n- tsconfig.json\n- tsconfig.spec.json"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:21.735587937Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "Your task will follow next:"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:21.736150568Z"
+          }
+        },
+        {
+          "type": "ai.koog.prompt.message.Message.User",
+          "parts": [
+            {
+              "type": "text",
+              "text": "# Task\nIdentify the files most likely to configure any TCP based clients this project uses or depends on.\n# Desired Outcomes\nReturn only newline separated list of files identified, nothing else is needed\n--ANTHROPIC-CACHE--"
+            }
+          ],
+          "metaInfo": {
+            "timestamp": "2026-02-06T14:18:21.73674108Z"
+          }
+        }
+      ],
+      "id": "",
+      "params": {
+        "temperature": 0.0,
+        "maxTokens": 64000
+      }
+    }
+  }
+}
