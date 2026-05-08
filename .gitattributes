@@ -1,0 +1,2 @@
+*.ts text eol=crlf
+*.tsx text eol=crlf
