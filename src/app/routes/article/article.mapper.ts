@@ -1,6 +1,6 @@
 import authorMapper from './author.mapper';
 
-const articleMapper = (article: any, id?: number) => ({
+const articleMapper = (article: any, id?: string) => ({
   slug: article.slug,
   title: article.title,
   description: article.description,

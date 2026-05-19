@@ -8,13 +8,11 @@
     "test": "nx test"
   },
   "private": true,
-  "prisma": {
-    "seed": "ts-node --transpile-only --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts",
-    "schema": "prisma/schema.prisma"
-  },
   "dependencies": {
+    "@azure/data-tables": "^13.2.2",
+    "@azure/storage-blob": "^12.17.0",
+    "@azure/storage-queue": "^12.17.0",
     "@ngneat/falso": "^7.1.1",
-    "@prisma/client": "^4.16.1",
     "axios": "^1.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
@@ -51,7 +49,6 @@
     "jest-mock-extended": "^3.0.5",
     "nx": "17.2.6",
     "prettier": "^2.6.2",
-    "prisma": "^4.16.1",
     "supertest": "^7.1.4",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",

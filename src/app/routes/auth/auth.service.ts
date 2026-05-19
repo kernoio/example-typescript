@@ -1,45 +1,48 @@
 import * as bcrypt from 'bcryptjs';
 import { RegisterInput } from './register-input.model';
-import prisma from '../../../../prisma/prisma-client';
 import HttpException from '../../models/http-exception.model';
 import { RegisteredUser } from './registered-user.model';
 import generateToken from './token.utils';
 import { User } from './user.model';
+import { getTableClient } from '../../azure-clients';
+
+const usersTable = () => getTableClient('users');
+
+const findUserByEmail = async (email: string) => {
+  const client = usersTable();
+  const results = client.listEntities({ queryOptions: { filter: `email eq '${email}'` } });
+  for await (const entity of results) {
+    return entity as any;
+  }
+  return null;
+};
+
+const findUserByUsername = async (username: string) => {
+  const client = usersTable();
+  const results = client.listEntities({ queryOptions: { filter: `username eq '${username}'` } });
+  for await (const entity of results) {
+    return entity as any;
+  }
+  return null;
+};
 
 const checkUserUniqueness = async (email: string, username: string) => {
-  const existingUserByEmail = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-    select: {
-      id: true,
-    },
-  });
+  const [existingByEmail, existingByUsername] = await Promise.all([
+    findUserByEmail(email),
+    findUserByUsername(username),
+  ]);
 
-  const existingUserByUsername = await prisma.user.findUnique({
-    where: {
-      username,
-    },
-    select: {
-      id: true,
-    },
-  });
-
-  if (existingUserByEmail || existingUserByUsername) {
+  if (existingByEmail || existingByUsername) {
     throw new HttpException(422, {
       errors: {
-        ...(existingUserByEmail ? { email: ['has already been taken'] } : {}),
-        ...(existingUserByUsername
-          ? { username: ['has already been taken'] }
-          : {}),
+        ...(existingByEmail ? { email: ['has already been taken'] } : {}),
+        ...(existingByUsername ? { username: ['has already been taken'] } : {}),
       },
     });
   }
 };
 
-export const createUser = async (
-  input: RegisterInput
-): Promise<RegisteredUser> => {
+export const createUser = async (input: RegisterInput): Promise<RegisteredUser> => {
   const email = input.email?.trim();
   const username = input.username?.trim();
   const password = input.password?.trim();
@@ -60,28 +63,26 @@ export const createUser = async (
   await checkUserUniqueness(email, username);
 
   const hashedPassword = await bcrypt.hash(password, 10);
+  const id = crypto.randomUUID();
 
-  const user = await prisma.user.create({
-    data: {
-      username,
-      email,
-      password: hashedPassword,
-      ...(image ? { image } : {}),
-      ...(bio ? { bio } : {}),
-      ...(demo ? { demo } : {}),
-    },
-    select: {
-      id: true,
-      email: true,
-      username: true,
-      bio: true,
-      image: true,
-    },
+  await usersTable().createEntity({
+    partitionKey: 'default',
+    rowKey: id,
+    email,
+    username,
+    password: hashedPassword,
+    ...(image ? { image } : {}),
+    ...(bio ? { bio } : {}),
+    ...(demo ? { demo } : {}),
   });
 
   return {
-    ...user,
-    token: generateToken(user.id),
+    id,
+    email,
+    username,
+    bio: bio ?? null,
+    image: image ?? null,
+    token: generateToken(id),
   };
 };
 
@@ -97,19 +98,7 @@ export const login = async (userPayload: any) => {
     throw new HttpException(422, { errors: { password: ["can't be blank"] } });
   }
 
-  const user = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-    select: {
-      id: true,
-      email: true,
-      username: true,
-      password: true,
-      bio: true,
-      image: true,
-    },
-  });
+  const user = await findUserByEmail(email);
 
   if (user) {
     const match = await bcrypt.compare(password, user.password);
@@ -118,9 +107,9 @@ export const login = async (userPayload: any) => {
       return {
         email: user.email,
         username: user.username,
-        bio: user.bio,
-        image: user.image,
-        token: generateToken(user.id),
+        bio: user.bio ?? null,
+        image: user.image ?? null,
+        token: generateToken(user.rowKey),
       };
     }
   }
@@ -132,27 +121,20 @@ export const login = async (userPayload: any) => {
   });
 };
 
-export const getCurrentUser = async (id: number) => {
-  const user = (await prisma.user.findUnique({
-    where: {
-      id,
-    },
-    select: {
-      id: true,
-      email: true,
-      username: true,
-      bio: true,
-      image: true,
-    },
-  })) as User;
+export const getCurrentUser = async (id: string): Promise<User & { token: string }> => {
+  const entity = await usersTable().getEntity('default', id) as any;
 
   return {
-    ...user,
-    token: generateToken(user.id),
+    id: entity.rowKey,
+    email: entity.email,
+    username: entity.username,
+    bio: entity.bio ?? null,
+    image: entity.image ?? null,
+    token: generateToken(entity.rowKey),
   };
 };
 
-export const updateUser = async (userPayload: any, id: number) => {
+export const updateUser = async (userPayload: any, id: string) => {
   const { email, username, password, image, bio } = userPayload;
   let hashedPassword;
 
@@ -160,28 +142,25 @@ export const updateUser = async (userPayload: any, id: number) => {
     hashedPassword = await bcrypt.hash(password, 10);
   }
 
-  const user = await prisma.user.update({
-    where: {
-      id: id,
-    },
-    data: {
-      ...(email ? { email } : {}),
-      ...(username ? { username } : {}),
-      ...(password ? { password: hashedPassword } : {}),
-      ...(image ? { image } : {}),
-      ...(bio ? { bio } : {}),
-    },
-    select: {
-      id: true,
-      email: true,
-      username: true,
-      bio: true,
-      image: true,
-    },
-  });
+  const existing = await usersTable().getEntity('default', id) as any;
+
+  await usersTable().updateEntity({
+    partitionKey: 'default',
+    rowKey: id,
+    email: email ?? existing.email,
+    username: username ?? existing.username,
+    password: hashedPassword ?? existing.password,
+    image: image ?? existing.image,
+    bio: bio ?? existing.bio,
+    demo: existing.demo,
+  }, 'Replace');
 
   return {
-    ...user,
-    token: generateToken(user.id),
+    id,
+    email: email ?? existing.email,
+    username: username ?? existing.username,
+    bio: bio ?? existing.bio ?? null,
+    image: image ?? existing.image ?? null,
+    token: generateToken(id),
   };
 };

@@ -1,6 +1,6 @@
 import { User } from '../auth/user.model';
 
-const authorMapper = (author: any, id?: number) => ({
+const authorMapper = (author: any, id?: string) => ({
   username: author.username,
   bio: author.bio,
   image: author.image,

@@ -1,40 +1,19 @@
-import prisma from '../../../../prisma/prisma-client';
-import { Tag } from './tag.model';
+import { getTableClient } from '../../azure-clients';
 
-const getTags = async (id?: number): Promise<string[]> => {
-  const queries = [];
-  queries.push({ demo: true });
+const tagsTable = () => getTableClient('tags');
 
-  if (id) {
-    queries.push({
-      id: {
-        equals: id,
-      },
-    });
+const getTags = async (): Promise<string[]> => {
+  const tagCounts = new Map<string, number>();
+
+  for await (const entity of tagsTable().listEntities()) {
+    const tagName = (entity as any).rowKey;
+    tagCounts.set(tagName, (tagCounts.get(tagName) ?? 0) + 1);
   }
 
-  const tags = await prisma.tag.findMany({
-    where: {
-      articles: {
-        some: {
-          author: {
-            OR: queries,
-          },
-        },
-      },
-    },
-    select: {
-      name: true,
-    },
-    orderBy: {
-      articles: {
-        _count: 'desc',
-      },
-    },
-    take: 10,
-  });
-
-  return tags.map((tag: Tag) => tag.name);
+  return Array.from(tagCounts.entries())
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 10)
+    .map(([name]) => name);
 };
 
 export default getTags;

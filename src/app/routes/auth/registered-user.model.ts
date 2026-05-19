@@ -1,5 +1,5 @@
 export interface RegisteredUser {
-  id: number;
+  id: string;
   email: string;
   username: string;
   bio: string | null;

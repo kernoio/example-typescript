@@ -1,7 +1,7 @@
 import { User } from '../auth/user.model';
 import { Profile } from './profile.model';
 
-const profileMapper = (user: any, id: number | undefined): Profile => ({
+const profileMapper = (user: any, id: string | undefined): Profile => ({
   username: user.username,
   bio: user.bio,
   image: user.image,

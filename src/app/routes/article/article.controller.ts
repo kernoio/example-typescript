@@ -192,7 +192,7 @@ router.delete(
   auth.required,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      await deleteComment(Number(req.params.id), req.auth?.user?.id);
+      await deleteComment(req.params.id, req.auth?.user?.id);
       res.status(200).json({});
     } catch (error) {
       next(error);

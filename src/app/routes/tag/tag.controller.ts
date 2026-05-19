@@ -10,9 +10,9 @@ const router = Router();
  * @route {GET} /api/tags
  * @returns tags list of tag names
  */
-router.get('/tags', auth.optional, async (req: Request, res: Response, next: NextFunction) => {
+router.get('/tags', auth.optional, async (_req: Request, res: Response, next: NextFunction) => {
   try {
-    const tags = await getTags(req.auth?.user?.id);
+    const tags = await getTags();
     res.json({ tags });
   } catch (error) {
     next(error);
