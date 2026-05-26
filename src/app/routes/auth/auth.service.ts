@@ -1,35 +1,31 @@
 import * as bcrypt from 'bcryptjs';
 import { RegisterInput } from './register-input.model';
-import prisma from '../../../../prisma/prisma-client';
+import client from '../../clickhouse-client';
 import HttpException from '../../models/http-exception.model';
 import { RegisteredUser } from './registered-user.model';
 import generateToken from './token.utils';
 import { User } from './user.model';
 
 const checkUserUniqueness = async (email: string, username: string) => {
-  const existingUserByEmail = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-    select: {
-      id: true,
-    },
+  const emailResult = await client.query({
+    query: `SELECT id FROM users FINAL WHERE email = {email: String} LIMIT 1`,
+    query_params: { email },
+    format: 'JSONEachRow',
   });
+  const emailRows: any[] = await emailResult.json();
 
-  const existingUserByUsername = await prisma.user.findUnique({
-    where: {
-      username,
-    },
-    select: {
-      id: true,
-    },
+  const usernameResult = await client.query({
+    query: `SELECT id FROM users FINAL WHERE username = {username: String} LIMIT 1`,
+    query_params: { username },
+    format: 'JSONEachRow',
   });
+  const usernameRows: any[] = await usernameResult.json();
 
-  if (existingUserByEmail || existingUserByUsername) {
+  if (emailRows.length > 0 || usernameRows.length > 0) {
     throw new HttpException(422, {
       errors: {
-        ...(existingUserByEmail ? { email: ['has already been taken'] } : {}),
-        ...(existingUserByUsername
+        ...(emailRows.length > 0 ? { email: ['has already been taken'] } : {}),
+        ...(usernameRows.length > 0
           ? { username: ['has already been taken'] }
           : {}),
       },
@@ -60,28 +56,32 @@ export const createUser = async (
   await checkUserUniqueness(email, username);
 
   const hashedPassword = await bcrypt.hash(password, 10);
+  const id = Math.floor(Math.random() * 2147483647);
 
-  const user = await prisma.user.create({
-    data: {
-      username,
-      email,
-      password: hashedPassword,
-      ...(image ? { image } : {}),
-      ...(bio ? { bio } : {}),
-      ...(demo ? { demo } : {}),
-    },
-    select: {
-      id: true,
-      email: true,
-      username: true,
-      bio: true,
-      image: true,
-    },
+  await client.insert({
+    table: 'users',
+    values: [
+      {
+        id,
+        email,
+        username,
+        password: hashedPassword,
+        image: image || null,
+        bio: bio || null,
+        demo: demo ? 1 : 0,
+        version: Date.now(),
+      },
+    ],
+    format: 'JSONEachRow',
   });
 
   return {
-    ...user,
-    token: generateToken(user.id),
+    id,
+    email,
+    username,
+    bio: bio || null,
+    image: image || null,
+    token: generateToken(id),
   };
 };
 
@@ -97,21 +97,15 @@ export const login = async (userPayload: any) => {
     throw new HttpException(422, { errors: { password: ["can't be blank"] } });
   }
 
-  const user = await prisma.user.findUnique({
-    where: {
-      email,
-    },
-    select: {
-      id: true,
-      email: true,
-      username: true,
-      password: true,
-      bio: true,
-      image: true,
-    },
+  const result = await client.query({
+    query: `SELECT id, email, username, password, bio, image FROM users FINAL WHERE email = {email: String} LIMIT 1`,
+    query_params: { email },
+    format: 'JSONEachRow',
   });
+  const rows: any[] = await result.json();
 
-  if (user) {
+  if (rows.length > 0) {
+    const user = rows[0];
     const match = await bcrypt.compare(password, user.password);
 
     if (match) {
@@ -120,7 +114,7 @@ export const login = async (userPayload: any) => {
         username: user.username,
         bio: user.bio,
         image: user.image,
-        token: generateToken(user.id),
+        token: generateToken(Number(user.id)),
       };
     }
   }
@@ -133,55 +127,65 @@ export const login = async (userPayload: any) => {
 };
 
 export const getCurrentUser = async (id: number) => {
-  const user = (await prisma.user.findUnique({
-    where: {
-      id,
-    },
-    select: {
-      id: true,
-      email: true,
-      username: true,
-      bio: true,
-      image: true,
-    },
-  })) as User;
+  const result = await client.query({
+    query: `SELECT id, email, username, bio, image FROM users FINAL WHERE id = {id: UInt32} LIMIT 1`,
+    query_params: { id },
+    format: 'JSONEachRow',
+  });
+  const rows: any[] = await result.json();
+  const user = rows[0] as User;
 
   return {
     ...user,
-    token: generateToken(user.id),
+    id: Number(user.id),
+    token: generateToken(Number(user.id)),
   };
 };
 
 export const updateUser = async (userPayload: any, id: number) => {
   const { email, username, password, image, bio } = userPayload;
-  let hashedPassword;
+
+  const currentResult = await client.query({
+    query: `SELECT id, email, username, password, bio, image FROM users FINAL WHERE id = {id: UInt32} LIMIT 1`,
+    query_params: { id },
+    format: 'JSONEachRow',
+  });
+  const currentRows: any[] = await currentResult.json();
+
+  if (currentRows.length === 0) {
+    throw new HttpException(404, {});
+  }
+
+  const current = currentRows[0];
+  let hashedPassword = current.password;
 
   if (password) {
     hashedPassword = await bcrypt.hash(password, 10);
   }
 
-  const user = await prisma.user.update({
-    where: {
-      id: id,
-    },
-    data: {
-      ...(email ? { email } : {}),
-      ...(username ? { username } : {}),
-      ...(password ? { password: hashedPassword } : {}),
-      ...(image ? { image } : {}),
-      ...(bio ? { bio } : {}),
-    },
-    select: {
-      id: true,
-      email: true,
-      username: true,
-      bio: true,
-      image: true,
-    },
+  const updatedUser = {
+    id,
+    email: email || current.email,
+    username: username || current.username,
+    password: hashedPassword,
+    bio: bio !== undefined ? bio : current.bio,
+    image: image !== undefined ? image : current.image,
+    demo: current.demo,
+    version: Date.now(),
+  };
+
+  await client.insert({
+    table: 'users',
+    values: [updatedUser],
+    format: 'JSONEachRow',
   });
 
   return {
-    ...user,
-    token: generateToken(user.id),
+    id: updatedUser.id,
+    email: updatedUser.email,
+    username: updatedUser.username,
+    bio: updatedUser.bio,
+    image: updatedUser.image,
+    token: generateToken(id),
   };
 };

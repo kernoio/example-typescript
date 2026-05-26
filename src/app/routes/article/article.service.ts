@@ -1,162 +1,163 @@
 import slugify from 'slugify';
-import prisma from '../../../../prisma/prisma-client';
+import client from '../../clickhouse-client';
 import HttpException from '../../models/http-exception.model';
-import profileMapper from '../profile/profile.utils';
-import articleMapper from './article.mapper';
-import { Tag } from '../tag/tag.model';
 
-const buildFindAllQuery = (query: any, id: number | undefined) => {
-  const queries: any = [];
-  const orAuthorQuery = [];
-  const andAuthorQuery = [];
+const newId = () => Math.floor(Math.random() * 2147483647);
 
-  orAuthorQuery.push({
-    demo: {
-      equals: true,
-    },
+const getArticleTags = async (articleId: number): Promise<string[]> => {
+  const result = await client.query({
+    query: `SELECT t.name FROM tags AS t FINAL INNER JOIN article_tags AS atg ON atg.tagId = t.id WHERE atg.articleId = {articleId: UInt32}`,
+    query_params: { articleId },
+    format: 'JSONEachRow',
   });
+  const rows: any[] = await result.json();
+  return rows.map((r: any) => r.name);
+};
 
-  if (id) {
-    orAuthorQuery.push({
-      id: {
-        equals: id,
-      },
-    });
-  }
+const getArticleFavoritedByIds = async (articleId: number): Promise<number[]> => {
+  const result = await client.query({
+    query: `SELECT userId FROM favorites WHERE articleId = {articleId: UInt32}`,
+    query_params: { articleId },
+    format: 'JSONEachRow',
+  });
+  const rows: any[] = await result.json();
+  return rows.map((r: any) => Number(r.userId));
+};
 
-  if ('author' in query) {
-    andAuthorQuery.push({
-      username: {
-        equals: query.author,
-      },
-    });
-  }
+const getAuthorFollowedByIds = async (authorId: number): Promise<number[]> => {
+  const result = await client.query({
+    query: `SELECT followerId FROM follows WHERE followingId = {followingId: UInt32}`,
+    query_params: { followingId: authorId },
+    format: 'JSONEachRow',
+  });
+  const rows: any[] = await result.json();
+  return rows.map((r: any) => Number(r.followerId));
+};
 
-  const authorQuery = {
+const buildArticleResponse = async (article: any, userId?: number) => {
+  const articleId = Number(article.id);
+  const authorId = Number(article.authorId);
+
+  const [tagList, favoritedByIds, authorResult] = await Promise.all([
+    getArticleTags(articleId),
+    getArticleFavoritedByIds(articleId),
+    client.query({
+      query: `SELECT id, username, bio, image FROM users FINAL WHERE id = {id: UInt32} LIMIT 1`,
+      query_params: { id: authorId },
+      format: 'JSONEachRow',
+    }),
+  ]);
+
+  const authorRows: any[] = await authorResult.json();
+  const author = authorRows[0];
+  const followedByIds = await getAuthorFollowedByIds(authorId);
+
+  return {
+    slug: article.slug,
+    title: article.title,
+    description: article.description,
+    body: article.body,
+    tagList,
+    createdAt: article.createdAt,
+    updatedAt: article.updatedAt,
+    favorited: userId ? favoritedByIds.includes(userId) : false,
+    favoritesCount: favoritedByIds.length,
     author: {
-      OR: orAuthorQuery,
-      AND: andAuthorQuery,
+      username: author.username,
+      bio: author.bio,
+      image: author.image,
+      following: userId ? followedByIds.includes(userId) : false,
     },
   };
+};
 
-  queries.push(authorQuery);
+const upsertTag = async (name: string): Promise<number> => {
+  const result = await client.query({
+    query: `SELECT id FROM tags FINAL WHERE name = {name: String} LIMIT 1`,
+    query_params: { name },
+    format: 'JSONEachRow',
+  });
+  const rows: any[] = await result.json();
 
-  if ('tag' in query) {
-    queries.push({
-      tagList: {
-        some: {
-          name: query.tag,
-        },
-      },
-    });
+  if (rows.length > 0) {
+    return Number(rows[0].id);
   }
 
-  if ('favorited' in query) {
-    queries.push({
-      favoritedBy: {
-        some: {
-          username: {
-            equals: query.favorited,
-          },
-        },
-      },
-    });
-  }
-
-  return queries;
+  const id = newId();
+  await client.insert({
+    table: 'tags',
+    values: [{ id, name, version: Date.now() }],
+    format: 'JSONEachRow',
+  });
+  return id;
 };
 
 export const getArticles = async (query: any, id?: number) => {
-  const andQueries = buildFindAllQuery(query, id);
-  const articlesCount = await prisma.article.count({
-    where: {
-      AND: andQueries,
-    },
-  });
+  const offset = Number(query.offset) || 0;
+  const limit = Number(query.limit) || 10;
 
-  const articles = await prisma.article.findMany({
-    where: { AND: andQueries },
-    orderBy: {
-      createdAt: 'desc',
-    },
-    skip: Number(query.offset) || 0,
-    take: Number(query.limit) || 10,
-    include: {
-      tagList: {
-        select: {
-          name: true,
-        },
-      },
-      author: {
-        select: {
-          username: true,
-          bio: true,
-          image: true,
-          followedBy: true,
-        },
-      },
-      favoritedBy: true,
-      _count: {
-        select: {
-          favoritedBy: true,
-        },
-      },
-    },
-  });
+  let whereClause = `WHERE (u.demo = 1${id ? ` OR a.authorId = ${id}` : ''})`;
 
-  return {
-    articles: articles.map((article: any) => articleMapper(article, id)),
-    articlesCount,
-  };
+  if ('author' in query) {
+    whereClause += ` AND u.username = {authorUsername: String}`;
+  }
+
+  if ('tag' in query) {
+    whereClause += ` AND a.id IN (SELECT atg.articleId FROM article_tags AS atg INNER JOIN tags AS t FINAL ON t.id = atg.tagId WHERE t.name = {tag: String})`;
+  }
+
+  if ('favorited' in query) {
+    whereClause += ` AND a.id IN (SELECT f.articleId FROM favorites AS f INNER JOIN users AS fu FINAL ON fu.id = f.userId WHERE fu.username = {favoritedBy: String})`;
+  }
+
+  const queryParams: any = {};
+  if ('author' in query) queryParams.authorUsername = query.author;
+  if ('tag' in query) queryParams.tag = query.tag;
+  if ('favorited' in query) queryParams.favoritedBy = query.favorited;
+
+  const countResult = await client.query({
+    query: `SELECT count() AS cnt FROM articles AS a FINAL INNER JOIN users AS u FINAL ON u.id = a.authorId ${whereClause}`,
+    query_params: queryParams,
+    format: 'JSONEachRow',
+  });
+  const countRows: any[] = await countResult.json();
+  const articlesCount = Number(countRows[0]?.cnt || 0);
+
+  const articlesResult = await client.query({
+    query: `SELECT a.* FROM articles AS a FINAL INNER JOIN users AS u FINAL ON u.id = a.authorId ${whereClause} ORDER BY a.createdAt DESC LIMIT ${limit} OFFSET ${offset}`,
+    query_params: queryParams,
+    format: 'JSONEachRow',
+  });
+  const articleRows: any[] = await articlesResult.json();
+
+  const articles = await Promise.all(
+    articleRows.map((article: any) => buildArticleResponse(article, id))
+  );
+
+  return { articles, articlesCount };
 };
 
 export const getFeed = async (offset: number, limit: number, id: number) => {
-  const articlesCount = await prisma.article.count({
-    where: {
-      author: {
-        followedBy: { some: { id: id } },
-      },
-    },
+  const countResult = await client.query({
+    query: `SELECT count() AS cnt FROM articles AS a FINAL WHERE a.authorId IN (SELECT followingId FROM follows WHERE followerId = {id: UInt32})`,
+    query_params: { id },
+    format: 'JSONEachRow',
   });
+  const countRows: any[] = await countResult.json();
+  const articlesCount = Number(countRows[0]?.cnt || 0);
 
-  const articles = await prisma.article.findMany({
-    where: {
-      author: {
-        followedBy: { some: { id: id } },
-      },
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-    skip: offset || 0,
-    take: limit || 10,
-    include: {
-      tagList: {
-        select: {
-          name: true,
-        },
-      },
-      author: {
-        select: {
-          username: true,
-          bio: true,
-          image: true,
-          followedBy: true,
-        },
-      },
-      favoritedBy: true,
-      _count: {
-        select: {
-          favoritedBy: true,
-        },
-      },
-    },
+  const articlesResult = await client.query({
+    query: `SELECT a.* FROM articles AS a FINAL WHERE a.authorId IN (SELECT followingId FROM follows WHERE followerId = {id: UInt32}) ORDER BY a.createdAt DESC LIMIT ${limit || 10} OFFSET ${offset || 0}`,
+    query_params: { id },
+    format: 'JSONEachRow',
   });
+  const articleRows: any[] = await articlesResult.json();
 
-  return {
-    articles: articles.map((article: any) => articleMapper(article, id)),
-    articlesCount,
-  };
+  const articles = await Promise.all(
+    articleRows.map((article: any) => buildArticleResponse(article, id))
+  );
+
+  return { articles, articlesCount };
 };
 
 export const createArticle = async (article: any, id: number) => {
@@ -179,299 +180,259 @@ export const createArticle = async (article: any, id: number) => {
 
   const slug = `${slugify(title)}-${id}`;
 
-  const existingTitle = await prisma.article.findUnique({
-    where: {
-      slug,
-    },
-    select: {
-      slug: true,
-    },
+  const existingResult = await client.query({
+    query: `SELECT slug FROM articles FINAL WHERE slug = {slug: String} LIMIT 1`,
+    query_params: { slug },
+    format: 'JSONEachRow',
   });
+  const existingRows: any[] = await existingResult.json();
 
-  if (existingTitle) {
+  if (existingRows.length > 0) {
     throw new HttpException(422, { errors: { title: ['must be unique'] } });
   }
 
-  const {
-    authorId,
-    id: articleId,
-    ...createdArticle
-  } = await prisma.article.create({
-    data: {
-      title,
-      description,
-      body,
-      slug,
-      tagList: {
-        connectOrCreate: tags.map((tag: string) => ({
-          create: { name: tag },
-          where: { name: tag },
-        })),
+  const articleId = newId();
+  const now = new Date().toISOString().replace('T', ' ').replace('Z', '').split('.')[0];
+
+  await client.insert({
+    table: 'articles',
+    values: [
+      {
+        id: articleId,
+        slug,
+        title,
+        description,
+        body,
+        createdAt: now,
+        updatedAt: now,
+        authorId: id,
+        version: Date.now(),
       },
-      author: {
-        connect: {
-          id: id,
-        },
-      },
-    },
-    include: {
-      tagList: {
-        select: {
-          name: true,
-        },
-      },
-      author: {
-        select: {
-          username: true,
-          bio: true,
-          image: true,
-          followedBy: true,
-        },
-      },
-      favoritedBy: true,
-      _count: {
-        select: {
-          favoritedBy: true,
-        },
-      },
-    },
+    ],
+    format: 'JSONEachRow',
   });
 
-  return articleMapper(createdArticle, id);
+  for (const tagName of tags) {
+    const tagId = await upsertTag(tagName);
+    await client.insert({
+      table: 'article_tags',
+      values: [{ articleId, tagId }],
+      format: 'JSONEachRow',
+    });
+  }
+
+  const articleResult = await client.query({
+    query: `SELECT * FROM articles FINAL WHERE id = {id: UInt32} LIMIT 1`,
+    query_params: { id: articleId },
+    format: 'JSONEachRow',
+  });
+  const articleRows: any[] = await articleResult.json();
+
+  return buildArticleResponse(articleRows[0], id);
 };
 
 export const getArticle = async (slug: string, id?: number) => {
-  const article = await prisma.article.findUnique({
-    where: {
-      slug,
-    },
-    include: {
-      tagList: {
-        select: {
-          name: true,
-        },
-      },
-      author: {
-        select: {
-          username: true,
-          bio: true,
-          image: true,
-          followedBy: true,
-        },
-      },
-      favoritedBy: true,
-      _count: {
-        select: {
-          favoritedBy: true,
-        },
-      },
-    },
+  const result = await client.query({
+    query: `SELECT * FROM articles FINAL WHERE slug = {slug: String} LIMIT 1`,
+    query_params: { slug },
+    format: 'JSONEachRow',
   });
+  const rows: any[] = await result.json();
 
-  if (!article) {
+  if (rows.length === 0) {
     throw new HttpException(404, { errors: { article: ['not found'] } });
   }
 
-  return articleMapper(article, id);
-};
-
-const disconnectArticlesTags = async (slug: string) => {
-  await prisma.article.update({
-    where: {
-      slug,
-    },
-    data: {
-      tagList: {
-        set: [],
-      },
-    },
-  });
+  return buildArticleResponse(rows[0], id);
 };
 
 export const updateArticle = async (article: any, slug: string, id: number) => {
-  let newSlug = null;
-
-  const existingArticle = await await prisma.article.findFirst({
-    where: {
-      slug,
-    },
-    select: {
-      author: {
-        select: {
-          id: true,
-          username: true,
-        },
-      },
-    },
+  const existingResult = await client.query({
+    query: `SELECT a.id, a.authorId FROM articles AS a FINAL WHERE a.slug = {slug: String} LIMIT 1`,
+    query_params: { slug },
+    format: 'JSONEachRow',
   });
+  const existingRows: any[] = await existingResult.json();
 
-  if (!existingArticle) {
+  if (existingRows.length === 0) {
     throw new HttpException(404, {});
   }
 
-  if (existingArticle.author.id !== id) {
+  const existing = existingRows[0];
+  if (Number(existing.authorId) !== id) {
     throw new HttpException(403, {
       message: 'You are not authorized to update this article',
     });
   }
 
+  const articleId = Number(existing.id);
+  let newSlug = slug;
+
   if (article.title) {
     newSlug = `${slugify(article.title)}-${id}`;
 
     if (newSlug !== slug) {
-      const existingTitle = await prisma.article.findFirst({
-        where: {
-          slug: newSlug,
-        },
-        select: {
-          slug: true,
-        },
+      const dupResult = await client.query({
+        query: `SELECT slug FROM articles FINAL WHERE slug = {slug: String} LIMIT 1`,
+        query_params: { slug: newSlug },
+        format: 'JSONEachRow',
       });
-
-      if (existingTitle) {
+      const dupRows: any[] = await dupResult.json();
+      if (dupRows.length > 0) {
         throw new HttpException(422, { errors: { title: ['must be unique'] } });
       }
     }
   }
 
-  const tagList =
-    Array.isArray(article.tagList) && article.tagList?.length
-      ? article.tagList.map((tag: string) => ({
-          create: { name: tag },
-          where: { name: tag },
-        }))
-      : [];
+  const currentResult = await client.query({
+    query: `SELECT * FROM articles FINAL WHERE id = {id: UInt32} LIMIT 1`,
+    query_params: { id: articleId },
+    format: 'JSONEachRow',
+  });
+  const currentRows: any[] = await currentResult.json();
+  const current = currentRows[0];
 
-  await disconnectArticlesTags(slug);
+  const now = new Date().toISOString().replace('T', ' ').replace('Z', '').split('.')[0];
 
-  const updatedArticle = await prisma.article.update({
-    where: {
-      slug,
-    },
-    data: {
-      ...(article.title ? { title: article.title } : {}),
-      ...(article.body ? { body: article.body } : {}),
-      ...(article.description ? { description: article.description } : {}),
-      ...(newSlug ? { slug: newSlug } : {}),
-      updatedAt: new Date(),
-      tagList: {
-        connectOrCreate: tagList,
+  await client.insert({
+    table: 'articles',
+    values: [
+      {
+        id: articleId,
+        slug: newSlug,
+        title: article.title || current.title,
+        description: article.description || current.description,
+        body: article.body || current.body,
+        createdAt: current.createdAt,
+        updatedAt: now,
+        authorId: id,
+        version: Date.now(),
       },
-    },
-    include: {
-      tagList: {
-        select: {
-          name: true,
-        },
-      },
-      author: {
-        select: {
-          username: true,
-          bio: true,
-          image: true,
-          followedBy: true,
-        },
-      },
-      favoritedBy: true,
-      _count: {
-        select: {
-          favoritedBy: true,
-        },
-      },
-    },
+    ],
+    format: 'JSONEachRow',
   });
 
-  return articleMapper(updatedArticle, id);
+  if (Array.isArray(article.tagList) && article.tagList.length > 0) {
+    await client.command({
+      query: `DELETE FROM article_tags WHERE articleId = {articleId: UInt32}`,
+      query_params: { articleId },
+    });
+
+    for (const tagName of article.tagList) {
+      const tagId = await upsertTag(tagName);
+      await client.insert({
+        table: 'article_tags',
+        values: [{ articleId, tagId }],
+        format: 'JSONEachRow',
+      });
+    }
+  }
+
+  const updatedResult = await client.query({
+    query: `SELECT * FROM articles FINAL WHERE id = {id: UInt32} LIMIT 1`,
+    query_params: { id: articleId },
+    format: 'JSONEachRow',
+  });
+  const updatedRows: any[] = await updatedResult.json();
+
+  return buildArticleResponse(updatedRows[0], id);
 };
 
 export const deleteArticle = async (slug: string, id: number) => {
-  const existingArticle = await await prisma.article.findFirst({
-    where: {
-      slug,
-    },
-    select: {
-      author: {
-        select: {
-          id: true,
-          username: true,
-        },
-      },
-    },
+  const existingResult = await client.query({
+    query: `SELECT id, authorId FROM articles FINAL WHERE slug = {slug: String} LIMIT 1`,
+    query_params: { slug },
+    format: 'JSONEachRow',
   });
+  const existingRows: any[] = await existingResult.json();
 
-  if (!existingArticle) {
+  if (existingRows.length === 0) {
     throw new HttpException(404, {});
   }
 
-  if (existingArticle.author.id !== id) {
+  const existing = existingRows[0];
+  if (Number(existing.authorId) !== id) {
     throw new HttpException(403, {
       message: 'You are not authorized to delete this article',
     });
   }
-  await prisma.article.delete({
-    where: {
-      slug,
-    },
+
+  const articleId = Number(existing.id);
+
+  await client.command({
+    query: `DELETE FROM articles WHERE id = {id: UInt32}`,
+    query_params: { id: articleId },
+  });
+
+  await client.command({
+    query: `DELETE FROM article_tags WHERE articleId = {articleId: UInt32}`,
+    query_params: { articleId },
+  });
+
+  await client.command({
+    query: `DELETE FROM comments WHERE articleId = {articleId: UInt32}`,
+    query_params: { articleId },
   });
 };
 
 export const getCommentsByArticle = async (slug: string, id?: number) => {
-  const queries = [];
-
-  queries.push({
-    author: {
-      demo: true,
-    },
+  const articleResult = await client.query({
+    query: `SELECT id, authorId FROM articles FINAL WHERE slug = {slug: String} LIMIT 1`,
+    query_params: { slug },
+    format: 'JSONEachRow',
   });
+  const articleRows: any[] = await articleResult.json();
 
-  if (id) {
-    queries.push({
-      author: {
-        id,
-      },
-    });
+  if (articleRows.length === 0) {
+    return [];
   }
 
-  const comments = await prisma.article.findUnique({
-    where: {
-      slug,
-    },
-    include: {
-      comments: {
-        where: {
-          OR: queries,
-        },
-        select: {
-          id: true,
-          createdAt: true,
-          updatedAt: true,
-          body: true,
-          author: {
-            select: {
-              username: true,
-              bio: true,
-              image: true,
-              followedBy: true,
-            },
-          },
-        },
-      },
-    },
+  const articleId = Number(articleRows[0].id);
+
+  let whereClause = `WHERE c.articleId = {articleId: UInt32} AND (u.demo = 1`;
+  if (id) {
+    whereClause += ` OR c.authorId = {authorId: UInt32}`;
+  }
+  whereClause += `)`;
+
+  const queryParams: any = { articleId };
+  if (id) queryParams.authorId = id;
+
+  const commentsResult = await client.query({
+    query: `SELECT c.id, c.createdAt, c.updatedAt, c.body, c.authorId, u.username, u.bio, u.image
+      FROM comments AS c FINAL
+      INNER JOIN users AS u FINAL ON u.id = c.authorId
+      ${whereClause}`,
+    query_params: queryParams,
+    format: 'JSONEachRow',
   });
+  const commentRows: any[] = await commentsResult.json();
 
-  const result = comments?.comments.map((comment: any) => ({
-    ...comment,
-    author: {
-      username: comment.author.username,
-      bio: comment.author.bio,
-      image: comment.author.image,
-      following: comment.author.followedBy.some(
-        (follow: any) => follow.id === id
-      ),
-    },
-  }));
+  return Promise.all(
+    commentRows.map(async (comment: any) => {
+      const authorId = Number(comment.authorId);
+      const followsResult = await client.query({
+        query: `SELECT followerId FROM follows WHERE followingId = {followingId: UInt32}`,
+        query_params: { followingId: authorId },
+        format: 'JSONEachRow',
+      });
+      const followsRows: any[] = await followsResult.json();
+      const followedByIds = followsRows.map((r: any) => Number(r.followerId));
 
-  return result;
+      return {
+        id: Number(comment.id),
+        createdAt: comment.createdAt,
+        updatedAt: comment.updatedAt,
+        body: comment.body,
+        author: {
+          username: comment.username,
+          bio: comment.bio,
+          image: comment.image,
+          following: id ? followedByIds.includes(id) : false,
+        },
+      };
+    })
+  );
 };
 
 export const addComment = async (body: string, slug: string, id: number) => {
@@ -479,184 +440,144 @@ export const addComment = async (body: string, slug: string, id: number) => {
     throw new HttpException(422, { errors: { body: ["can't be blank"] } });
   }
 
-  const article = await prisma.article.findUnique({
-    where: {
-      slug,
-    },
-    select: {
-      id: true,
-    },
+  const articleResult = await client.query({
+    query: `SELECT id FROM articles FINAL WHERE slug = {slug: String} LIMIT 1`,
+    query_params: { slug },
+    format: 'JSONEachRow',
+  });
+  const articleRows: any[] = await articleResult.json();
+
+  if (articleRows.length === 0) {
+    throw new HttpException(404, { errors: { article: ['not found'] } });
+  }
+
+  const articleId = Number(articleRows[0].id);
+  const commentId = newId();
+  const now = new Date().toISOString().replace('T', ' ').replace('Z', '').split('.')[0];
+
+  await client.insert({
+    table: 'comments',
+    values: [
+      {
+        id: commentId,
+        createdAt: now,
+        updatedAt: now,
+        body,
+        articleId,
+        authorId: id,
+        version: Date.now(),
+      },
+    ],
+    format: 'JSONEachRow',
   });
 
-  const comment = await prisma.comment.create({
-    data: {
-      body,
-      article: {
-        connect: {
-          id: article?.id,
-        },
-      },
-      author: {
-        connect: {
-          id: id,
-        },
-      },
-    },
-    include: {
-      author: {
-        select: {
-          username: true,
-          bio: true,
-          image: true,
-          followedBy: true,
-        },
-      },
-    },
+  const authorResult = await client.query({
+    query: `SELECT username, bio, image FROM users FINAL WHERE id = {id: UInt32} LIMIT 1`,
+    query_params: { id },
+    format: 'JSONEachRow',
   });
+  const authorRows: any[] = await authorResult.json();
+  const author = authorRows[0];
+
+  const followsResult = await client.query({
+    query: `SELECT followerId FROM follows WHERE followingId = {followingId: UInt32}`,
+    query_params: { followingId: id },
+    format: 'JSONEachRow',
+  });
+  const followsRows: any[] = await followsResult.json();
+  const followedByIds = followsRows.map((r: any) => Number(r.followerId));
 
   return {
-    id: comment.id,
-    createdAt: comment.createdAt,
-    updatedAt: comment.updatedAt,
-    body: comment.body,
+    id: commentId,
+    createdAt: now,
+    updatedAt: now,
+    body,
     author: {
-      username: comment.author.username,
-      bio: comment.author.bio,
-      image: comment.author.image,
-      following: comment.author.followedBy.some(
-        (follow: any) => follow.id === id
-      ),
+      username: author.username,
+      bio: author.bio,
+      image: author.image,
+      following: followedByIds.includes(id),
     },
   };
 };
 
 export const deleteComment = async (id: number, userId: number) => {
-  const comment = await prisma.comment.findFirst({
-    where: {
-      id,
-      author: {
-        id: userId,
-      },
-    },
-    select: {
-      author: {
-        select: {
-          id: true,
-          username: true,
-        },
-      },
-    },
+  const result = await client.query({
+    query: `SELECT id, authorId FROM comments FINAL WHERE id = {id: UInt32} LIMIT 1`,
+    query_params: { id },
+    format: 'JSONEachRow',
   });
+  const rows: any[] = await result.json();
 
-  if (!comment) {
+  if (rows.length === 0) {
     throw new HttpException(404, {});
   }
 
-  if (comment.author.id !== userId) {
+  const comment = rows[0];
+  if (Number(comment.authorId) !== userId) {
     throw new HttpException(403, {
       message: 'You are not authorized to delete this comment',
     });
   }
 
-  await prisma.comment.delete({
-    where: {
-      id,
-    },
+  await client.command({
+    query: `DELETE FROM comments WHERE id = {id: UInt32}`,
+    query_params: { id },
   });
 };
 
 export const favoriteArticle = async (slugPayload: string, id: number) => {
-  const { _count, ...article } = await prisma.article.update({
-    where: {
-      slug: slugPayload,
-    },
-    data: {
-      favoritedBy: {
-        connect: {
-          id: id,
-        },
-      },
-    },
-    include: {
-      tagList: {
-        select: {
-          name: true,
-        },
-      },
-      author: {
-        select: {
-          username: true,
-          bio: true,
-          image: true,
-          followedBy: true,
-        },
-      },
-      favoritedBy: true,
-      _count: {
-        select: {
-          favoritedBy: true,
-        },
-      },
-    },
+  const articleResult = await client.query({
+    query: `SELECT * FROM articles FINAL WHERE slug = {slug: String} LIMIT 1`,
+    query_params: { slug: slugPayload },
+    format: 'JSONEachRow',
   });
+  const articleRows: any[] = await articleResult.json();
 
-  const result = {
-    ...article,
-    author: profileMapper(article.author, id),
-    tagList: article?.tagList.map((tag: Tag) => tag.name),
-    favorited: article.favoritedBy.some(
-      (favorited: any) => favorited.id === id
-    ),
-    favoritesCount: _count?.favoritedBy,
-  };
+  if (articleRows.length === 0) {
+    throw new HttpException(404, { errors: { article: ['not found'] } });
+  }
 
-  return result;
+  const article = articleRows[0];
+  const articleId = Number(article.id);
+
+  const existingFavResult = await client.query({
+    query: `SELECT userId FROM favorites WHERE userId = {userId: UInt32} AND articleId = {articleId: UInt32} LIMIT 1`,
+    query_params: { userId: id, articleId },
+    format: 'JSONEachRow',
+  });
+  const existingFavRows: any[] = await existingFavResult.json();
+
+  if (existingFavRows.length === 0) {
+    await client.insert({
+      table: 'favorites',
+      values: [{ userId: id, articleId }],
+      format: 'JSONEachRow',
+    });
+  }
+
+  return buildArticleResponse(article, id);
 };
 
 export const unfavoriteArticle = async (slugPayload: string, id: number) => {
-  const { _count, ...article } = await prisma.article.update({
-    where: {
-      slug: slugPayload,
-    },
-    data: {
-      favoritedBy: {
-        disconnect: {
-          id: id,
-        },
-      },
-    },
-    include: {
-      tagList: {
-        select: {
-          name: true,
-        },
-      },
-      author: {
-        select: {
-          username: true,
-          bio: true,
-          image: true,
-          followedBy: true,
-        },
-      },
-      favoritedBy: true,
-      _count: {
-        select: {
-          favoritedBy: true,
-        },
-      },
-    },
+  const articleResult = await client.query({
+    query: `SELECT * FROM articles FINAL WHERE slug = {slug: String} LIMIT 1`,
+    query_params: { slug: slugPayload },
+    format: 'JSONEachRow',
+  });
+  const articleRows: any[] = await articleResult.json();
+
+  if (articleRows.length === 0) {
+    throw new HttpException(404, { errors: { article: ['not found'] } });
+  }
+
+  const article = articleRows[0];
+  const articleId = Number(article.id);
+
+  await client.command({
+    query: `DELETE FROM favorites WHERE userId = {userId: UInt32} AND articleId = {articleId: UInt32}`,
+    query_params: { userId: id, articleId },
   });
 
-  const result = {
-    ...article,
-    author: profileMapper(article.author, id),
-    tagList: article?.tagList.map((tag: Tag) => tag.name),
-    favorited: article.favoritedBy.some(
-      (favorited: any) => favorited.id === id
-    ),
-    favoritesCount: _count?.favoritedBy,
-  };
-
-  return result;
+  return buildArticleResponse(article, id);
 };

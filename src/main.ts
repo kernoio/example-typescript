@@ -3,6 +3,7 @@ import cors from 'cors';
 import * as bodyParser from 'body-parser';
 import routes from './app/routes/routes';
 import HttpException from './app/models/http-exception.model';
+import { initClickHouse } from './app/clickhouse-client';
 
 const app = express();
 
@@ -52,6 +53,8 @@ app.use(
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.info(`server up on port ${PORT}`);
+initClickHouse().then(() => {
+  app.listen(PORT, () => {
+    console.info(`server up on port ${PORT}`);
+  });
 });
