@@ -1,0 +1,643 @@
+0:0-0:0	@api/source src/app/routes/article/`article.service.ts`/	definition
+0:7-0:14	slugify `slugify.d.ts`/slugify/_default.	
+0:20-0:29	slugify `slugify.d.ts`/	
+1:7-1:13	@api/source prisma/`prisma-client.ts`/prisma.	
+1:19-1:53	@api/source prisma/`prisma-client.ts`/	
+2:7-2:20	@api/source src/app/models/`http-exception.model.ts`/HttpException#	
+2:26-2:61	@api/source src/app/models/`http-exception.model.ts`/	
+3:7-3:20	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	
+3:26-3:52	@api/source src/app/routes/profile/`profile.utils.ts`/	
+4:7-4:20	@api/source src/app/routes/article/`article.mapper.ts`/articleMapper.	
+4:26-4:44	@api/source src/app/routes/article/`article.mapper.ts`/	
+5:9-5:12	@api/source src/app/routes/tag/`tag.model.ts`/Tag#	
+5:20-5:38	@api/source src/app/routes/tag/`tag.model.ts`/	
+7:6-7:23	@api/source src/app/routes/article/`article.service.ts`/buildFindAllQuery.	definition
+7:27-7:32	local 1	definition
+7:39-7:41	local 2	definition
+8:8-8:15	local 5	definition
+9:8-9:21	local 8	definition
+10:8-10:22	local 11	definition
+12:2-12:15	local 8	
+12:16-12:20	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#push().	
+13:4-13:8	@api/source src/app/routes/article/`article.service.ts`/demo0:	definition
+14:6-14:12	@api/source src/app/routes/article/`article.service.ts`/equals0:	definition
+18:6-18:8	local 2	
+19:4-19:17	local 8	
+19:18-19:22	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#push().	
+20:6-20:8	@api/source src/app/routes/article/`article.service.ts`/id0:	definition
+21:8-21:14	@api/source src/app/routes/article/`article.service.ts`/equals1:	definition
+21:16-21:18	local 2	
+26:18-26:23	local 1	
+27:4-27:18	local 11	
+27:19-27:23	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#push().	
+28:6-28:14	@api/source src/app/routes/article/`article.service.ts`/username0:	definition
+29:8-29:14	@api/source src/app/routes/article/`article.service.ts`/equals2:	definition
+29:16-29:21	local 1	
+34:8-34:19	local 14	definition
+35:4-35:10	@api/source src/app/routes/article/`article.service.ts`/author0:	definition
+36:6-36:8	@api/source src/app/routes/article/`article.service.ts`/OR0:	definition
+36:10-36:23	local 8	
+37:6-37:9	@api/source src/app/routes/article/`article.service.ts`/AND0:	definition
+37:11-37:25	local 11	
+41:2-41:9	local 5	
+41:15-41:26	local 14	
+43:15-43:20	local 1	
+44:4-44:11	local 5	
+45:6-45:13	@api/source src/app/routes/article/`article.service.ts`/tagList0:	definition
+46:8-46:12	@api/source src/app/routes/article/`article.service.ts`/some0:	definition
+47:10-47:14	@api/source src/app/routes/article/`article.service.ts`/name0:	definition
+47:16-47:21	local 1	
+53:21-53:26	local 1	
+54:4-54:11	local 5	
+55:6-55:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy0:	definition
+56:8-56:12	@api/source src/app/routes/article/`article.service.ts`/some1:	definition
+57:10-57:18	@api/source src/app/routes/article/`article.service.ts`/username1:	definition
+58:12-58:18	@api/source src/app/routes/article/`article.service.ts`/equals3:	definition
+58:20-58:25	local 1	
+65:9-65:16	local 5	
+68:13-68:24	@api/source src/app/routes/article/`article.service.ts`/getArticles.	definition
+68:34-68:39	local 16	definition
+68:46-68:48	local 17	definition
+69:8-69:18	local 20	definition
+69:21-69:38	@api/source src/app/routes/article/`article.service.ts`/buildFindAllQuery.	
+69:39-69:44	local 16	
+69:46-69:48	local 17	
+70:8-70:21	local 23	definition
+70:30-70:36	@api/source prisma/`prisma-client.ts`/prisma.	
+71:4-71:9	@api/source src/app/routes/article/`article.service.ts`/where0:	definition
+72:6-72:9	@api/source src/app/routes/article/`article.service.ts`/AND1:	definition
+72:11-72:21	local 20	
+76:8-76:16	local 26	definition
+76:25-76:31	@api/source prisma/`prisma-client.ts`/prisma.	
+77:4-77:9	@api/source src/app/routes/article/`article.service.ts`/where1:	definition
+77:13-77:16	@api/source src/app/routes/article/`article.service.ts`/AND2:	definition
+77:18-77:28	local 20	
+78:4-78:11	@api/source src/app/routes/article/`article.service.ts`/orderBy0:	definition
+79:6-79:15	@api/source src/app/routes/article/`article.service.ts`/createdAt0:	definition
+81:4-81:8	@api/source src/app/routes/article/`article.service.ts`/skip0:	definition
+81:10-81:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Number#	
+81:10-81:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Number.	
+81:10-81:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Number#	
+81:10-81:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2020.number.d.ts`/Number#	
+81:17-81:22	local 16	
+82:4-82:8	@api/source src/app/routes/article/`article.service.ts`/take0:	definition
+82:10-82:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Number#	
+82:10-82:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Number.	
+82:10-82:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Number#	
+82:10-82:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2020.number.d.ts`/Number#	
+82:17-82:22	local 16	
+83:4-83:11	@api/source src/app/routes/article/`article.service.ts`/include0:	definition
+84:6-84:13	@api/source src/app/routes/article/`article.service.ts`/tagList1:	definition
+85:8-85:14	@api/source src/app/routes/article/`article.service.ts`/select0:	definition
+86:10-86:14	@api/source src/app/routes/article/`article.service.ts`/name1:	definition
+89:6-89:12	@api/source src/app/routes/article/`article.service.ts`/author1:	definition
+90:8-90:14	@api/source src/app/routes/article/`article.service.ts`/select1:	definition
+91:10-91:18	@api/source src/app/routes/article/`article.service.ts`/username2:	definition
+92:10-92:13	@api/source src/app/routes/article/`article.service.ts`/bio0:	definition
+93:10-93:15	@api/source src/app/routes/article/`article.service.ts`/image0:	definition
+94:10-94:20	@api/source src/app/routes/article/`article.service.ts`/followedBy0:	definition
+97:6-97:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy1:	definition
+98:6-98:12	@api/source src/app/routes/article/`article.service.ts`/_count0:	definition
+99:8-99:14	@api/source src/app/routes/article/`article.service.ts`/select2:	definition
+100:10-100:21	@api/source src/app/routes/article/`article.service.ts`/favoritedBy2:	definition
+107:4-107:12	@api/source src/app/routes/article/`article.service.ts`/articles0:	definition
+107:14-107:22	local 26	
+107:28-107:35	local 29	definition
+107:45-107:58	@api/source src/app/routes/article/`article.mapper.ts`/articleMapper.	
+107:59-107:66	local 29	
+107:68-107:70	local 17	
+108:4-108:17	@api/source src/app/routes/article/`article.service.ts`/articlesCount0:	definition
+108:4-108:17	local 23	
+112:13-112:20	@api/source src/app/routes/article/`article.service.ts`/getFeed.	definition
+112:30-112:36	local 31	definition
+112:46-112:51	local 32	definition
+112:61-112:63	local 33	definition
+113:8-113:21	local 36	definition
+113:30-113:36	@api/source prisma/`prisma-client.ts`/prisma.	
+114:4-114:9	@api/source src/app/routes/article/`article.service.ts`/where2:	definition
+115:6-115:12	@api/source src/app/routes/article/`article.service.ts`/author2:	definition
+116:8-116:18	@api/source src/app/routes/article/`article.service.ts`/followedBy1:	definition
+116:22-116:26	@api/source src/app/routes/article/`article.service.ts`/some2:	definition
+116:30-116:32	@api/source src/app/routes/article/`article.service.ts`/id1:	definition
+116:34-116:36	local 33	
+121:8-121:16	local 39	definition
+121:25-121:31	@api/source prisma/`prisma-client.ts`/prisma.	
+122:4-122:9	@api/source src/app/routes/article/`article.service.ts`/where3:	definition
+123:6-123:12	@api/source src/app/routes/article/`article.service.ts`/author3:	definition
+124:8-124:18	@api/source src/app/routes/article/`article.service.ts`/followedBy2:	definition
+124:22-124:26	@api/source src/app/routes/article/`article.service.ts`/some3:	definition
+124:30-124:32	@api/source src/app/routes/article/`article.service.ts`/id2:	definition
+124:34-124:36	local 33	
+127:4-127:11	@api/source src/app/routes/article/`article.service.ts`/orderBy1:	definition
+128:6-128:15	@api/source src/app/routes/article/`article.service.ts`/createdAt1:	definition
+130:4-130:8	@api/source src/app/routes/article/`article.service.ts`/skip1:	definition
+130:10-130:16	local 31	
+131:4-131:8	@api/source src/app/routes/article/`article.service.ts`/take1:	definition
+131:10-131:15	local 32	
+132:4-132:11	@api/source src/app/routes/article/`article.service.ts`/include1:	definition
+133:6-133:13	@api/source src/app/routes/article/`article.service.ts`/tagList2:	definition
+134:8-134:14	@api/source src/app/routes/article/`article.service.ts`/select3:	definition
+135:10-135:14	@api/source src/app/routes/article/`article.service.ts`/name2:	definition
+138:6-138:12	@api/source src/app/routes/article/`article.service.ts`/author4:	definition
+139:8-139:14	@api/source src/app/routes/article/`article.service.ts`/select4:	definition
+140:10-140:18	@api/source src/app/routes/article/`article.service.ts`/username3:	definition
+141:10-141:13	@api/source src/app/routes/article/`article.service.ts`/bio1:	definition
+142:10-142:15	@api/source src/app/routes/article/`article.service.ts`/image1:	definition
+143:10-143:20	@api/source src/app/routes/article/`article.service.ts`/followedBy3:	definition
+146:6-146:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy3:	definition
+147:6-147:12	@api/source src/app/routes/article/`article.service.ts`/_count1:	definition
+148:8-148:14	@api/source src/app/routes/article/`article.service.ts`/select5:	definition
+149:10-149:21	@api/source src/app/routes/article/`article.service.ts`/favoritedBy4:	definition
+156:4-156:12	@api/source src/app/routes/article/`article.service.ts`/articles1:	definition
+156:14-156:22	local 39	
+156:28-156:35	local 42	definition
+156:45-156:58	@api/source src/app/routes/article/`article.mapper.ts`/articleMapper.	
+156:59-156:66	local 42	
+156:68-156:70	local 33	
+157:4-157:17	@api/source src/app/routes/article/`article.service.ts`/articlesCount1:	definition
+157:4-157:17	local 36	
+161:13-161:26	@api/source src/app/routes/article/`article.service.ts`/createArticle.	definition
+161:36-161:43	local 44	definition
+161:50-161:52	local 45	definition
+162:10-162:15	local 50	definition
+162:17-162:28	local 51	definition
+162:30-162:34	local 52	definition
+162:36-162:43	local 53	definition
+162:48-162:55	local 44	
+163:8-163:12	local 56	definition
+163:15-163:20	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#	
+163:15-163:20	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array.	
+163:15-163:20	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.core.d.ts`/Array#	
+163:15-163:20	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.iterable.d.ts`/Array#	
+163:15-163:20	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.symbol.wellknown.d.ts`/Array#	
+163:15-163:20	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2016.array.include.d.ts`/Array#	
+163:15-163:20	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2019.array.d.ts`/Array#	
+163:21-163:28	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/ArrayConstructor#isArray().	
+163:29-163:36	local 53	
+163:40-163:47	local 53	
+165:7-165:12	local 50	
+166:14-166:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+166:35-166:41	@api/source src/app/routes/article/`article.service.ts`/errors0:	definition
+166:45-166:50	@api/source src/app/routes/article/`article.service.ts`/title0:	definition
+169:7-169:18	local 51	
+170:14-170:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+171:6-171:12	@api/source src/app/routes/article/`article.service.ts`/errors1:	definition
+171:16-171:27	@api/source src/app/routes/article/`article.service.ts`/description0:	definition
+175:7-175:11	local 52	
+176:14-176:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+176:35-176:41	@api/source src/app/routes/article/`article.service.ts`/errors2:	definition
+176:45-176:49	@api/source src/app/routes/article/`article.service.ts`/body0:	definition
+179:8-179:12	local 59	definition
+179:18-179:25	slugify `slugify.d.ts`/slugify/_default.	
+179:26-179:31	local 50	
+179:36-179:38	local 45	
+181:8-181:21	local 62	definition
+181:30-181:36	@api/source prisma/`prisma-client.ts`/prisma.	
+182:4-182:9	@api/source src/app/routes/article/`article.service.ts`/where4:	definition
+183:6-183:10	@api/source src/app/routes/article/`article.service.ts`/slug0:	definition
+183:6-183:10	local 59	
+185:4-185:10	@api/source src/app/routes/article/`article.service.ts`/select6:	definition
+186:6-186:10	@api/source src/app/routes/article/`article.service.ts`/slug1:	definition
+190:6-190:19	local 62	
+191:14-191:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+191:35-191:41	@api/source src/app/routes/article/`article.service.ts`/errors3:	definition
+191:45-191:50	@api/source src/app/routes/article/`article.service.ts`/title1:	definition
+195:4-195:12	local 67	definition
+196:8-196:17	local 68	definition
+197:7-197:21	local 69	definition
+198:12-198:18	@api/source prisma/`prisma-client.ts`/prisma.	
+199:4-199:8	@api/source src/app/routes/article/`article.service.ts`/data0:	definition
+200:6-200:11	@api/source src/app/routes/article/`article.service.ts`/title2:	definition
+200:6-200:11	local 50	
+201:6-201:17	@api/source src/app/routes/article/`article.service.ts`/description1:	definition
+201:6-201:17	local 51	
+202:6-202:10	@api/source src/app/routes/article/`article.service.ts`/body1:	definition
+202:6-202:10	local 52	
+203:6-203:10	@api/source src/app/routes/article/`article.service.ts`/slug2:	definition
+203:6-203:10	local 59	
+204:6-204:13	@api/source src/app/routes/article/`article.service.ts`/tagList3:	definition
+205:8-205:23	@api/source src/app/routes/article/`article.service.ts`/connectOrCreate0:	definition
+205:25-205:29	local 56	
+205:30-205:33	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#map().	
+205:35-205:38	local 72	definition
+206:10-206:16	@api/source src/app/routes/article/`article.service.ts`/create0:	
+206:20-206:24	@api/source src/app/routes/article/`article.service.ts`/name3:	
+206:26-206:29	local 72	
+207:10-207:15	@api/source src/app/routes/article/`article.service.ts`/where5:	
+207:19-207:23	@api/source src/app/routes/article/`article.service.ts`/name4:	
+207:25-207:28	local 72	
+210:6-210:12	@api/source src/app/routes/article/`article.service.ts`/author5:	definition
+211:8-211:15	@api/source src/app/routes/article/`article.service.ts`/connect0:	definition
+212:10-212:12	@api/source src/app/routes/article/`article.service.ts`/id3:	definition
+212:14-212:16	local 45	
+216:4-216:11	@api/source src/app/routes/article/`article.service.ts`/include2:	definition
+217:6-217:13	@api/source src/app/routes/article/`article.service.ts`/tagList4:	definition
+218:8-218:14	@api/source src/app/routes/article/`article.service.ts`/select7:	definition
+219:10-219:14	@api/source src/app/routes/article/`article.service.ts`/name5:	definition
+222:6-222:12	@api/source src/app/routes/article/`article.service.ts`/author6:	definition
+223:8-223:14	@api/source src/app/routes/article/`article.service.ts`/select8:	definition
+224:10-224:18	@api/source src/app/routes/article/`article.service.ts`/username4:	definition
+225:10-225:13	@api/source src/app/routes/article/`article.service.ts`/bio2:	definition
+226:10-226:15	@api/source src/app/routes/article/`article.service.ts`/image2:	definition
+227:10-227:20	@api/source src/app/routes/article/`article.service.ts`/followedBy4:	definition
+230:6-230:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy5:	definition
+231:6-231:12	@api/source src/app/routes/article/`article.service.ts`/_count2:	definition
+232:8-232:14	@api/source src/app/routes/article/`article.service.ts`/select9:	definition
+233:10-233:21	@api/source src/app/routes/article/`article.service.ts`/favoritedBy6:	definition
+239:9-239:22	@api/source src/app/routes/article/`article.mapper.ts`/articleMapper.	
+239:23-239:37	local 69	
+239:39-239:41	local 45	
+242:13-242:23	@api/source src/app/routes/article/`article.service.ts`/getArticle.	definition
+242:33-242:37	local 74	definition
+242:47-242:49	local 75	definition
+243:8-243:15	local 78	definition
+243:24-243:30	@api/source prisma/`prisma-client.ts`/prisma.	
+244:4-244:9	@api/source src/app/routes/article/`article.service.ts`/where6:	definition
+245:6-245:10	@api/source src/app/routes/article/`article.service.ts`/slug3:	definition
+245:6-245:10	local 74	
+247:4-247:11	@api/source src/app/routes/article/`article.service.ts`/include3:	definition
+248:6-248:13	@api/source src/app/routes/article/`article.service.ts`/tagList5:	definition
+249:8-249:14	@api/source src/app/routes/article/`article.service.ts`/select10:	definition
+250:10-250:14	@api/source src/app/routes/article/`article.service.ts`/name6:	definition
+253:6-253:12	@api/source src/app/routes/article/`article.service.ts`/author7:	definition
+254:8-254:14	@api/source src/app/routes/article/`article.service.ts`/select11:	definition
+255:10-255:18	@api/source src/app/routes/article/`article.service.ts`/username5:	definition
+256:10-256:13	@api/source src/app/routes/article/`article.service.ts`/bio3:	definition
+257:10-257:15	@api/source src/app/routes/article/`article.service.ts`/image3:	definition
+258:10-258:20	@api/source src/app/routes/article/`article.service.ts`/followedBy5:	definition
+261:6-261:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy7:	definition
+262:6-262:12	@api/source src/app/routes/article/`article.service.ts`/_count3:	definition
+263:8-263:14	@api/source src/app/routes/article/`article.service.ts`/select12:	definition
+264:10-264:21	@api/source src/app/routes/article/`article.service.ts`/favoritedBy8:	definition
+270:7-270:14	local 78	
+271:14-271:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+271:35-271:41	@api/source src/app/routes/article/`article.service.ts`/errors4:	definition
+271:45-271:52	@api/source src/app/routes/article/`article.service.ts`/article0:	definition
+274:9-274:22	@api/source src/app/routes/article/`article.mapper.ts`/articleMapper.	
+274:23-274:30	local 78	
+274:32-274:34	local 75	
+277:6-277:28	@api/source src/app/routes/article/`article.service.ts`/disconnectArticlesTags.	definition
+277:38-277:42	local 80	definition
+278:8-278:14	@api/source prisma/`prisma-client.ts`/prisma.	
+279:4-279:9	@api/source src/app/routes/article/`article.service.ts`/where7:	definition
+280:6-280:10	@api/source src/app/routes/article/`article.service.ts`/slug4:	definition
+280:6-280:10	local 80	
+282:4-282:8	@api/source src/app/routes/article/`article.service.ts`/data1:	definition
+283:6-283:13	@api/source src/app/routes/article/`article.service.ts`/tagList6:	definition
+284:8-284:11	@api/source src/app/routes/article/`article.service.ts`/set0:	definition
+290:13-290:26	@api/source src/app/routes/article/`article.service.ts`/updateArticle.	definition
+290:36-290:43	local 82	definition
+290:50-290:54	local 83	definition
+290:64-290:66	local 84	definition
+291:6-291:13	local 87	definition
+293:8-293:23	local 90	definition
+293:38-293:44	@api/source prisma/`prisma-client.ts`/prisma.	
+294:4-294:9	@api/source src/app/routes/article/`article.service.ts`/where8:	definition
+295:6-295:10	@api/source src/app/routes/article/`article.service.ts`/slug5:	definition
+295:6-295:10	local 83	
+297:4-297:10	@api/source src/app/routes/article/`article.service.ts`/select13:	definition
+298:6-298:12	@api/source src/app/routes/article/`article.service.ts`/author8:	definition
+299:8-299:14	@api/source src/app/routes/article/`article.service.ts`/select14:	definition
+300:10-300:12	@api/source src/app/routes/article/`article.service.ts`/id4:	definition
+301:10-301:18	@api/source src/app/routes/article/`article.service.ts`/username6:	definition
+307:7-307:22	local 90	
+308:14-308:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+311:6-311:21	local 90	
+311:36-311:38	local 84	
+312:14-312:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+313:6-313:13	@api/source src/app/routes/article/`article.service.ts`/message0:	definition
+317:6-317:13	local 82	
+318:4-318:11	local 87	
+318:17-318:24	slugify `slugify.d.ts`/slugify/_default.	
+318:25-318:32	local 82	
+318:43-318:45	local 84	
+320:8-320:15	local 87	
+320:20-320:24	local 83	
+321:12-321:25	local 93	definition
+321:34-321:40	@api/source prisma/`prisma-client.ts`/prisma.	
+322:8-322:13	@api/source src/app/routes/article/`article.service.ts`/where9:	definition
+323:10-323:14	@api/source src/app/routes/article/`article.service.ts`/slug6:	definition
+323:16-323:23	local 87	
+325:8-325:14	@api/source src/app/routes/article/`article.service.ts`/select15:	definition
+326:10-326:14	@api/source src/app/routes/article/`article.service.ts`/slug7:	definition
+330:10-330:23	local 93	
+331:18-331:31	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+331:39-331:45	@api/source src/app/routes/article/`article.service.ts`/errors5:	definition
+331:49-331:54	@api/source src/app/routes/article/`article.service.ts`/title3:	definition
+336:8-336:15	local 96	definition
+337:4-337:9	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#	
+337:4-337:9	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array.	
+337:4-337:9	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.core.d.ts`/Array#	
+337:4-337:9	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.iterable.d.ts`/Array#	
+337:4-337:9	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.symbol.wellknown.d.ts`/Array#	
+337:4-337:9	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2016.array.include.d.ts`/Array#	
+337:4-337:9	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2019.array.d.ts`/Array#	
+337:10-337:17	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/ArrayConstructor#isArray().	
+337:18-337:25	local 82	
+337:38-337:45	local 82	
+338:8-338:15	local 82	
+338:29-338:32	local 100	definition
+339:10-339:16	@api/source src/app/routes/article/`article.service.ts`/create1:	definition
+339:20-339:24	@api/source src/app/routes/article/`article.service.ts`/name7:	definition
+339:26-339:29	local 100	
+340:10-340:15	@api/source src/app/routes/article/`article.service.ts`/where10:	definition
+340:19-340:23	@api/source src/app/routes/article/`article.service.ts`/name8:	definition
+340:25-340:28	local 100	
+344:8-344:30	@api/source src/app/routes/article/`article.service.ts`/disconnectArticlesTags.	
+344:31-344:35	local 83	
+346:8-346:22	local 103	definition
+346:31-346:37	@api/source prisma/`prisma-client.ts`/prisma.	
+347:4-347:9	@api/source src/app/routes/article/`article.service.ts`/where11:	definition
+348:6-348:10	@api/source src/app/routes/article/`article.service.ts`/slug8:	definition
+348:6-348:10	local 83	
+350:4-350:8	@api/source src/app/routes/article/`article.service.ts`/data2:	definition
+351:10-351:17	local 82	
+351:28-351:33	@api/source src/app/routes/article/`article.service.ts`/title4:	definition
+351:35-351:42	local 82	
+352:10-352:17	local 82	
+352:27-352:31	@api/source src/app/routes/article/`article.service.ts`/body2:	definition
+352:33-352:40	local 82	
+353:10-353:17	local 82	
+353:34-353:45	@api/source src/app/routes/article/`article.service.ts`/description2:	definition
+353:47-353:54	local 82	
+354:10-354:17	local 87	
+354:22-354:26	@api/source src/app/routes/article/`article.service.ts`/slug9:	definition
+354:28-354:35	local 87	
+355:6-355:15	@api/source src/app/routes/article/`article.service.ts`/updatedAt0:	definition
+355:21-355:25	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Date#	
+355:21-355:25	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Date.	
+355:21-355:25	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Date#	
+355:21-355:25	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.symbol.wellknown.d.ts`/Date#	
+355:21-355:25	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2020.date.d.ts`/Date#	
+356:6-356:13	@api/source src/app/routes/article/`article.service.ts`/tagList7:	definition
+357:8-357:23	@api/source src/app/routes/article/`article.service.ts`/connectOrCreate1:	definition
+357:25-357:32	local 96	
+360:4-360:11	@api/source src/app/routes/article/`article.service.ts`/include4:	definition
+361:6-361:13	@api/source src/app/routes/article/`article.service.ts`/tagList8:	definition
+362:8-362:14	@api/source src/app/routes/article/`article.service.ts`/select16:	definition
+363:10-363:14	@api/source src/app/routes/article/`article.service.ts`/name9:	definition
+366:6-366:12	@api/source src/app/routes/article/`article.service.ts`/author9:	definition
+367:8-367:14	@api/source src/app/routes/article/`article.service.ts`/select17:	definition
+368:10-368:18	@api/source src/app/routes/article/`article.service.ts`/username7:	definition
+369:10-369:13	@api/source src/app/routes/article/`article.service.ts`/bio4:	definition
+370:10-370:15	@api/source src/app/routes/article/`article.service.ts`/image4:	definition
+371:10-371:20	@api/source src/app/routes/article/`article.service.ts`/followedBy6:	definition
+374:6-374:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy9:	definition
+375:6-375:12	@api/source src/app/routes/article/`article.service.ts`/_count4:	definition
+376:8-376:14	@api/source src/app/routes/article/`article.service.ts`/select18:	definition
+377:10-377:21	@api/source src/app/routes/article/`article.service.ts`/favoritedBy10:	definition
+383:9-383:22	@api/source src/app/routes/article/`article.mapper.ts`/articleMapper.	
+383:23-383:37	local 103	
+383:39-383:41	local 84	
+386:13-386:26	@api/source src/app/routes/article/`article.service.ts`/deleteArticle.	definition
+386:36-386:40	local 105	definition
+386:50-386:52	local 106	definition
+387:8-387:23	local 109	definition
+387:38-387:44	@api/source prisma/`prisma-client.ts`/prisma.	
+388:4-388:9	@api/source src/app/routes/article/`article.service.ts`/where12:	definition
+389:6-389:10	@api/source src/app/routes/article/`article.service.ts`/slug10:	definition
+389:6-389:10	local 105	
+391:4-391:10	@api/source src/app/routes/article/`article.service.ts`/select19:	definition
+392:6-392:12	@api/source src/app/routes/article/`article.service.ts`/author10:	definition
+393:8-393:14	@api/source src/app/routes/article/`article.service.ts`/select20:	definition
+394:10-394:12	@api/source src/app/routes/article/`article.service.ts`/id5:	definition
+395:10-395:18	@api/source src/app/routes/article/`article.service.ts`/username8:	definition
+401:7-401:22	local 109	
+402:14-402:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+405:6-405:21	local 109	
+405:36-405:38	local 106	
+406:14-406:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+407:6-407:13	@api/source src/app/routes/article/`article.service.ts`/message1:	definition
+410:8-410:14	@api/source prisma/`prisma-client.ts`/prisma.	
+411:4-411:9	@api/source src/app/routes/article/`article.service.ts`/where13:	definition
+412:6-412:10	@api/source src/app/routes/article/`article.service.ts`/slug11:	definition
+412:6-412:10	local 105	
+417:13-417:33	@api/source src/app/routes/article/`article.service.ts`/getCommentsByArticle.	definition
+417:43-417:47	local 111	definition
+417:57-417:59	local 112	definition
+418:8-418:15	local 115	definition
+420:2-420:9	local 115	
+420:10-420:14	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#push().	
+421:4-421:10	@api/source src/app/routes/article/`article.service.ts`/author11:	definition
+422:6-422:10	@api/source src/app/routes/article/`article.service.ts`/demo1:	definition
+426:6-426:8	local 112	
+427:4-427:11	local 115	
+427:12-427:16	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#push().	
+428:6-428:12	@api/source src/app/routes/article/`article.service.ts`/author12:	definition
+429:8-429:10	@api/source src/app/routes/article/`article.service.ts`/id6:	definition
+429:8-429:10	local 112	
+434:8-434:16	local 118	definition
+434:25-434:31	@api/source prisma/`prisma-client.ts`/prisma.	
+435:4-435:9	@api/source src/app/routes/article/`article.service.ts`/where14:	definition
+436:6-436:10	@api/source src/app/routes/article/`article.service.ts`/slug12:	definition
+436:6-436:10	local 111	
+438:4-438:11	@api/source src/app/routes/article/`article.service.ts`/include5:	definition
+439:6-439:14	@api/source src/app/routes/article/`article.service.ts`/comments0:	definition
+440:8-440:13	@api/source src/app/routes/article/`article.service.ts`/where15:	definition
+441:10-441:12	@api/source src/app/routes/article/`article.service.ts`/OR1:	definition
+441:14-441:21	local 115	
+443:8-443:14	@api/source src/app/routes/article/`article.service.ts`/select21:	definition
+444:10-444:12	@api/source src/app/routes/article/`article.service.ts`/id7:	definition
+445:10-445:19	@api/source src/app/routes/article/`article.service.ts`/createdAt2:	definition
+446:10-446:19	@api/source src/app/routes/article/`article.service.ts`/updatedAt1:	definition
+447:10-447:14	@api/source src/app/routes/article/`article.service.ts`/body3:	definition
+448:10-448:16	@api/source src/app/routes/article/`article.service.ts`/author13:	definition
+449:12-449:18	@api/source src/app/routes/article/`article.service.ts`/select22:	definition
+450:14-450:22	@api/source src/app/routes/article/`article.service.ts`/username9:	definition
+451:14-451:17	@api/source src/app/routes/article/`article.service.ts`/bio5:	definition
+452:14-452:19	@api/source src/app/routes/article/`article.service.ts`/image5:	definition
+453:14-453:24	@api/source src/app/routes/article/`article.service.ts`/followedBy7:	definition
+461:8-461:14	local 121	definition
+461:17-461:25	local 118	
+461:41-461:48	local 124	definition
+462:7-462:14	local 124	
+463:4-463:10	@api/source src/app/routes/article/`article.service.ts`/author14:	definition
+464:6-464:14	@api/source src/app/routes/article/`article.service.ts`/username10:	definition
+464:16-464:23	local 124	
+465:6-465:9	@api/source src/app/routes/article/`article.service.ts`/bio6:	definition
+465:11-465:18	local 124	
+466:6-466:11	@api/source src/app/routes/article/`article.service.ts`/image6:	definition
+466:13-466:20	local 124	
+467:6-467:15	@api/source src/app/routes/article/`article.service.ts`/following0:	definition
+467:17-467:24	local 124	
+468:9-468:15	local 127	definition
+468:25-468:31	local 127	
+468:39-468:41	local 112	
+473:9-473:15	local 121	
+476:13-476:23	@api/source src/app/routes/article/`article.service.ts`/addComment.	definition
+476:33-476:37	local 129	definition
+476:47-476:51	local 130	definition
+476:61-476:63	local 131	definition
+477:7-477:11	local 129	
+478:14-478:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+478:35-478:41	@api/source src/app/routes/article/`article.service.ts`/errors6:	definition
+478:45-478:49	@api/source src/app/routes/article/`article.service.ts`/body4:	definition
+481:8-481:15	local 134	definition
+481:24-481:30	@api/source prisma/`prisma-client.ts`/prisma.	
+482:4-482:9	@api/source src/app/routes/article/`article.service.ts`/where16:	definition
+483:6-483:10	@api/source src/app/routes/article/`article.service.ts`/slug13:	definition
+483:6-483:10	local 130	
+485:4-485:10	@api/source src/app/routes/article/`article.service.ts`/select23:	definition
+486:6-486:8	@api/source src/app/routes/article/`article.service.ts`/id8:	definition
+490:8-490:15	local 137	definition
+490:24-490:30	@api/source prisma/`prisma-client.ts`/prisma.	
+491:4-491:8	@api/source src/app/routes/article/`article.service.ts`/data3:	definition
+492:6-492:10	@api/source src/app/routes/article/`article.service.ts`/body5:	definition
+492:6-492:10	local 129	
+493:6-493:13	@api/source src/app/routes/article/`article.service.ts`/article1:	definition
+494:8-494:15	@api/source src/app/routes/article/`article.service.ts`/connect1:	definition
+495:10-495:12	@api/source src/app/routes/article/`article.service.ts`/id9:	definition
+495:14-495:21	local 134	
+498:6-498:12	@api/source src/app/routes/article/`article.service.ts`/author15:	definition
+499:8-499:15	@api/source src/app/routes/article/`article.service.ts`/connect2:	definition
+500:10-500:12	@api/source src/app/routes/article/`article.service.ts`/id10:	definition
+500:14-500:16	local 131	
+504:4-504:11	@api/source src/app/routes/article/`article.service.ts`/include6:	definition
+505:6-505:12	@api/source src/app/routes/article/`article.service.ts`/author16:	definition
+506:8-506:14	@api/source src/app/routes/article/`article.service.ts`/select24:	definition
+507:10-507:18	@api/source src/app/routes/article/`article.service.ts`/username11:	definition
+508:10-508:13	@api/source src/app/routes/article/`article.service.ts`/bio7:	definition
+509:10-509:15	@api/source src/app/routes/article/`article.service.ts`/image7:	definition
+510:10-510:20	@api/source src/app/routes/article/`article.service.ts`/followedBy8:	definition
+517:4-517:6	@api/source src/app/routes/article/`article.service.ts`/id11:	definition
+517:8-517:15	local 137	
+518:4-518:13	@api/source src/app/routes/article/`article.service.ts`/createdAt3:	definition
+518:15-518:22	local 137	
+519:4-519:13	@api/source src/app/routes/article/`article.service.ts`/updatedAt2:	definition
+519:15-519:22	local 137	
+520:4-520:8	@api/source src/app/routes/article/`article.service.ts`/body6:	definition
+520:10-520:17	local 137	
+521:4-521:10	@api/source src/app/routes/article/`article.service.ts`/author17:	definition
+522:6-522:14	@api/source src/app/routes/article/`article.service.ts`/username12:	definition
+522:16-522:23	local 137	
+523:6-523:9	@api/source src/app/routes/article/`article.service.ts`/bio8:	definition
+523:11-523:18	local 137	
+524:6-524:11	@api/source src/app/routes/article/`article.service.ts`/image8:	definition
+524:13-524:20	local 137	
+525:6-525:15	@api/source src/app/routes/article/`article.service.ts`/following1:	definition
+525:17-525:24	local 137	
+526:9-526:15	local 140	definition
+526:25-526:31	local 140	
+526:39-526:41	local 131	
+532:13-532:26	@api/source src/app/routes/article/`article.service.ts`/deleteComment.	definition
+532:36-532:38	local 142	definition
+532:48-532:54	local 143	definition
+533:8-533:15	local 146	definition
+533:24-533:30	@api/source prisma/`prisma-client.ts`/prisma.	
+534:4-534:9	@api/source src/app/routes/article/`article.service.ts`/where17:	definition
+535:6-535:8	@api/source src/app/routes/article/`article.service.ts`/id12:	definition
+535:6-535:8	local 142	
+536:6-536:12	@api/source src/app/routes/article/`article.service.ts`/author18:	definition
+537:8-537:10	@api/source src/app/routes/article/`article.service.ts`/id13:	definition
+537:12-537:18	local 143	
+540:4-540:10	@api/source src/app/routes/article/`article.service.ts`/select25:	definition
+541:6-541:12	@api/source src/app/routes/article/`article.service.ts`/author19:	definition
+542:8-542:14	@api/source src/app/routes/article/`article.service.ts`/select26:	definition
+543:10-543:12	@api/source src/app/routes/article/`article.service.ts`/id14:	definition
+544:10-544:18	@api/source src/app/routes/article/`article.service.ts`/username13:	definition
+550:7-550:14	local 146	
+551:14-551:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+554:6-554:13	local 146	
+554:28-554:34	local 143	
+555:14-555:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+556:6-556:13	@api/source src/app/routes/article/`article.service.ts`/message2:	definition
+560:8-560:14	@api/source prisma/`prisma-client.ts`/prisma.	
+561:4-561:9	@api/source src/app/routes/article/`article.service.ts`/where18:	definition
+562:6-562:8	@api/source src/app/routes/article/`article.service.ts`/id15:	definition
+562:6-562:8	local 142	
+567:13-567:28	@api/source src/app/routes/article/`article.service.ts`/favoriteArticle.	definition
+567:38-567:49	local 148	definition
+567:59-567:61	local 149	definition
+568:10-568:16	local 154	definition
+568:21-568:28	local 155	definition
+568:39-568:45	@api/source prisma/`prisma-client.ts`/prisma.	
+569:4-569:9	@api/source src/app/routes/article/`article.service.ts`/where19:	definition
+570:6-570:10	@api/source src/app/routes/article/`article.service.ts`/slug14:	definition
+570:12-570:23	local 148	
+572:4-572:8	@api/source src/app/routes/article/`article.service.ts`/data4:	definition
+573:6-573:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy11:	definition
+574:8-574:15	@api/source src/app/routes/article/`article.service.ts`/connect3:	definition
+575:10-575:12	@api/source src/app/routes/article/`article.service.ts`/id16:	definition
+575:14-575:16	local 149	
+579:4-579:11	@api/source src/app/routes/article/`article.service.ts`/include7:	definition
+580:6-580:13	@api/source src/app/routes/article/`article.service.ts`/tagList9:	definition
+581:8-581:14	@api/source src/app/routes/article/`article.service.ts`/select27:	definition
+582:10-582:14	@api/source src/app/routes/article/`article.service.ts`/name10:	definition
+585:6-585:12	@api/source src/app/routes/article/`article.service.ts`/author20:	definition
+586:8-586:14	@api/source src/app/routes/article/`article.service.ts`/select28:	definition
+587:10-587:18	@api/source src/app/routes/article/`article.service.ts`/username14:	definition
+588:10-588:13	@api/source src/app/routes/article/`article.service.ts`/bio9:	definition
+589:10-589:15	@api/source src/app/routes/article/`article.service.ts`/image9:	definition
+590:10-590:20	@api/source src/app/routes/article/`article.service.ts`/followedBy9:	definition
+593:6-593:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy12:	definition
+594:6-594:12	@api/source src/app/routes/article/`article.service.ts`/_count5:	definition
+595:8-595:14	@api/source src/app/routes/article/`article.service.ts`/select29:	definition
+596:10-596:21	@api/source src/app/routes/article/`article.service.ts`/favoritedBy13:	definition
+602:8-602:14	local 158	definition
+603:7-603:14	local 155	
+604:4-604:10	@api/source src/app/routes/article/`article.service.ts`/author21:	definition
+604:12-604:25	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	
+604:26-604:33	local 155	
+604:42-604:44	local 149	
+605:4-605:11	@api/source src/app/routes/article/`article.service.ts`/tagList10:	definition
+605:13-605:20	local 155	
+605:35-605:38	local 161	definition
+605:40-605:43	@api/source src/app/routes/tag/`tag.model.ts`/Tag#	
+605:48-605:51	local 161	
+605:52-605:56	@api/source src/app/routes/tag/`tag.model.ts`/Tag#name.	
+606:4-606:13	@api/source src/app/routes/article/`article.service.ts`/favorited0:	definition
+606:15-606:22	local 155	
+607:7-607:16	local 164	definition
+607:26-607:35	local 164	
+607:43-607:45	local 149	
+609:4-609:18	@api/source src/app/routes/article/`article.service.ts`/favoritesCount0:	definition
+609:20-609:26	local 154	
+612:9-612:15	local 158	
+615:13-615:30	@api/source src/app/routes/article/`article.service.ts`/unfavoriteArticle.	definition
+615:40-615:51	local 166	definition
+615:61-615:63	local 167	definition
+616:10-616:16	local 172	definition
+616:21-616:28	local 173	definition
+616:39-616:45	@api/source prisma/`prisma-client.ts`/prisma.	
+617:4-617:9	@api/source src/app/routes/article/`article.service.ts`/where20:	definition
+618:6-618:10	@api/source src/app/routes/article/`article.service.ts`/slug15:	definition
+618:12-618:23	local 166	
+620:4-620:8	@api/source src/app/routes/article/`article.service.ts`/data5:	definition
+621:6-621:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy14:	definition
+622:8-622:18	@api/source src/app/routes/article/`article.service.ts`/disconnect0:	definition
+623:10-623:12	@api/source src/app/routes/article/`article.service.ts`/id17:	definition
+623:14-623:16	local 167	
+627:4-627:11	@api/source src/app/routes/article/`article.service.ts`/include8:	definition
+628:6-628:13	@api/source src/app/routes/article/`article.service.ts`/tagList11:	definition
+629:8-629:14	@api/source src/app/routes/article/`article.service.ts`/select30:	definition
+630:10-630:14	@api/source src/app/routes/article/`article.service.ts`/name11:	definition
+633:6-633:12	@api/source src/app/routes/article/`article.service.ts`/author22:	definition
+634:8-634:14	@api/source src/app/routes/article/`article.service.ts`/select31:	definition
+635:10-635:18	@api/source src/app/routes/article/`article.service.ts`/username15:	definition
+636:10-636:13	@api/source src/app/routes/article/`article.service.ts`/bio10:	definition
+637:10-637:15	@api/source src/app/routes/article/`article.service.ts`/image10:	definition
+638:10-638:20	@api/source src/app/routes/article/`article.service.ts`/followedBy10:	definition
+641:6-641:17	@api/source src/app/routes/article/`article.service.ts`/favoritedBy15:	definition
+642:6-642:12	@api/source src/app/routes/article/`article.service.ts`/_count6:	definition
+643:8-643:14	@api/source src/app/routes/article/`article.service.ts`/select32:	definition
+644:10-644:21	@api/source src/app/routes/article/`article.service.ts`/favoritedBy16:	definition
+650:8-650:14	local 176	definition
+651:7-651:14	local 173	
+652:4-652:10	@api/source src/app/routes/article/`article.service.ts`/author23:	definition
+652:12-652:25	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	
+652:26-652:33	local 173	
+652:42-652:44	local 167	
+653:4-653:11	@api/source src/app/routes/article/`article.service.ts`/tagList12:	definition
+653:13-653:20	local 173	
+653:35-653:38	local 179	definition
+653:40-653:43	@api/source src/app/routes/tag/`tag.model.ts`/Tag#	
+653:48-653:51	local 179	
+653:52-653:56	@api/source src/app/routes/tag/`tag.model.ts`/Tag#name.	
+654:4-654:13	@api/source src/app/routes/article/`article.service.ts`/favorited1:	definition
+654:15-654:22	local 173	
+655:7-655:16	local 182	definition
+655:26-655:35	local 182	
+655:43-655:45	local 167	
+657:4-657:18	@api/source src/app/routes/article/`article.service.ts`/favoritesCount1:	definition
+657:20-657:26	local 172	
+660:9-660:15	local 176	

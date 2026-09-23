@@ -1,0 +1,30 @@
+@api/source src/app/models/`http-exception.model.ts`/
+	```ts
+	module "http-exception.model.ts"
+	```
+
+@api/source src/app/models/`http-exception.model.ts`/HttpException#
+	```ts
+	class HttpException
+	```
+
+@api/source src/app/models/`http-exception.model.ts`/HttpException#errorCode.
+	```ts
+	(property) errorCode: number
+	```
+
+@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().
+	```ts
+	constructor(errorCode: number, message: any): HttpException
+	```
+
+@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().(errorCode)
+	```ts
+	(parameter) errorCode: number
+	```
+
+@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().(message)
+	```ts
+	(property) message: any
+	```
+

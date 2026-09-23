@@ -1,0 +1,8 @@
+0:0-0:0	@api/source `jest.preset.js`/	definition
+0:6-0:14	@api/source `jest.preset.js`/nxPreset.	definition
+0:17-0:24	node:module global/require.	
+0:25-0:42	@nx/jest `preset.d.ts`/	
+0:44-0:51	local 0	
+2:0-2:6	local 2	
+2:7-2:14	local 2	
+2:22-2:30	@nx/jest preset/`jest-preset.d.ts`/nxPreset.	

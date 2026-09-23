@@ -1,0 +1,50 @@
+@api/source `jest.config.ts`/
+	```ts
+	module "jest.config.ts"
+	```
+
+@api/source `jest.config.ts`/displayName0:
+	```ts
+	(property) displayName: string
+	```
+
+@api/source `jest.config.ts`/preset0:
+	```ts
+	(property) preset: string
+	```
+
+@api/source `jest.config.ts`/testEnvironment0:
+	```ts
+	(property) testEnvironment: string
+	```
+
+@api/source `jest.config.ts`/transform0:
+	```ts
+	(property) transform: { '^.+\\.[tj]s$': (string | { tsconfig: string; })[]; }
+	```
+
+@api/source `jest.config.ts`/`'^.+\\.[tj]s$'0`:
+	```ts
+	(property) '^.+\\.[tj]s$': (string | { tsconfig: string; })[]
+	```
+
+@api/source `jest.config.ts`/tsconfig0:
+	```ts
+	(property) tsconfig: string
+	```
+
+@api/source `jest.config.ts`/moduleFileExtensions0:
+	```ts
+	(property) moduleFileExtensions: string[]
+	```
+
+@api/source `jest.config.ts`/coverageDirectory0:
+	```ts
+	(property) coverageDirectory: string
+	```
+
+@api/source `jest.config.ts`/testMatch0:
+	```ts
+	(property) testMatch: string[]
+	```
+

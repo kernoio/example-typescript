@@ -1,0 +1,25 @@
+0:0-0:0	@api/source src/app/routes/profile/`profile.utils.ts`/	definition
+0:9-0:13	@api/source src/app/routes/auth/`user.model.ts`/User#	
+0:21-0:41	@api/source src/app/routes/auth/`user.model.ts`/	
+1:9-1:16	@api/source src/app/routes/profile/`profile.model.ts`/Profile#	
+1:24-1:41	@api/source src/app/routes/profile/`profile.model.ts`/	
+3:6-3:19	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	definition
+3:23-3:27	local 1	definition
+3:34-3:36	local 2	definition
+3:59-3:66	@api/source src/app/routes/profile/`profile.model.ts`/Profile#	
+4:2-4:10	@api/source src/app/routes/profile/`profile.model.ts`/Profile#username.	
+4:12-4:16	local 1	
+5:2-5:5	@api/source src/app/routes/profile/`profile.model.ts`/Profile#bio.	
+5:7-5:11	local 1	
+6:2-6:7	@api/source src/app/routes/profile/`profile.model.ts`/Profile#image.	
+6:9-6:13	local 1	
+7:2-7:11	@api/source src/app/routes/profile/`profile.model.ts`/Profile#following.	
+7:13-7:15	local 2	
+8:6-8:10	local 1	
+8:29-8:42	local 6	definition
+8:44-8:51	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Partial#	
+8:52-8:56	@api/source src/app/routes/auth/`user.model.ts`/User#	
+8:62-8:75	local 6	
+8:76-8:78	@api/source src/app/routes/auth/`user.model.ts`/User#id.	
+8:83-8:85	local 2	
+12:15-12:28	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	

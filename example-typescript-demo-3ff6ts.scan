@@ -1,0 +1,8 @@
+tool	typescript
+contentRoot	.
+projectRoot	.
+name	@api/source
+languages	typescript,javascript
+buildTool	npm
+buildFiles	package.json,project.json,tsconfig.json,package-lock.json
+dependencies	

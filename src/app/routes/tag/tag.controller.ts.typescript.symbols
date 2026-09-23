@@ -1,0 +1,40 @@
+@api/source src/app/routes/tag/`tag.controller.ts`/
+	```ts
+	module "tag.controller.ts"
+	```
+
+@api/source src/app/routes/tag/`tag.controller.ts`/router.
+	```ts
+	var router: Router
+	```
+
+local 3
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 4
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 5
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 8
+	```ts
+	var tags: string[]
+	```
+
+@api/source src/app/routes/tag/`tag.controller.ts`/tags0:
+	```ts
+	(property) tags: string[]
+	```
+
+local 13
+	```ts
+	var error: any
+	```
+

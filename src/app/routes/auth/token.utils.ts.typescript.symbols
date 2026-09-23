@@ -1,0 +1,25 @@
+@api/source src/app/routes/auth/`token.utils.ts`/
+	```ts
+	module "token.utils.ts"
+	```
+
+@api/source src/app/routes/auth/`token.utils.ts`/generateToken.
+	```ts
+	var generateToken: (id: number) => string
+	```
+
+local 1
+	```ts
+	(parameter) id: number
+	```
+
+@api/source src/app/routes/auth/`token.utils.ts`/user0:
+	```ts
+	(property) user: { id: number; }
+	```
+
+@api/source src/app/routes/auth/`token.utils.ts`/id0:
+	```ts
+	(property) id: number
+	```
+

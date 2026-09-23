@@ -1,0 +1,165 @@
+@api/source src/app/routes/profile/`profile.service.ts`/
+	```ts
+	module "profile.service.ts"
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/getProfile.
+	```ts
+	var getProfile: (usernamePayload: string, id?: number) => Promise<Profile>
+	```
+
+local 1
+	```ts
+	(parameter) usernamePayload: string
+	```
+
+local 2
+	```ts
+	(parameter) id: number
+	```
+
+local 5
+	```ts
+	var profile: any
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/where0:
+	```ts
+	(property) where: { username: string; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/username0:
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/include0:
+	```ts
+	(property) include: { followedBy: boolean; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/followedBy0:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/followUser.
+	```ts
+	var followUser: (usernamePayload: string, id: number) => Promise<Profile>
+	```
+
+local 7
+	```ts
+	(parameter) usernamePayload: string
+	```
+
+local 8
+	```ts
+	(parameter) id: number
+	```
+
+local 11
+	```ts
+	var profile: any
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/where1:
+	```ts
+	(property) where: { username: string; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/username1:
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/data0:
+	```ts
+	(property) data: { followedBy: { connect: { id: number; }; }; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/followedBy1:
+	```ts
+	(property) followedBy: { connect: { id: number; }; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/connect0:
+	```ts
+	(property) connect: { id: number; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/id0:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/include1:
+	```ts
+	(property) include: { followedBy: boolean; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/followedBy2:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/unfollowUser.
+	```ts
+	var unfollowUser: (usernamePayload: string, id: number) => Promise<Profile>
+	```
+
+local 13
+	```ts
+	(parameter) usernamePayload: string
+	```
+
+local 14
+	```ts
+	(parameter) id: number
+	```
+
+local 17
+	```ts
+	var profile: any
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/where2:
+	```ts
+	(property) where: { username: string; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/username2:
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/data1:
+	```ts
+	(property) data: { followedBy: { disconnect: { id: number; }; }; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/followedBy3:
+	```ts
+	(property) followedBy: { disconnect: { id: number; }; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/disconnect0:
+	```ts
+	(property) disconnect: { id: number; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/id1:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/include2:
+	```ts
+	(property) include: { followedBy: boolean; }
+	```
+
+@api/source src/app/routes/profile/`profile.service.ts`/followedBy4:
+	```ts
+	(property) followedBy: boolean
+	```
+

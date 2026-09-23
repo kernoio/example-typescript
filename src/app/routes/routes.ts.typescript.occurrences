@@ -1,0 +1,31 @@
+0:0-0:0	@api/source src/app/routes/`routes.ts`/	definition
+0:9-0:15	@types/express `index.d.ts`/e/Router().	
+0:9-0:15	@types/express `index.d.ts`/e/Router#	
+0:23-0:32	@types/express `index.d.ts`/	
+1:7-1:21	@api/source src/app/routes/tag/`tag.controller.ts`/router.	
+1:27-1:49	@api/source src/app/routes/tag/`tag.controller.ts`/	
+2:7-2:25	@api/source src/app/routes/article/`article.controller.ts`/router.	
+2:31-2:61	@api/source src/app/routes/article/`article.controller.ts`/	
+3:7-3:21	@api/source src/app/routes/auth/`auth.controller.ts`/router.	
+3:27-3:51	@api/source src/app/routes/auth/`auth.controller.ts`/	
+4:7-4:24	@api/source src/app/routes/profile/`profile.controller.ts`/router.	
+4:30-4:60	@api/source src/app/routes/profile/`profile.controller.ts`/	
+5:7-5:22	@api/source src/app/routes/stats/`stats.controller.ts`/router.	
+5:28-5:54	@api/source src/app/routes/stats/`stats.controller.ts`/	
+7:6-7:9	@api/source src/app/routes/`routes.ts`/api.	definition
+7:12-7:18	@types/express `index.d.ts`/e/Router().	
+7:12-7:18	@types/express `index.d.ts`/e/Router#	
+8:3-8:6	@types/express-serve-static-core `index.d.ts`/IRouter#use.	
+8:7-8:21	@api/source src/app/routes/tag/`tag.controller.ts`/router.	
+9:3-9:6	@types/express-serve-static-core `index.d.ts`/IRouter#use.	
+9:7-9:25	@api/source src/app/routes/article/`article.controller.ts`/router.	
+10:3-10:6	@types/express-serve-static-core `index.d.ts`/IRouter#use.	
+10:7-10:24	@api/source src/app/routes/profile/`profile.controller.ts`/router.	
+11:3-11:6	@types/express-serve-static-core `index.d.ts`/IRouter#use.	
+11:7-11:21	@api/source src/app/routes/auth/`auth.controller.ts`/router.	
+12:3-12:6	@types/express-serve-static-core `index.d.ts`/IRouter#use.	
+12:7-12:22	@api/source src/app/routes/stats/`stats.controller.ts`/router.	
+14:15-14:21	@types/express `index.d.ts`/e/Router().	
+14:15-14:21	@types/express `index.d.ts`/e/Router#	
+14:24-14:27	@types/express-serve-static-core `index.d.ts`/IRouter#use.	
+14:36-14:39	@api/source src/app/routes/`routes.ts`/api.	

@@ -1,0 +1,130 @@
+@api/source src/app/routes/auth/`auth.controller.ts`/
+	```ts
+	module "auth.controller.ts"
+	```
+
+@api/source src/app/routes/auth/`auth.controller.ts`/router.
+	```ts
+	var router: Router
+	```
+
+local 3
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 4
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 5
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 8
+	```ts
+	var user: RegisteredUser
+	```
+
+@api/source src/app/routes/auth/`auth.controller.ts`/user0:
+	```ts
+	(property) user: RegisteredUser
+	```
+
+local 11
+	```ts
+	var error: any
+	```
+
+local 15
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 16
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 17
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 20
+	```ts
+	var user: { email: any; username: any; bio: any; image: any; token: string; }
+	```
+
+@api/source src/app/routes/auth/`auth.controller.ts`/user1:
+	```ts
+	(property) user: { email: any; username: any; bio: any; image: any; token: string; }
+	```
+
+local 23
+	```ts
+	var error: any
+	```
+
+local 27
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 28
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 29
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 32
+	```ts
+	var user: { token: string; id: number; username: string; email: string; password: string; bio: string; image: any; articles: Article[]; favorites: Article[]; followedBy: User[]; following: User[]; comments: Comment[]; demo: boolean; }
+	```
+
+@api/source src/app/routes/auth/`auth.controller.ts`/user2:
+	```ts
+	(property) user: { token: string; id: number; username: string; email: string; password: string; bio: string; image: any; articles: Article[]; favorites: Article[]; followedBy: User[]; following: User[]; comments: Comment[]; demo: boolean; }
+	```
+
+local 35
+	```ts
+	var error: any
+	```
+
+local 39
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 40
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 41
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 44
+	```ts
+	var user: any
+	```
+
+@api/source src/app/routes/auth/`auth.controller.ts`/user3:
+	```ts
+	(property) user: any
+	```
+
+local 47
+	```ts
+	var error: any
+	```
+

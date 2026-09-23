@@ -1,0 +1,550 @@
+@api/source src/app/routes/auth/`auth.service.ts`/
+	```ts
+	module "auth.service.ts"
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/checkUserUniqueness.
+	```ts
+	var checkUserUniqueness: (email: string, username: string) => Promise<void>
+	```
+
+local 1
+	```ts
+	(parameter) email: string
+	```
+
+local 2
+	```ts
+	(parameter) username: string
+	```
+
+local 5
+	```ts
+	var existingUserByEmail: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/where0:
+	```ts
+	(property) where: { email: string; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email0:
+	```ts
+	(property) email: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/select0:
+	```ts
+	(property) select: { id: boolean; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/id0:
+	```ts
+	(property) id: boolean
+	```
+
+local 8
+	```ts
+	var existingUserByUsername: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/where1:
+	```ts
+	(property) where: { username: string; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username0:
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/select1:
+	```ts
+	(property) select: { id: boolean; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/id1:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/errors0:
+	```ts
+	(property) errors: { username?: string[]; email?: string[]; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email1:
+	```ts
+	(property) email: string[]
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username1:
+	```ts
+	(property) username: string[]
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/createUser.
+	```ts
+	var createUser: (input: RegisterInput) => Promise<RegisteredUser>
+	```
+
+local 10
+	```ts
+	(parameter) input: RegisterInput
+	```
+
+local 13
+	```ts
+	var email: string
+	```
+
+local 16
+	```ts
+	var username: string
+	```
+
+local 19
+	```ts
+	var password: string
+	```
+
+local 24
+	```ts
+	var image: string
+	```
+
+local 25
+	```ts
+	var bio: string
+	```
+
+local 26
+	```ts
+	var demo: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/errors1:
+	```ts
+	(property) errors: { email: string[]; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email2:
+	```ts
+	(property) email: string[]
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/errors2:
+	```ts
+	(property) errors: { username: string[]; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username2:
+	```ts
+	(property) username: string[]
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/errors3:
+	```ts
+	(property) errors: { password: string[]; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/password0:
+	```ts
+	(property) password: string[]
+	```
+
+local 29
+	```ts
+	var hashedPassword: string
+	```
+
+local 32
+	```ts
+	var user: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/data0:
+	```ts
+	(property) data: { demo?: true; bio?: string; image?: string; username: string; email: string; password: string; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username3:
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email3:
+	```ts
+	(property) email: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/password1:
+	```ts
+	(property) password: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/image0:
+	```ts
+	(property) image: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/bio0:
+	```ts
+	(property) bio: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/demo0:
+	```ts
+	(property) demo: true
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/select2:
+	```ts
+	(property) select: { id: boolean; email: boolean; username: boolean; bio: boolean; image: boolean; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/id2:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email4:
+	```ts
+	(property) email: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username4:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/bio1:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/image1:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/token0:
+	```ts
+	(property) token: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/login.
+	```ts
+	var login: (userPayload: any) => Promise<{ email: any; username: any; bio: any; image: any; token: string; }>
+	```
+
+local 34
+	```ts
+	(parameter) userPayload: any
+	```
+
+local 37
+	```ts
+	var email: any
+	```
+
+local 40
+	```ts
+	var password: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/errors4:
+	```ts
+	(property) errors: { email: string[]; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email5:
+	```ts
+	(property) email: string[]
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/errors5:
+	```ts
+	(property) errors: { password: string[]; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/password2:
+	```ts
+	(property) password: string[]
+	```
+
+local 43
+	```ts
+	var user: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/where2:
+	```ts
+	(property) where: { email: any; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email6:
+	```ts
+	(property) email: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/select3:
+	```ts
+	(property) select: { id: boolean; email: boolean; username: boolean; password: boolean; bio: boolean; image: boolean; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/id3:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email7:
+	```ts
+	(property) email: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username5:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/password3:
+	```ts
+	(property) password: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/bio2:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/image2:
+	```ts
+	(property) image: boolean
+	```
+
+local 46
+	```ts
+	var match: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email8:
+	```ts
+	(property) email: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username6:
+	```ts
+	(property) username: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/bio3:
+	```ts
+	(property) bio: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/image3:
+	```ts
+	(property) image: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/token1:
+	```ts
+	(property) token: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/errors6:
+	```ts
+	(property) errors: { 'email or password': string[]; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/`'email or password'0`:
+	```ts
+	(property) 'email or password': string[]
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/getCurrentUser.
+	```ts
+	var getCurrentUser: (id: number) => Promise<{ token: string; id: number; username: string; email: string; password: string; bio: string; image: any; articles: Article[]; favorites: Article[]; followedBy: User[]; following: User[]; comments: Comment[]; demo: boolean; }>
+	```
+
+local 48
+	```ts
+	(parameter) id: number
+	```
+
+local 51
+	```ts
+	var user: User
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/where3:
+	```ts
+	(property) where: { id: number; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/id4:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/select4:
+	```ts
+	(property) select: { id: boolean; email: boolean; username: boolean; bio: boolean; image: boolean; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/id5:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email9:
+	```ts
+	(property) email: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username7:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/bio4:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/image4:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/token2:
+	```ts
+	(property) token: string
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/updateUser.
+	```ts
+	var updateUser: (userPayload: any, id: number) => Promise<any>
+	```
+
+local 53
+	```ts
+	(parameter) userPayload: any
+	```
+
+local 54
+	```ts
+	(parameter) id: number
+	```
+
+local 59
+	```ts
+	var email: any
+	```
+
+local 60
+	```ts
+	var username: any
+	```
+
+local 61
+	```ts
+	var password: any
+	```
+
+local 62
+	```ts
+	var image: any
+	```
+
+local 63
+	```ts
+	var bio: any
+	```
+
+local 66
+	```ts
+	var hashedPassword: any
+	```
+
+local 69
+	```ts
+	var user: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/where4:
+	```ts
+	(property) where: { id: number; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/id6:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/data1:
+	```ts
+	(property) data: { bio?: any; image?: any; password?: any; username?: any; email?: any; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email10:
+	```ts
+	(property) email: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username8:
+	```ts
+	(property) username: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/password4:
+	```ts
+	(property) password: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/image5:
+	```ts
+	(property) image: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/bio5:
+	```ts
+	(property) bio: any
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/select5:
+	```ts
+	(property) select: { id: boolean; email: boolean; username: boolean; bio: boolean; image: boolean; }
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/id7:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/email11:
+	```ts
+	(property) email: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/username9:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/bio6:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/image6:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/auth/`auth.service.ts`/token3:
+	```ts
+	(property) token: string
+	```
+

@@ -1,0 +1,65 @@
+@api/source prisma/`seed.ts`/
+	```ts
+	module "seed.ts"
+	```
+
+@api/source prisma/`seed.ts`/prisma.
+	```ts
+	var prisma: any
+	```
+
+@api/source prisma/`seed.ts`/generateUser.
+	```ts
+	var generateUser: () => Promise<RegisteredUser>
+	```
+
+@api/source prisma/`seed.ts`/generateArticle.
+	```ts
+	var generateArticle: (id: number) => Promise<{ slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }>
+	```
+
+local 1
+	```ts
+	(parameter) id: number
+	```
+
+@api/source prisma/`seed.ts`/title0:
+	```ts
+	(property) title: string
+	```
+
+@api/source prisma/`seed.ts`/description0:
+	```ts
+	(property) description: string
+	```
+
+@api/source prisma/`seed.ts`/body0:
+	```ts
+	(property) body: string
+	```
+
+@api/source prisma/`seed.ts`/tagList0:
+	```ts
+	(property) tagList: string[]
+	```
+
+@api/source prisma/`seed.ts`/generateComment.
+	```ts
+	var generateComment: (id: number, slug: string) => Promise<{ id: any; createdAt: any; updatedAt: any; body: any; author: { username: any; bio: any; image: any; following: any; }; }>
+	```
+
+local 3
+	```ts
+	(parameter) id: number
+	```
+
+local 4
+	```ts
+	(parameter) slug: string
+	```
+
+@api/source prisma/`seed.ts`/main.
+	```ts
+	var main: () => Promise<void>
+	```
+

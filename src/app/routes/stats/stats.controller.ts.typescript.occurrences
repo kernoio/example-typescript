@@ -1,0 +1,39 @@
+0:0-0:0	@api/source src/app/routes/stats/`stats.controller.ts`/	definition
+0:9-0:21	@types/express `index.d.ts`/e/NextFunction#	
+0:23-0:30	@types/express `index.d.ts`/e/Request#	
+0:32-0:40	@types/express `index.d.ts`/e/Response#	
+0:42-0:48	@types/express `index.d.ts`/e/Router().	
+0:42-0:48	@types/express `index.d.ts`/e/Router#	
+0:56-0:65	@types/express `index.d.ts`/	
+1:7-1:11	@api/source src/app/routes/auth/`auth.ts`/auth.	
+1:17-1:31	@api/source src/app/routes/auth/`auth.ts`/	
+2:7-2:14	@api/source src/app/routes/tag/`tag.service.ts`/getTags.	
+2:20-2:40	@api/source src/app/routes/tag/`tag.service.ts`/	
+4:6-4:12	@api/source src/app/routes/stats/`stats.controller.ts`/router.	definition
+4:15-4:21	@types/express `index.d.ts`/e/Router().	
+4:15-4:21	@types/express `index.d.ts`/e/Router#	
+12:0-12:6	@api/source src/app/routes/stats/`stats.controller.ts`/router.	
+12:7-12:10	@types/express-serve-static-core `index.d.ts`/IRouter#get.	
+12:26-12:30	@api/source src/app/routes/auth/`auth.ts`/auth.	
+12:31-12:39	@api/source src/app/routes/auth/`auth.ts`/optional0:	
+12:48-12:51	local 3	definition
+12:53-12:60	@types/express `index.d.ts`/e/Request#	
+12:62-12:65	local 4	definition
+12:67-12:75	@types/express `index.d.ts`/e/Response#	
+12:77-12:81	local 5	definition
+12:83-12:95	@types/express `index.d.ts`/e/NextFunction#	
+14:10-14:14	local 8	definition
+14:23-14:30	@api/source src/app/routes/tag/`tag.service.ts`/getTags.	
+14:31-14:34	local 3	
+14:35-14:39	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.	
+14:41-14:45	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.	
+14:47-14:49	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.typeLiteral10:id.	
+15:4-15:7	local 4	
+15:8-15:12	@types/express-serve-static-core `index.d.ts`/Response#json.	
+15:15-15:20	@api/source src/app/routes/stats/`stats.controller.ts`/count0:	definition
+15:22-15:26	local 8	
+15:27-15:33	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#length.	
+16:11-16:16	local 11	definition
+17:4-17:8	local 5	
+17:9-17:14	local 11	
+21:15-21:21	@api/source src/app/routes/stats/`stats.controller.ts`/router.	

@@ -1,0 +1,8 @@
+@prisma/client:PrismaClient	2
+@ngneat/falso:randEmail	1
+@ngneat/falso:randFullName	1
+@ngneat/falso:randLines	1
+@ngneat/falso:randParagraph	1
+@ngneat/falso:randPassword	1
+@ngneat/falso:randPhrase	1
+@ngneat/falso:randWord	1

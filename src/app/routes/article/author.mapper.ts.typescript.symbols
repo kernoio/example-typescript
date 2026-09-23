@@ -1,0 +1,45 @@
+@api/source src/app/routes/article/`author.mapper.ts`/
+	```ts
+	module "author.mapper.ts"
+	```
+
+@api/source src/app/routes/article/`author.mapper.ts`/authorMapper.
+	```ts
+	var authorMapper: (author: any, id?: number) => { username: any; bio: any; image: any; following: any; }
+	```
+
+local 1
+	```ts
+	(parameter) author: any
+	```
+
+local 2
+	```ts
+	(parameter) id: number
+	```
+
+@api/source src/app/routes/article/`author.mapper.ts`/username0:
+	```ts
+	(property) username: any
+	```
+
+@api/source src/app/routes/article/`author.mapper.ts`/bio0:
+	```ts
+	(property) bio: any
+	```
+
+@api/source src/app/routes/article/`author.mapper.ts`/image0:
+	```ts
+	(property) image: any
+	```
+
+@api/source src/app/routes/article/`author.mapper.ts`/following0:
+	```ts
+	(property) following: any
+	```
+
+local 6
+	```ts
+	(parameter) followingUser: Partial<User>
+	```
+

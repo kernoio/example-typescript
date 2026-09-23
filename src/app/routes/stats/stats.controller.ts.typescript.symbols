@@ -1,0 +1,40 @@
+@api/source src/app/routes/stats/`stats.controller.ts`/
+	```ts
+	module "stats.controller.ts"
+	```
+
+@api/source src/app/routes/stats/`stats.controller.ts`/router.
+	```ts
+	var router: Router
+	```
+
+local 3
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 4
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 5
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 8
+	```ts
+	var tags: string[]
+	```
+
+@api/source src/app/routes/stats/`stats.controller.ts`/count0:
+	```ts
+	(property) count: number
+	```
+
+local 11
+	```ts
+	var error: any
+	```
+

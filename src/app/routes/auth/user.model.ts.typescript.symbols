@@ -1,0 +1,70 @@
+@api/source src/app/routes/auth/`user.model.ts`/
+	```ts
+	module "user.model.ts"
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#
+	```ts
+	interface User
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#id.
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#username.
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#email.
+	```ts
+	(property) email: string
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#password.
+	```ts
+	(property) password: string
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#bio.
+	```ts
+	(property) bio: string
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#image.
+	```ts
+	(property) image: any
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#articles.
+	```ts
+	(property) articles: Article[]
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#favorites.
+	```ts
+	(property) favorites: Article[]
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#followedBy.
+	```ts
+	(property) followedBy: User[]
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#following.
+	```ts
+	(property) following: User[]
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#comments.
+	```ts
+	(property) comments: Comment[]
+	```
+
+@api/source src/app/routes/auth/`user.model.ts`/User#demo.
+	```ts
+	(property) demo: boolean
+	```
+
