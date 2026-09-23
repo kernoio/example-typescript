@@ -1,0 +1,225 @@
+{
+    "endpoints": {
+        "endpoints": [
+            {
+                "method": "GET",
+                "path": "/api/articles",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 30,
+                    "endLine": 37
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/api/articles/feed",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 45,
+                    "endLine": 60
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "POST",
+                "path": "/api/articles",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 71,
+                    "endLine": 78
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/api/articles/{slug}",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 87,
+                    "endLine": 98
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "PUT",
+                "path": "/api/articles/{slug}",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 110,
+                    "endLine": 121
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "DELETE",
+                "path": "/api/articles/{slug}",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 129,
+                    "endLine": 140
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/api/articles/{slug}/comments",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 149,
+                    "endLine": 160
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "POST",
+                "path": "/api/articles/{slug}/comments",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 170,
+                    "endLine": 181
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "DELETE",
+                "path": "/api/articles/{slug}/comments/{id}",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 190,
+                    "endLine": 201
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "POST",
+                "path": "/api/articles/{slug}/favorite",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 210,
+                    "endLine": 221
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "DELETE",
+                "path": "/api/articles/{slug}/favorite",
+                "location": {
+                    "filePath": "src/app/routes/article/article.controller.ts",
+                    "startLine": 230,
+                    "endLine": 241
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "POST",
+                "path": "/api/users",
+                "location": {
+                    "filePath": "src/app/routes/auth/auth.controller.ts",
+                    "startLine": 14,
+                    "endLine": 21
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "POST",
+                "path": "/api/users/login",
+                "location": {
+                    "filePath": "src/app/routes/auth/auth.controller.ts",
+                    "startLine": 30,
+                    "endLine": 37
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/api/user",
+                "location": {
+                    "filePath": "src/app/routes/auth/auth.controller.ts",
+                    "startLine": 45,
+                    "endLine": 52
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "PUT",
+                "path": "/api/user",
+                "location": {
+                    "filePath": "src/app/routes/auth/auth.controller.ts",
+                    "startLine": 61,
+                    "endLine": 68
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/api/profiles/{username}",
+                "location": {
+                    "filePath": "src/app/routes/profile/profile.controller.ts",
+                    "startLine": 14,
+                    "endLine": 25
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "POST",
+                "path": "/api/profiles/{username}/follow",
+                "location": {
+                    "filePath": "src/app/routes/profile/profile.controller.ts",
+                    "startLine": 34,
+                    "endLine": 45
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "DELETE",
+                "path": "/api/profiles/{username}/follow",
+                "location": {
+                    "filePath": "src/app/routes/profile/profile.controller.ts",
+                    "startLine": 54,
+                    "endLine": 65
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/api/stats/tags",
+                "location": {
+                    "filePath": "src/app/routes/stats/stats.controller.ts",
+                    "startLine": 13,
+                    "endLine": 20
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/api/tags",
+                "location": {
+                    "filePath": "src/app/routes/tag/tag.controller.ts",
+                    "startLine": 13,
+                    "endLine": 20
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/",
+                "location": {
+                    "filePath": "src/main.ts",
+                    "startLine": 21,
+                    "endLine": 23
+                },
+                "language": "typescript"
+            },
+            {
+                "method": "GET",
+                "path": "/assets/*",
+                "location": {
+                    "filePath": "src/main.ts",
+                    "startLine": 19,
+                    "endLine": 19
+                }
+            }
+        ]
+    }
+}
