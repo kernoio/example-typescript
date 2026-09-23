@@ -44,3 +44,15 @@ testem.log
 Thumbs.db
 
 .nx/cache
+.agents/skills/*
+.claude/skills/kerno-calibrate
+.claude/skills/kerno-usage
+.claude/skills/kerno-baseline-coverage-at-scale
+.claude/skills/kerno-endpoint-test-intent
+.claude/skills/kerno-env-visibility
+.claude/skills/kerno-presenting-coverage
+.claude/skills/kerno-presenting-diffs
+.claude/skills/kerno-presenting-results
+.claude/skills/kerno-reviewing-lessons
+.claude/skills/kerno-rules-template
+.claude/skills/kerno-scenario-philosophy
