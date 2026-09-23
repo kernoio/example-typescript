@@ -1,0 +1,30 @@
+{
+    "workspace": {
+        "id": "example-typescript-demo-3ff650",
+        "modules": [
+            {
+                "id": "example-typescript-demo-3ff6ts",
+                "type": "APPLICATION",
+                "tags": [
+                    "SERVES_HTTP"
+                ],
+                "name": "@api/source",
+                "contentRoot": ".",
+                "projectRoot": ".",
+                "languages": [
+                    "typescript",
+                    "javascript"
+                ],
+                "buildTool": "npm",
+                "tool": "typescript",
+                "buildFiles": [
+                    "package.json",
+                    "project.json",
+                    "tsconfig.json",
+                    "package-lock.json"
+                ],
+                "dependencies": []
+            }
+        ]
+    }
+}
