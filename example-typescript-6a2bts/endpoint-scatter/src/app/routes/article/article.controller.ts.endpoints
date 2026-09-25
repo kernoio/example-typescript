@@ -1,0 +1,11 @@
+30 GET /api/articles
+45 GET /api/articles/feed
+71 POST /api/articles
+87 GET /api/articles/{slug}
+110 PUT /api/articles/{slug}
+129 DELETE /api/articles/{slug}
+149 GET /api/articles/{slug}/comments
+170 POST /api/articles/{slug}/comments
+190 DELETE /api/articles/{slug}/comments/{id}
+210 POST /api/articles/{slug}/favorite
+230 DELETE /api/articles/{slug}/favorite
