@@ -1,9 +1,9 @@
 {
     "workspace": {
-        "id": "example-typescript-demo-3ff650",
+        "id": "example-typescript-6a2b01",
         "modules": [
             {
-                "id": "example-typescript-demo-3ff6ts",
+                "id": "example-typescript-6a2bts",
                 "type": "APPLICATION",
                 "tags": [
                     "SERVES_HTTP"
@@ -12,16 +12,16 @@
                 "contentRoot": ".",
                 "projectRoot": ".",
                 "languages": [
-                    "typescript",
-                    "javascript"
+                    "javascript",
+                    "typescript"
                 ],
                 "buildTool": "npm",
                 "tool": "typescript",
                 "buildFiles": [
+                    "package-lock.json",
                     "package.json",
                     "project.json",
-                    "tsconfig.json",
-                    "package-lock.json"
+                    "tsconfig.json"
                 ],
                 "dependencies": []
             }
