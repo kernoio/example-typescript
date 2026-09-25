@@ -1,0 +1,6 @@
+0:0-0:0	@api/source src/app/routes/auth/`user-request.d.ts`/	definition
+0:18-0:25	@api/source src/app/routes/auth/`user-request.d.ts`/Express/	definition
+1:19-1:26	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#	definition
+2:4-2:8	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.	definition
+3:6-3:10	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.	definition
+4:8-4:10	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.typeLiteral10:id.	definition

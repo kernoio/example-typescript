@@ -1,0 +1,11 @@
+0:0-0:0	@api/source src/app/routes/article/`article.model.ts`/	definition
+0:9-0:16	@api/source src/app/routes/article/`comment.model.ts`/Comment#	
+0:24-0:41	@api/source src/app/routes/article/`comment.model.ts`/	
+2:17-2:24	@api/source src/app/routes/article/`article.model.ts`/Article#	definition
+3:2-3:4	@api/source src/app/routes/article/`article.model.ts`/Article#id.	definition
+4:2-4:7	@api/source src/app/routes/article/`article.model.ts`/Article#title.	definition
+5:2-5:6	@api/source src/app/routes/article/`article.model.ts`/Article#slug.	definition
+6:2-6:13	@api/source src/app/routes/article/`article.model.ts`/Article#description.	definition
+7:2-7:10	@api/source src/app/routes/article/`article.model.ts`/Article#comments.	definition
+7:12-7:19	@api/source src/app/routes/article/`comment.model.ts`/Comment#	
+8:2-8:11	@api/source src/app/routes/article/`article.model.ts`/Article#favorited.	definition

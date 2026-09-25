@@ -1,0 +1,58 @@
+0:0-0:0	@api/source src/app/routes/profile/`profile.service.ts`/	definition
+0:7-0:13	@api/source prisma/`prisma-client.ts`/prisma.	
+0:19-0:53	@api/source prisma/`prisma-client.ts`/	
+1:7-1:20	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	
+1:26-1:43	@api/source src/app/routes/profile/`profile.utils.ts`/	
+2:7-2:20	@api/source src/app/models/`http-exception.model.ts`/HttpException#	
+2:26-2:61	@api/source src/app/models/`http-exception.model.ts`/	
+4:13-4:23	@api/source src/app/routes/profile/`profile.service.ts`/getProfile.	definition
+4:33-4:48	local 1	definition
+4:58-4:60	local 2	definition
+5:8-5:15	local 5	definition
+5:24-5:30	@api/source prisma/`prisma-client.ts`/prisma.	
+6:4-6:9	@api/source src/app/routes/profile/`profile.service.ts`/where0:	definition
+7:6-7:14	@api/source src/app/routes/profile/`profile.service.ts`/username0:	definition
+7:16-7:31	local 1	
+9:4-9:11	@api/source src/app/routes/profile/`profile.service.ts`/include0:	definition
+10:6-10:16	@api/source src/app/routes/profile/`profile.service.ts`/followedBy0:	definition
+14:7-14:14	local 5	
+15:14-15:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	
+18:9-18:22	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	
+18:23-18:30	local 5	
+18:32-18:34	local 2	
+21:13-21:23	@api/source src/app/routes/profile/`profile.service.ts`/followUser.	definition
+21:33-21:48	local 7	definition
+21:58-21:60	local 8	definition
+22:8-22:15	local 11	definition
+22:24-22:30	@api/source prisma/`prisma-client.ts`/prisma.	
+23:4-23:9	@api/source src/app/routes/profile/`profile.service.ts`/where1:	definition
+24:6-24:14	@api/source src/app/routes/profile/`profile.service.ts`/username1:	definition
+24:16-24:31	local 7	
+26:4-26:8	@api/source src/app/routes/profile/`profile.service.ts`/data0:	definition
+27:6-27:16	@api/source src/app/routes/profile/`profile.service.ts`/followedBy1:	definition
+28:8-28:15	@api/source src/app/routes/profile/`profile.service.ts`/connect0:	definition
+29:10-29:12	@api/source src/app/routes/profile/`profile.service.ts`/id0:	definition
+29:10-29:12	local 8	
+33:4-33:11	@api/source src/app/routes/profile/`profile.service.ts`/include1:	definition
+34:6-34:16	@api/source src/app/routes/profile/`profile.service.ts`/followedBy2:	definition
+38:9-38:22	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	
+38:23-38:30	local 11	
+38:32-38:34	local 8	
+41:13-41:25	@api/source src/app/routes/profile/`profile.service.ts`/unfollowUser.	definition
+41:35-41:50	local 13	definition
+41:60-41:62	local 14	definition
+42:8-42:15	local 17	definition
+42:24-42:30	@api/source prisma/`prisma-client.ts`/prisma.	
+43:4-43:9	@api/source src/app/routes/profile/`profile.service.ts`/where2:	definition
+44:6-44:14	@api/source src/app/routes/profile/`profile.service.ts`/username2:	definition
+44:16-44:31	local 13	
+46:4-46:8	@api/source src/app/routes/profile/`profile.service.ts`/data1:	definition
+47:6-47:16	@api/source src/app/routes/profile/`profile.service.ts`/followedBy3:	definition
+48:8-48:18	@api/source src/app/routes/profile/`profile.service.ts`/disconnect0:	definition
+49:10-49:12	@api/source src/app/routes/profile/`profile.service.ts`/id1:	definition
+49:10-49:12	local 14	
+53:4-53:11	@api/source src/app/routes/profile/`profile.service.ts`/include2:	definition
+54:6-54:16	@api/source src/app/routes/profile/`profile.service.ts`/followedBy4:	definition
+58:9-58:22	@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.	
+58:23-58:30	local 17	
+58:32-58:34	local 14	

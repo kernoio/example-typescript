@@ -1,0 +1,30 @@
+@api/source src/app/routes/auth/`user-request.d.ts`/
+	```ts
+	module "user-request.d.ts"
+	```
+
+@api/source src/app/routes/auth/`user-request.d.ts`/Express/
+	```ts
+	Express: any
+	```
+
+@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#
+	```ts
+	interface Request
+	```
+
+@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.
+	```ts
+	(property) auth: { user?: { id?: number; }; }
+	```
+
+@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.
+	```ts
+	(property) user: { id?: number; }
+	```
+
+@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.typeLiteral10:id.
+	```ts
+	(property) id: number
+	```
+

@@ -1,0 +1,100 @@
+@api/source src/app/routes/tag/`tag.service.ts`/
+	```ts
+	module "tag.service.ts"
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/getTags.
+	```ts
+	var getTags: (id?: number) => Promise<string[]>
+	```
+
+local 1
+	```ts
+	(parameter) id: number
+	```
+
+local 4
+	```ts
+	var queries: any[]
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/demo0:
+	```ts
+	(property) demo: boolean
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/id0:
+	```ts
+	(property) id: { equals: number; }
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/equals0:
+	```ts
+	(property) equals: number
+	```
+
+local 7
+	```ts
+	var tags: any
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/where0:
+	```ts
+	(property) where: { articles: { some: { author: { OR: any[]; }; }; }; }
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/articles0:
+	```ts
+	(property) articles: { some: { author: { OR: any[]; }; }; }
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/some0:
+	```ts
+	(property) some: { author: { OR: any[]; }; }
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/author0:
+	```ts
+	(property) author: { OR: any[]; }
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/OR0:
+	```ts
+	(property) OR: any[]
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/select0:
+	```ts
+	(property) select: { name: boolean; }
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/name0:
+	```ts
+	(property) name: boolean
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/orderBy0:
+	```ts
+	(property) orderBy: { articles: { _count: string; }; }
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/articles1:
+	```ts
+	(property) articles: { _count: string; }
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/_count0:
+	```ts
+	(property) _count: string
+	```
+
+@api/source src/app/routes/tag/`tag.service.ts`/take0:
+	```ts
+	(property) take: number
+	```
+
+local 11
+	```ts
+	(parameter) tag: Tag
+	```
+

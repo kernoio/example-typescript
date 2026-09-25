@@ -1,0 +1,30 @@
+@api/source src/app/routes/auth/`auth.ts`/
+	```ts
+	module "auth.ts"
+	```
+
+@api/source src/app/routes/auth/`auth.ts`/getTokenFromHeaders.
+	```ts
+	var getTokenFromHeaders: (req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>) => string
+	```
+
+local 1
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+@api/source src/app/routes/auth/`auth.ts`/auth.
+	```ts
+	var auth: { required: { (req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction): Promise<...>; unless: any; }; optional: { ...; }; }
+	```
+
+@api/source src/app/routes/auth/`auth.ts`/required0:
+	```ts
+	(property) required: { (req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction): Promise<...>; unless: any; }
+	```
+
+@api/source src/app/routes/auth/`auth.ts`/optional0:
+	```ts
+	(property) optional: { (req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>, next: NextFunction): Promise<...>; unless: any; }
+	```
+

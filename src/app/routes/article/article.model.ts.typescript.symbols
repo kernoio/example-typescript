@@ -1,0 +1,40 @@
+@api/source src/app/routes/article/`article.model.ts`/
+	```ts
+	module "article.model.ts"
+	```
+
+@api/source src/app/routes/article/`article.model.ts`/Article#
+	```ts
+	interface Article
+	```
+
+@api/source src/app/routes/article/`article.model.ts`/Article#id.
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.model.ts`/Article#title.
+	```ts
+	(property) title: string
+	```
+
+@api/source src/app/routes/article/`article.model.ts`/Article#slug.
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.model.ts`/Article#description.
+	```ts
+	(property) description: string
+	```
+
+@api/source src/app/routes/article/`article.model.ts`/Article#comments.
+	```ts
+	(property) comments: Comment[]
+	```
+
+@api/source src/app/routes/article/`article.model.ts`/Article#favorited.
+	```ts
+	(property) favorited: boolean
+	```
+

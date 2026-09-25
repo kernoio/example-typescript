@@ -1,0 +1,25 @@
+@api/source src/app/routes/profile/`profile.utils.ts`/
+	```ts
+	module "profile.utils.ts"
+	```
+
+@api/source src/app/routes/profile/`profile.utils.ts`/profileMapper.
+	```ts
+	var profileMapper: (user: any, id: number) => Profile
+	```
+
+local 1
+	```ts
+	(parameter) user: any
+	```
+
+local 2
+	```ts
+	(parameter) id: number
+	```
+
+local 6
+	```ts
+	(parameter) followingUser: Partial<User>
+	```
+

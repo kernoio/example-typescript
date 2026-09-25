@@ -1,0 +1,35 @@
+0:0-0:0	@api/source prisma/`prisma-client.ts`/	definition
+0:9-0:21	@prisma/client PrismaClient.	external
+0:29-0:45	@prisma/client `default.d.ts`/	
+2:8-2:14	@api/source prisma/`prisma-client.ts`/global/	definition
+3:12-3:18	@api/source prisma/`prisma-client.ts`/global/NodeJS/	definition
+4:14-4:20	@api/source prisma/`prisma-client.ts`/global/NodeJS/Global#	definition
+9:10-9:28	@api/source prisma/`prisma-client.ts`/CustomNodeJsGlobal#	definition
+9:37-9:43	@types/node compatibility/`iterators.d.ts`/NodeJS/	
+9:37-9:43	@types/node `globals.d.ts`/NodeJS/	
+9:37-9:43	@api/source prisma/`prisma-client.ts`/global/NodeJS/	
+9:37-9:43	@types/node `globals.typedarray.d.ts`/global/NodeJS/	
+9:37-9:43	node:buffer global/NodeJS/	
+9:37-9:43	node:events global/NodeJS/	
+9:37-9:43	node:module global/NodeJS/	
+9:37-9:43	node:process global/NodeJS/	
+9:37-9:43	node:stream global/NodeJS/	
+9:37-9:43	node:timers global/NodeJS/	
+9:37-9:43	ts-node dist/`index.d.ts`/global/NodeJS/	
+9:44-9:50	@api/source prisma/`prisma-client.ts`/global/NodeJS/Global#	
+10:2-10:8	@api/source prisma/`prisma-client.ts`/CustomNodeJsGlobal#prisma.	definition
+10:10-10:22	@prisma/client PrismaClient.	
+14:14-14:20	@api/source prisma/`prisma-client.ts`/global.	definition
+14:22-14:40	@api/source prisma/`prisma-client.ts`/CustomNodeJsGlobal#	
+16:6-16:12	@api/source prisma/`prisma-client.ts`/prisma.	definition
+16:15-16:21	@api/source prisma/`prisma-client.ts`/global.	
+16:22-16:28	@api/source prisma/`prisma-client.ts`/CustomNodeJsGlobal#prisma.	
+16:36-16:48	@prisma/client PrismaClient.	
+18:4-18:11	@types/node `globals.d.ts`/process.	
+18:4-18:11	node:process global/process.	
+18:4-18:11	node:process global/process/	
+18:12-18:15	node:process global/NodeJS/Process#env.	
+19:2-19:8	@api/source prisma/`prisma-client.ts`/global.	
+19:9-19:15	@api/source prisma/`prisma-client.ts`/CustomNodeJsGlobal#prisma.	
+19:18-19:24	@api/source prisma/`prisma-client.ts`/prisma.	
+22:15-22:21	@api/source prisma/`prisma-client.ts`/prisma.	

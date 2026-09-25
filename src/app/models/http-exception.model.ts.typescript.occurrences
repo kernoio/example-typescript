@@ -1,0 +1,12 @@
+0:0-0:0	@api/source src/app/models/`http-exception.model.ts`/	definition
+0:6-0:19	@api/source src/app/models/`http-exception.model.ts`/HttpException#	definition
+0:28-0:33	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Error#	
+0:28-0:33	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Error.	
+1:2-1:11	@api/source src/app/models/`http-exception.model.ts`/HttpException#errorCode.	definition
+2:2-2:13	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().	definition
+3:4-3:13	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().(errorCode)	definition
+4:20-4:27	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().(message)	definition
+6:10-6:17	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().(message)	
+7:9-7:18	@api/source src/app/models/`http-exception.model.ts`/HttpException#errorCode.	
+7:21-7:30	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().(errorCode)	
+11:15-11:28	@api/source src/app/models/`http-exception.model.ts`/HttpException#	

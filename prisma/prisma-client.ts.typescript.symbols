@@ -1,0 +1,40 @@
+@api/source prisma/`prisma-client.ts`/
+	```ts
+	module "prisma-client.ts"
+	```
+
+@api/source prisma/`prisma-client.ts`/global/
+	```ts
+	global: any
+	```
+
+@api/source prisma/`prisma-client.ts`/global/NodeJS/
+	```ts
+	NodeJS: any
+	```
+
+@api/source prisma/`prisma-client.ts`/global/NodeJS/Global#
+	```ts
+	interface Global
+	```
+
+@api/source prisma/`prisma-client.ts`/CustomNodeJsGlobal#
+	```ts
+	interface CustomNodeJsGlobal
+	```
+
+@api/source prisma/`prisma-client.ts`/CustomNodeJsGlobal#prisma.
+	```ts
+	(property) prisma: PrismaClient
+	```
+
+@api/source prisma/`prisma-client.ts`/global.
+	```ts
+	var global: CustomNodeJsGlobal
+	```
+
+@api/source prisma/`prisma-client.ts`/prisma.
+	```ts
+	var prisma: any
+	```
+

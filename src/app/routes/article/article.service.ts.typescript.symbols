@@ -1,0 +1,1940 @@
+@api/source src/app/routes/article/`article.service.ts`/
+	```ts
+	module "article.service.ts"
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/buildFindAllQuery.
+	```ts
+	var buildFindAllQuery: (query: any, id: number) => any
+	```
+
+local 1
+	```ts
+	(parameter) query: any
+	```
+
+local 2
+	```ts
+	(parameter) id: number
+	```
+
+local 5
+	```ts
+	var queries: any
+	```
+
+local 8
+	```ts
+	var orAuthorQuery: any[]
+	```
+
+local 11
+	```ts
+	var andAuthorQuery: any[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/demo0:
+	```ts
+	(property) demo: { equals: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/equals0:
+	```ts
+	(property) equals: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id0:
+	```ts
+	(property) id: { equals: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/equals1:
+	```ts
+	(property) equals: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username0:
+	```ts
+	(property) username: { equals: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/equals2:
+	```ts
+	(property) equals: any
+	```
+
+local 14
+	```ts
+	var authorQuery: { author: { OR: any[]; AND: any[]; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author0:
+	```ts
+	(property) author: { OR: any[]; AND: any[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/OR0:
+	```ts
+	(property) OR: any[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/AND0:
+	```ts
+	(property) AND: any[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList0:
+	```ts
+	(property) tagList: { some: { name: any; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/some0:
+	```ts
+	(property) some: { name: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name0:
+	```ts
+	(property) name: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy0:
+	```ts
+	(property) favoritedBy: { some: { username: { equals: any; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/some1:
+	```ts
+	(property) some: { username: { equals: any; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username1:
+	```ts
+	(property) username: { equals: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/equals3:
+	```ts
+	(property) equals: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/getArticles.
+	```ts
+	var getArticles: (query: any, id?: number) => Promise<{ articles: any; articlesCount: any; }>
+	```
+
+local 16
+	```ts
+	(parameter) query: any
+	```
+
+local 17
+	```ts
+	(parameter) id: number
+	```
+
+local 20
+	```ts
+	var andQueries: any
+	```
+
+local 23
+	```ts
+	var articlesCount: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where0:
+	```ts
+	(property) where: { AND: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/AND1:
+	```ts
+	(property) AND: any
+	```
+
+local 26
+	```ts
+	var articles: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where1:
+	```ts
+	(property) where: { AND: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/AND2:
+	```ts
+	(property) AND: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/orderBy0:
+	```ts
+	(property) orderBy: { createdAt: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/createdAt0:
+	```ts
+	(property) createdAt: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/skip0:
+	```ts
+	(property) skip: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/take0:
+	```ts
+	(property) take: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include0:
+	```ts
+	(property) include: { tagList: { select: { name: boolean; }; }; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; favoritedBy: boolean; _count: { select: { favoritedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList1:
+	```ts
+	(property) tagList: { select: { name: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select0:
+	```ts
+	(property) select: { name: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name1:
+	```ts
+	(property) name: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author1:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select1:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username2:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio0:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image0:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy0:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy1:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/_count0:
+	```ts
+	(property) _count: { select: { favoritedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select2:
+	```ts
+	(property) select: { favoritedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy2:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/articles0:
+	```ts
+	(property) articles: any
+	```
+
+local 29
+	```ts
+	(parameter) article: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/articlesCount0:
+	```ts
+	(property) articlesCount: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/getFeed.
+	```ts
+	var getFeed: (offset: number, limit: number, id: number) => Promise<{ articles: any; articlesCount: any; }>
+	```
+
+local 31
+	```ts
+	(parameter) offset: number
+	```
+
+local 32
+	```ts
+	(parameter) limit: number
+	```
+
+local 33
+	```ts
+	(parameter) id: number
+	```
+
+local 36
+	```ts
+	var articlesCount: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where2:
+	```ts
+	(property) where: { author: { followedBy: { some: { id: number; }; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author2:
+	```ts
+	(property) author: { followedBy: { some: { id: number; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy1:
+	```ts
+	(property) followedBy: { some: { id: number; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/some2:
+	```ts
+	(property) some: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id1:
+	```ts
+	(property) id: number
+	```
+
+local 39
+	```ts
+	var articles: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where3:
+	```ts
+	(property) where: { author: { followedBy: { some: { id: number; }; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author3:
+	```ts
+	(property) author: { followedBy: { some: { id: number; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy2:
+	```ts
+	(property) followedBy: { some: { id: number; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/some3:
+	```ts
+	(property) some: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id2:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/orderBy1:
+	```ts
+	(property) orderBy: { createdAt: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/createdAt1:
+	```ts
+	(property) createdAt: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/skip1:
+	```ts
+	(property) skip: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/take1:
+	```ts
+	(property) take: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include1:
+	```ts
+	(property) include: { tagList: { select: { name: boolean; }; }; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; favoritedBy: boolean; _count: { select: { favoritedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList2:
+	```ts
+	(property) tagList: { select: { name: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select3:
+	```ts
+	(property) select: { name: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name2:
+	```ts
+	(property) name: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author4:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select4:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username3:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio1:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image1:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy3:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy3:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/_count1:
+	```ts
+	(property) _count: { select: { favoritedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select5:
+	```ts
+	(property) select: { favoritedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy4:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/articles1:
+	```ts
+	(property) articles: any
+	```
+
+local 42
+	```ts
+	(parameter) article: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/articlesCount1:
+	```ts
+	(property) articlesCount: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/createArticle.
+	```ts
+	var createArticle: (article: any, id: number) => Promise<{ slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }>
+	```
+
+local 44
+	```ts
+	(parameter) article: any
+	```
+
+local 45
+	```ts
+	(parameter) id: number
+	```
+
+local 50
+	```ts
+	var title: any
+	```
+
+local 51
+	```ts
+	var description: any
+	```
+
+local 52
+	```ts
+	var body: any
+	```
+
+local 53
+	```ts
+	var tagList: any
+	```
+
+local 56
+	```ts
+	var tags: any[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/errors0:
+	```ts
+	(property) errors: { title: string[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/title0:
+	```ts
+	(property) title: string[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/errors1:
+	```ts
+	(property) errors: { description: string[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/description0:
+	```ts
+	(property) description: string[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/errors2:
+	```ts
+	(property) errors: { body: string[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/body0:
+	```ts
+	(property) body: string[]
+	```
+
+local 59
+	```ts
+	var slug: string
+	```
+
+local 62
+	```ts
+	var existingTitle: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where4:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug0:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select6:
+	```ts
+	(property) select: { slug: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug1:
+	```ts
+	(property) slug: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/errors3:
+	```ts
+	(property) errors: { title: string[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/title1:
+	```ts
+	(property) title: string[]
+	```
+
+local 67
+	```ts
+	var authorId: any
+	```
+
+local 68
+	```ts
+	var articleId: any
+	```
+
+local 69
+	```ts
+	var createdArticle: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/data0:
+	```ts
+	(property) data: { title: any; description: any; body: any; slug: string; tagList: { connectOrCreate: { create: { name: string; }; where: { name: string; }; }[]; }; author: { connect: { id: number; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/title2:
+	```ts
+	(property) title: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/description1:
+	```ts
+	(property) description: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/body1:
+	```ts
+	(property) body: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug2:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList3:
+	```ts
+	(property) tagList: { connectOrCreate: { create: { name: string; }; where: { name: string; }; }[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/connectOrCreate0:
+	```ts
+	(property) connectOrCreate: { create: { name: string; }; where: { name: string; }; }[]
+	```
+
+local 72
+	```ts
+	(parameter) tag: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author5:
+	```ts
+	(property) author: { connect: { id: number; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/connect0:
+	```ts
+	(property) connect: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id3:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include2:
+	```ts
+	(property) include: { tagList: { select: { name: boolean; }; }; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; favoritedBy: boolean; _count: { select: { favoritedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList4:
+	```ts
+	(property) tagList: { select: { name: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select7:
+	```ts
+	(property) select: { name: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name5:
+	```ts
+	(property) name: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author6:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select8:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username4:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio2:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image2:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy4:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy5:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/_count2:
+	```ts
+	(property) _count: { select: { favoritedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select9:
+	```ts
+	(property) select: { favoritedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy6:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/getArticle.
+	```ts
+	var getArticle: (slug: string, id?: number) => Promise<{ slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }>
+	```
+
+local 74
+	```ts
+	(parameter) slug: string
+	```
+
+local 75
+	```ts
+	(parameter) id: number
+	```
+
+local 78
+	```ts
+	var article: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where6:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug3:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include3:
+	```ts
+	(property) include: { tagList: { select: { name: boolean; }; }; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; favoritedBy: boolean; _count: { select: { favoritedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList5:
+	```ts
+	(property) tagList: { select: { name: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select10:
+	```ts
+	(property) select: { name: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name6:
+	```ts
+	(property) name: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author7:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select11:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username5:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio3:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image3:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy5:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy7:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/_count3:
+	```ts
+	(property) _count: { select: { favoritedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select12:
+	```ts
+	(property) select: { favoritedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy8:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/errors4:
+	```ts
+	(property) errors: { article: string[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/article0:
+	```ts
+	(property) article: string[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/disconnectArticlesTags.
+	```ts
+	var disconnectArticlesTags: (slug: string) => Promise<void>
+	```
+
+local 80
+	```ts
+	(parameter) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where7:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug4:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/data1:
+	```ts
+	(property) data: { tagList: { set: undefined[]; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList6:
+	```ts
+	(property) tagList: { set: undefined[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/set0:
+	```ts
+	(property) set: undefined[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/updateArticle.
+	```ts
+	var updateArticle: (article: any, slug: string, id: number) => Promise<{ slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }>
+	```
+
+local 82
+	```ts
+	(parameter) article: any
+	```
+
+local 83
+	```ts
+	(parameter) slug: string
+	```
+
+local 84
+	```ts
+	(parameter) id: number
+	```
+
+local 87
+	```ts
+	var newSlug: any
+	```
+
+local 90
+	```ts
+	var existingArticle: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where8:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug5:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select13:
+	```ts
+	(property) select: { author: { select: { id: boolean; username: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author8:
+	```ts
+	(property) author: { select: { id: boolean; username: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select14:
+	```ts
+	(property) select: { id: boolean; username: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id4:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username6:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/message0:
+	```ts
+	(property) message: string
+	```
+
+local 93
+	```ts
+	var existingTitle: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where9:
+	```ts
+	(property) where: { slug: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug6:
+	```ts
+	(property) slug: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select15:
+	```ts
+	(property) select: { slug: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug7:
+	```ts
+	(property) slug: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/errors5:
+	```ts
+	(property) errors: { title: string[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/title3:
+	```ts
+	(property) title: string[]
+	```
+
+local 96
+	```ts
+	var tagList: any
+	```
+
+local 100
+	```ts
+	(parameter) tag: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/create1:
+	```ts
+	(property) create: { name: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name7:
+	```ts
+	(property) name: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where10:
+	```ts
+	(property) where: { name: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name8:
+	```ts
+	(property) name: string
+	```
+
+local 103
+	```ts
+	var updatedArticle: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where11:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug8:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/data2:
+	```ts
+	(property) data: { updatedAt: Date; tagList: { connectOrCreate: any; }; slug?: any; description?: any; body?: any; title?: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/title4:
+	```ts
+	(property) title: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/body2:
+	```ts
+	(property) body: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/description2:
+	```ts
+	(property) description: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug9:
+	```ts
+	(property) slug: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/updatedAt0:
+	```ts
+	(property) updatedAt: Date
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList7:
+	```ts
+	(property) tagList: { connectOrCreate: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/connectOrCreate1:
+	```ts
+	(property) connectOrCreate: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include4:
+	```ts
+	(property) include: { tagList: { select: { name: boolean; }; }; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; favoritedBy: boolean; _count: { select: { favoritedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList8:
+	```ts
+	(property) tagList: { select: { name: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select16:
+	```ts
+	(property) select: { name: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name9:
+	```ts
+	(property) name: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author9:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select17:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username7:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio4:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image4:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy6:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy9:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/_count4:
+	```ts
+	(property) _count: { select: { favoritedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select18:
+	```ts
+	(property) select: { favoritedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy10:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/deleteArticle.
+	```ts
+	var deleteArticle: (slug: string, id: number) => Promise<void>
+	```
+
+local 105
+	```ts
+	(parameter) slug: string
+	```
+
+local 106
+	```ts
+	(parameter) id: number
+	```
+
+local 109
+	```ts
+	var existingArticle: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where12:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug10:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select19:
+	```ts
+	(property) select: { author: { select: { id: boolean; username: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author10:
+	```ts
+	(property) author: { select: { id: boolean; username: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select20:
+	```ts
+	(property) select: { id: boolean; username: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id5:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username8:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/message1:
+	```ts
+	(property) message: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where13:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug11:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/getCommentsByArticle.
+	```ts
+	var getCommentsByArticle: (slug: string, id?: number) => Promise<any>
+	```
+
+local 111
+	```ts
+	(parameter) slug: string
+	```
+
+local 112
+	```ts
+	(parameter) id: number
+	```
+
+local 115
+	```ts
+	var queries: any[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author11:
+	```ts
+	(property) author: { demo: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/demo1:
+	```ts
+	(property) demo: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author12:
+	```ts
+	(property) author: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id6:
+	```ts
+	(property) id: number
+	```
+
+local 118
+	```ts
+	var comments: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where14:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug12:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include5:
+	```ts
+	(property) include: { comments: { where: { OR: any[]; }; select: { id: boolean; createdAt: boolean; updatedAt: boolean; body: boolean; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/comments0:
+	```ts
+	(property) comments: { where: { OR: any[]; }; select: { id: boolean; createdAt: boolean; updatedAt: boolean; body: boolean; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where15:
+	```ts
+	(property) where: { OR: any[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/OR1:
+	```ts
+	(property) OR: any[]
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select21:
+	```ts
+	(property) select: { id: boolean; createdAt: boolean; updatedAt: boolean; body: boolean; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id7:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/createdAt2:
+	```ts
+	(property) createdAt: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/updatedAt1:
+	```ts
+	(property) updatedAt: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/body3:
+	```ts
+	(property) body: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author13:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select22:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username9:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio5:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image5:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy7:
+	```ts
+	(property) followedBy: boolean
+	```
+
+local 121
+	```ts
+	var result: any
+	```
+
+local 124
+	```ts
+	(parameter) comment: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author14:
+	```ts
+	(property) author: { username: any; bio: any; image: any; following: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username10:
+	```ts
+	(property) username: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio6:
+	```ts
+	(property) bio: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image6:
+	```ts
+	(property) image: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/following0:
+	```ts
+	(property) following: any
+	```
+
+local 127
+	```ts
+	(parameter) follow: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/addComment.
+	```ts
+	var addComment: (body: string, slug: string, id: number) => Promise<{ id: any; createdAt: any; updatedAt: any; body: any; author: { username: any; bio: any; image: any; following: any; }; }>
+	```
+
+local 129
+	```ts
+	(parameter) body: string
+	```
+
+local 130
+	```ts
+	(parameter) slug: string
+	```
+
+local 131
+	```ts
+	(parameter) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/errors6:
+	```ts
+	(property) errors: { body: string[]; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/body4:
+	```ts
+	(property) body: string[]
+	```
+
+local 134
+	```ts
+	var article: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where16:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug13:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select23:
+	```ts
+	(property) select: { id: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id8:
+	```ts
+	(property) id: boolean
+	```
+
+local 137
+	```ts
+	var comment: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/data3:
+	```ts
+	(property) data: { body: string; article: { connect: { id: any; }; }; author: { connect: { id: number; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/body5:
+	```ts
+	(property) body: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/article1:
+	```ts
+	(property) article: { connect: { id: any; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/connect1:
+	```ts
+	(property) connect: { id: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id9:
+	```ts
+	(property) id: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author15:
+	```ts
+	(property) author: { connect: { id: number; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/connect2:
+	```ts
+	(property) connect: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id10:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include6:
+	```ts
+	(property) include: { author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author16:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select24:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username11:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio7:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image7:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy8:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id11:
+	```ts
+	(property) id: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/createdAt3:
+	```ts
+	(property) createdAt: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/updatedAt2:
+	```ts
+	(property) updatedAt: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/body6:
+	```ts
+	(property) body: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author17:
+	```ts
+	(property) author: { username: any; bio: any; image: any; following: any; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username12:
+	```ts
+	(property) username: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio8:
+	```ts
+	(property) bio: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image8:
+	```ts
+	(property) image: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/following1:
+	```ts
+	(property) following: any
+	```
+
+local 140
+	```ts
+	(parameter) follow: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/deleteComment.
+	```ts
+	var deleteComment: (id: number, userId: number) => Promise<void>
+	```
+
+local 142
+	```ts
+	(parameter) id: number
+	```
+
+local 143
+	```ts
+	(parameter) userId: number
+	```
+
+local 146
+	```ts
+	var comment: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where17:
+	```ts
+	(property) where: { id: number; author: { id: number; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id12:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author18:
+	```ts
+	(property) author: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id13:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select25:
+	```ts
+	(property) select: { author: { select: { id: boolean; username: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author19:
+	```ts
+	(property) author: { select: { id: boolean; username: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select26:
+	```ts
+	(property) select: { id: boolean; username: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id14:
+	```ts
+	(property) id: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username13:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/message2:
+	```ts
+	(property) message: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where18:
+	```ts
+	(property) where: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id15:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoriteArticle.
+	```ts
+	var favoriteArticle: (slugPayload: string, id: number) => Promise<any>
+	```
+
+local 148
+	```ts
+	(parameter) slugPayload: string
+	```
+
+local 149
+	```ts
+	(parameter) id: number
+	```
+
+local 154
+	```ts
+	var _count: any
+	```
+
+local 155
+	```ts
+	var article: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where19:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug14:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/data4:
+	```ts
+	(property) data: { favoritedBy: { connect: { id: number; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy11:
+	```ts
+	(property) favoritedBy: { connect: { id: number; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/connect3:
+	```ts
+	(property) connect: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id16:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include7:
+	```ts
+	(property) include: { tagList: { select: { name: boolean; }; }; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; favoritedBy: boolean; _count: { select: { favoritedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList9:
+	```ts
+	(property) tagList: { select: { name: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select27:
+	```ts
+	(property) select: { name: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name10:
+	```ts
+	(property) name: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author20:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select28:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username14:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio9:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image9:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy9:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy12:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/_count5:
+	```ts
+	(property) _count: { select: { favoritedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select29:
+	```ts
+	(property) select: { favoritedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy13:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+local 158
+	```ts
+	var result: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author21:
+	```ts
+	(property) author: Profile
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList10:
+	```ts
+	(property) tagList: any
+	```
+
+local 161
+	```ts
+	(parameter) tag: Tag
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favorited0:
+	```ts
+	(property) favorited: any
+	```
+
+local 164
+	```ts
+	(parameter) favorited: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritesCount0:
+	```ts
+	(property) favoritesCount: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/unfavoriteArticle.
+	```ts
+	var unfavoriteArticle: (slugPayload: string, id: number) => Promise<any>
+	```
+
+local 166
+	```ts
+	(parameter) slugPayload: string
+	```
+
+local 167
+	```ts
+	(parameter) id: number
+	```
+
+local 172
+	```ts
+	var _count: any
+	```
+
+local 173
+	```ts
+	var article: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/where20:
+	```ts
+	(property) where: { slug: string; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/slug15:
+	```ts
+	(property) slug: string
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/data5:
+	```ts
+	(property) data: { favoritedBy: { disconnect: { id: number; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy14:
+	```ts
+	(property) favoritedBy: { disconnect: { id: number; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/disconnect0:
+	```ts
+	(property) disconnect: { id: number; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/id17:
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/include8:
+	```ts
+	(property) include: { tagList: { select: { name: boolean; }; }; author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }; favoritedBy: boolean; _count: { select: { favoritedBy: boolean; }; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList11:
+	```ts
+	(property) tagList: { select: { name: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select30:
+	```ts
+	(property) select: { name: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/name11:
+	```ts
+	(property) name: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author22:
+	```ts
+	(property) author: { select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select31:
+	```ts
+	(property) select: { username: boolean; bio: boolean; image: boolean; followedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/username15:
+	```ts
+	(property) username: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/bio10:
+	```ts
+	(property) bio: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/image10:
+	```ts
+	(property) image: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/followedBy10:
+	```ts
+	(property) followedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy15:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/_count6:
+	```ts
+	(property) _count: { select: { favoritedBy: boolean; }; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/select32:
+	```ts
+	(property) select: { favoritedBy: boolean; }
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritedBy16:
+	```ts
+	(property) favoritedBy: boolean
+	```
+
+local 176
+	```ts
+	var result: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/author23:
+	```ts
+	(property) author: Profile
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/tagList12:
+	```ts
+	(property) tagList: any
+	```
+
+local 179
+	```ts
+	(parameter) tag: Tag
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favorited1:
+	```ts
+	(property) favorited: any
+	```
+
+local 182
+	```ts
+	(parameter) favorited: any
+	```
+
+@api/source src/app/routes/article/`article.service.ts`/favoritesCount1:
+	```ts
+	(property) favoritesCount: any
+	```
+

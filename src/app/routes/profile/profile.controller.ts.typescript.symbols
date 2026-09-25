@@ -1,0 +1,100 @@
+@api/source src/app/routes/profile/`profile.controller.ts`/
+	```ts
+	module "profile.controller.ts"
+	```
+
+@api/source src/app/routes/profile/`profile.controller.ts`/router.
+	```ts
+	var router: Router
+	```
+
+local 3
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 4
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 5
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 8
+	```ts
+	var profile: Profile
+	```
+
+@api/source src/app/routes/profile/`profile.controller.ts`/profile0:
+	```ts
+	(property) profile: Profile
+	```
+
+local 12
+	```ts
+	var error: any
+	```
+
+local 16
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 17
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 18
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 21
+	```ts
+	var profile: Profile
+	```
+
+@api/source src/app/routes/profile/`profile.controller.ts`/profile1:
+	```ts
+	(property) profile: Profile
+	```
+
+local 24
+	```ts
+	var error: any
+	```
+
+local 28
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 29
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 30
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 33
+	```ts
+	var profile: Profile
+	```
+
+@api/source src/app/routes/profile/`profile.controller.ts`/profile2:
+	```ts
+	(property) profile: Profile
+	```
+
+local 36
+	```ts
+	var error: any
+	```
+

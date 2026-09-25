@@ -1,0 +1,80 @@
+@api/source src/app/routes/article/`article.mapper.ts`/
+	```ts
+	module "article.mapper.ts"
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/articleMapper.
+	```ts
+	var articleMapper: (article: any, id?: number) => { slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+local 1
+	```ts
+	(parameter) article: any
+	```
+
+local 2
+	```ts
+	(parameter) id: number
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/slug0:
+	```ts
+	(property) slug: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/title0:
+	```ts
+	(property) title: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/description0:
+	```ts
+	(property) description: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/body0:
+	```ts
+	(property) body: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/tagList0:
+	```ts
+	(property) tagList: any
+	```
+
+local 5
+	```ts
+	(parameter) tag: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/createdAt0:
+	```ts
+	(property) createdAt: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/updatedAt0:
+	```ts
+	(property) updatedAt: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/favorited0:
+	```ts
+	(property) favorited: any
+	```
+
+local 8
+	```ts
+	(parameter) item: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/favoritesCount0:
+	```ts
+	(property) favoritesCount: any
+	```
+
+@api/source src/app/routes/article/`article.mapper.ts`/author0:
+	```ts
+	(property) author: { username: any; bio: any; image: any; following: any; }
+	```
+

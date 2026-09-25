@@ -1,0 +1,310 @@
+@api/source src/app/routes/article/`article.controller.ts`/
+	```ts
+	module "article.controller.ts"
+	```
+
+@api/source src/app/routes/article/`article.controller.ts`/router.
+	```ts
+	var router: Router
+	```
+
+local 3
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 4
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 5
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 8
+	```ts
+	var result: { articles: any; articlesCount: any; }
+	```
+
+local 11
+	```ts
+	var error: any
+	```
+
+local 15
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 16
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 17
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 20
+	```ts
+	var result: { articles: any; articlesCount: any; }
+	```
+
+local 24
+	```ts
+	var error: any
+	```
+
+local 28
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 29
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 30
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 33
+	```ts
+	var article: { slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+@api/source src/app/routes/article/`article.controller.ts`/article0:
+	```ts
+	(property) article: { slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+local 36
+	```ts
+	var error: any
+	```
+
+local 40
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 41
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 42
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 45
+	```ts
+	var article: { slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+@api/source src/app/routes/article/`article.controller.ts`/article1:
+	```ts
+	(property) article: { slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+local 49
+	```ts
+	var error: any
+	```
+
+local 53
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 54
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 55
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 58
+	```ts
+	var article: { slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+@api/source src/app/routes/article/`article.controller.ts`/article2:
+	```ts
+	(property) article: { slug: any; title: any; description: any; body: any; tagList: any; createdAt: any; updatedAt: any; favorited: any; favoritesCount: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+local 61
+	```ts
+	var error: any
+	```
+
+local 65
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 66
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 67
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 70
+	```ts
+	var error: any
+	```
+
+local 74
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 75
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 76
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 79
+	```ts
+	var comments: any
+	```
+
+@api/source src/app/routes/article/`article.controller.ts`/comments0:
+	```ts
+	(property) comments: any
+	```
+
+local 82
+	```ts
+	var error: any
+	```
+
+local 86
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 87
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 88
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 91
+	```ts
+	var comment: { id: any; createdAt: any; updatedAt: any; body: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+@api/source src/app/routes/article/`article.controller.ts`/comment0:
+	```ts
+	(property) comment: { id: any; createdAt: any; updatedAt: any; body: any; author: { username: any; bio: any; image: any; following: any; }; }
+	```
+
+local 94
+	```ts
+	var error: any
+	```
+
+local 98
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 99
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 100
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 103
+	```ts
+	var error: any
+	```
+
+local 107
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 108
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 109
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 112
+	```ts
+	var article: any
+	```
+
+@api/source src/app/routes/article/`article.controller.ts`/article3:
+	```ts
+	(property) article: any
+	```
+
+local 115
+	```ts
+	var error: any
+	```
+
+local 119
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 120
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 121
+	```ts
+	(parameter) next: NextFunction
+	```
+
+local 124
+	```ts
+	var article: any
+	```
+
+@api/source src/app/routes/article/`article.controller.ts`/article4:
+	```ts
+	(property) article: any
+	```
+
+local 127
+	```ts
+	var error: any
+	```
+

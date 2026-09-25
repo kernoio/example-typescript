@@ -1,0 +1,6 @@
+0:0-0:0	@api/source src/app/routes/profile/`profile.model.ts`/	definition
+0:17-0:24	@api/source src/app/routes/profile/`profile.model.ts`/Profile#	definition
+1:2-1:10	@api/source src/app/routes/profile/`profile.model.ts`/Profile#username.	definition
+2:2-2:5	@api/source src/app/routes/profile/`profile.model.ts`/Profile#bio.	definition
+3:2-3:7	@api/source src/app/routes/profile/`profile.model.ts`/Profile#image.	definition
+4:2-4:11	@api/source src/app/routes/profile/`profile.model.ts`/Profile#following.	definition

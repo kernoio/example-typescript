@@ -1,0 +1,40 @@
+@api/source src/app/routes/auth/`registered-user.model.ts`/
+	```ts
+	module "registered-user.model.ts"
+	```
+
+@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#
+	```ts
+	interface RegisteredUser
+	```
+
+@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#id.
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#email.
+	```ts
+	(property) email: string
+	```
+
+@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#username.
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#bio.
+	```ts
+	(property) bio: string
+	```
+
+@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#image.
+	```ts
+	(property) image: string
+	```
+
+@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#token.
+	```ts
+	(property) token: string
+	```
+

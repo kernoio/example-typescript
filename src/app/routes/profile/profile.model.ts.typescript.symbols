@@ -1,0 +1,30 @@
+@api/source src/app/routes/profile/`profile.model.ts`/
+	```ts
+	module "profile.model.ts"
+	```
+
+@api/source src/app/routes/profile/`profile.model.ts`/Profile#
+	```ts
+	interface Profile
+	```
+
+@api/source src/app/routes/profile/`profile.model.ts`/Profile#username.
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/profile/`profile.model.ts`/Profile#bio.
+	```ts
+	(property) bio: string
+	```
+
+@api/source src/app/routes/profile/`profile.model.ts`/Profile#image.
+	```ts
+	(property) image: string
+	```
+
+@api/source src/app/routes/profile/`profile.model.ts`/Profile#following.
+	```ts
+	(property) following: boolean
+	```
+

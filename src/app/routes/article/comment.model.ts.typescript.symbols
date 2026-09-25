@@ -1,0 +1,35 @@
+@api/source src/app/routes/article/`comment.model.ts`/
+	```ts
+	module "comment.model.ts"
+	```
+
+@api/source src/app/routes/article/`comment.model.ts`/Comment#
+	```ts
+	interface Comment
+	```
+
+@api/source src/app/routes/article/`comment.model.ts`/Comment#id.
+	```ts
+	(property) id: number
+	```
+
+@api/source src/app/routes/article/`comment.model.ts`/Comment#createdAt.
+	```ts
+	(property) createdAt: Date
+	```
+
+@api/source src/app/routes/article/`comment.model.ts`/Comment#updatedAt.
+	```ts
+	(property) updatedAt: Date
+	```
+
+@api/source src/app/routes/article/`comment.model.ts`/Comment#body.
+	```ts
+	(property) body: string
+	```
+
+@api/source src/app/routes/article/`comment.model.ts`/Comment#article.
+	```ts
+	(property) article: Article
+	```
+

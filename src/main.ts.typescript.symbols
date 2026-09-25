@@ -1,0 +1,61 @@
+@api/source src/`main.ts`/
+	```ts
+	module "main.ts"
+	```
+
+@api/source src/`main.ts`/app.
+	```ts
+	var app: Express
+	```
+
+local 4
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 5
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+@api/source src/`main.ts`/status0:
+	```ts
+	(property) status: string
+	```
+
+local 9
+	```ts
+	(parameter) err: HttpException | Error
+	```
+
+local 10
+	```ts
+	(parameter) req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>
+	```
+
+local 11
+	```ts
+	(parameter) res: Response<any, Record<string, any>>
+	```
+
+local 12
+	```ts
+	(parameter) next: NextFunction
+	```
+
+@api/source src/`main.ts`/status1:
+	```ts
+	(property) status: string
+	```
+
+@api/source src/`main.ts`/message0:
+	```ts
+	(property) message: string
+	```
+
+@api/source src/`main.ts`/PORT.
+	```ts
+	var PORT: string | 3000
+	```
+	Server activation
+

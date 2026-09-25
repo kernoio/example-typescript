@@ -1,0 +1,10 @@
+@api/source src/app/routes/`routes.ts`/
+	```ts
+	module "routes.ts"
+	```
+
+@api/source src/app/routes/`routes.ts`/api.
+	```ts
+	var api: Router
+	```
+

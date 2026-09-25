@@ -1,0 +1,106 @@
+0:0-0:0	@api/source src/app/routes/auth/`auth.controller.ts`/	definition
+0:9-0:21	@types/express `index.d.ts`/e/NextFunction#	
+0:23-0:30	@types/express `index.d.ts`/e/Request#	
+0:32-0:40	@types/express `index.d.ts`/e/Response#	
+0:42-0:48	@types/express `index.d.ts`/e/Router().	
+0:42-0:48	@types/express `index.d.ts`/e/Router#	
+0:56-0:65	@types/express `index.d.ts`/	
+1:7-1:11	@api/source src/app/routes/auth/`auth.ts`/auth.	
+1:17-1:25	@api/source src/app/routes/auth/`auth.ts`/	
+2:9-2:19	@api/source src/app/routes/auth/`auth.service.ts`/createUser.	
+2:21-2:35	@api/source src/app/routes/auth/`auth.service.ts`/getCurrentUser.	
+2:37-2:42	@api/source src/app/routes/auth/`auth.service.ts`/login.	
+2:44-2:54	@api/source src/app/routes/auth/`auth.service.ts`/updateUser.	
+2:62-2:78	@api/source src/app/routes/auth/`auth.service.ts`/	
+4:6-4:12	@api/source src/app/routes/auth/`auth.controller.ts`/router.	definition
+4:15-4:21	@types/express `index.d.ts`/e/Router().	
+4:15-4:21	@types/express `index.d.ts`/e/Router#	
+13:0-13:6	@api/source src/app/routes/auth/`auth.controller.ts`/router.	
+13:7-13:11	@types/express-serve-static-core `index.d.ts`/IRouter#post.	
+13:29-13:32	local 3	definition
+13:34-13:41	@types/express `index.d.ts`/e/Request#	
+13:43-13:46	local 4	definition
+13:48-13:56	@types/express `index.d.ts`/e/Response#	
+13:58-13:62	local 5	definition
+13:64-13:76	@types/express `index.d.ts`/e/NextFunction#	
+15:10-15:14	local 8	definition
+15:23-15:33	@api/source src/app/routes/auth/`auth.service.ts`/createUser.	
+15:39-15:42	local 3	
+15:43-15:47	@types/express-serve-static-core `index.d.ts`/Request#body.	
+15:54-15:58	@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#demo.	
+16:4-16:7	local 4	
+16:8-16:14	@types/express-serve-static-core `index.d.ts`/Response#status().	
+16:20-16:24	@types/express-serve-static-core `index.d.ts`/Response#json.	
+16:27-16:31	@api/source src/app/routes/auth/`auth.controller.ts`/user0:	definition
+16:27-16:31	local 8	
+17:11-17:16	local 11	definition
+18:4-18:8	local 5	
+18:9-18:14	local 11	
+29:0-29:6	@api/source src/app/routes/auth/`auth.controller.ts`/router.	
+29:7-29:11	@types/express-serve-static-core `index.d.ts`/IRouter#post.	
+29:35-29:38	local 15	definition
+29:40-29:47	@types/express `index.d.ts`/e/Request#	
+29:49-29:52	local 16	definition
+29:54-29:62	@types/express `index.d.ts`/e/Response#	
+29:64-29:68	local 17	definition
+29:70-29:82	@types/express `index.d.ts`/e/NextFunction#	
+31:10-31:14	local 20	definition
+31:23-31:28	@api/source src/app/routes/auth/`auth.service.ts`/login.	
+31:29-31:32	local 15	
+31:33-31:37	@types/express-serve-static-core `index.d.ts`/Request#body.	
+32:4-32:7	local 16	
+32:8-32:12	@types/express-serve-static-core `index.d.ts`/Response#json.	
+32:15-32:19	@api/source src/app/routes/auth/`auth.controller.ts`/user1:	definition
+32:15-32:19	local 20	
+33:11-33:16	local 23	definition
+34:4-34:8	local 17	
+34:9-34:14	local 23	
+44:0-44:6	@api/source src/app/routes/auth/`auth.controller.ts`/router.	
+44:7-44:10	@types/express-serve-static-core `index.d.ts`/IRouter#get.	
+44:20-44:24	@api/source src/app/routes/auth/`auth.ts`/auth.	
+44:25-44:33	@api/source src/app/routes/auth/`auth.ts`/required0:	
+44:42-44:45	local 27	definition
+44:47-44:54	@types/express `index.d.ts`/e/Request#	
+44:56-44:59	local 28	definition
+44:61-44:69	@types/express `index.d.ts`/e/Response#	
+44:71-44:75	local 29	definition
+44:77-44:89	@types/express `index.d.ts`/e/NextFunction#	
+46:10-46:14	local 32	definition
+46:23-46:37	@api/source src/app/routes/auth/`auth.service.ts`/getCurrentUser.	
+46:38-46:41	local 27	
+46:42-46:46	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.	
+46:48-46:52	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.	
+46:54-46:56	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.typeLiteral10:id.	
+47:4-47:7	local 28	
+47:8-47:12	@types/express-serve-static-core `index.d.ts`/Response#json.	
+47:15-47:19	@api/source src/app/routes/auth/`auth.controller.ts`/user2:	definition
+47:15-47:19	local 32	
+48:11-48:16	local 35	definition
+49:4-49:8	local 29	
+49:9-49:14	local 35	
+60:0-60:6	@api/source src/app/routes/auth/`auth.controller.ts`/router.	
+60:7-60:10	@types/express-serve-static-core `index.d.ts`/IRouter#put.	
+60:20-60:24	@api/source src/app/routes/auth/`auth.ts`/auth.	
+60:25-60:33	@api/source src/app/routes/auth/`auth.ts`/required0:	
+60:42-60:45	local 39	definition
+60:47-60:54	@types/express `index.d.ts`/e/Request#	
+60:56-60:59	local 40	definition
+60:61-60:69	@types/express `index.d.ts`/e/Response#	
+60:71-60:75	local 41	definition
+60:77-60:89	@types/express `index.d.ts`/e/NextFunction#	
+62:10-62:14	local 44	definition
+62:23-62:33	@api/source src/app/routes/auth/`auth.service.ts`/updateUser.	
+62:34-62:37	local 39	
+62:38-62:42	@types/express-serve-static-core `index.d.ts`/Request#body.	
+62:49-62:52	local 39	
+62:53-62:57	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.	
+62:59-62:63	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.	
+62:65-62:67	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.typeLiteral10:id.	
+63:4-63:7	local 40	
+63:8-63:12	@types/express-serve-static-core `index.d.ts`/Response#json.	
+63:15-63:19	@api/source src/app/routes/auth/`auth.controller.ts`/user3:	definition
+63:15-63:19	local 44	
+64:11-64:16	local 47	definition
+65:4-65:8	local 41	
+65:9-65:14	local 47	
+69:15-69:21	@api/source src/app/routes/auth/`auth.controller.ts`/router.	

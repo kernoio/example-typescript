@@ -1,0 +1,10 @@
+@api/source `jest.preset.js`/
+	```ts
+	module "jest.preset.js"
+	```
+
+@api/source `jest.preset.js`/nxPreset.
+	```ts
+	var nxPreset: Config_2.InitialOptions
+	```
+

@@ -1,0 +1,106 @@
+0:0-0:0	@api/source src/`main.ts`/	definition
+0:7-0:14	@types/express `index.d.ts`/e().	
+0:7-0:14	@types/express `index.d.ts`/e/	
+0:20-0:29	@types/express `index.d.ts`/	
+1:7-1:11	@types/cors `index.d.ts`/e().	
+1:7-1:11	@types/cors `index.d.ts`/e/	
+1:17-1:23	@types/cors `index.d.ts`/	
+2:12-2:22	@types/body-parser `index.d.ts`/bodyParser/	
+2:12-2:22	@types/body-parser `index.d.ts`/bodyParser.	
+2:28-2:41	@types/body-parser `index.d.ts`/	
+3:7-3:13	local 0	
+3:19-3:40	@api/source src/app/routes/`routes.ts`/	
+4:7-4:20	@api/source src/app/models/`http-exception.model.ts`/HttpException#	
+4:26-4:61	@api/source src/app/models/`http-exception.model.ts`/	
+6:6-6:9	@api/source src/`main.ts`/app.	definition
+6:12-6:19	@types/express `index.d.ts`/e().	
+6:12-6:19	@types/express `index.d.ts`/e/	
+12:0-12:3	@api/source src/`main.ts`/app.	
+12:4-12:7	@types/express-serve-static-core `index.d.ts`/Application#use.	
+12:8-12:12	@types/cors `index.d.ts`/e().	
+12:8-12:12	@types/cors `index.d.ts`/e/	
+13:0-13:3	@api/source src/`main.ts`/app.	
+13:4-13:7	@types/express-serve-static-core `index.d.ts`/Application#use.	
+13:8-13:18	@types/body-parser `index.d.ts`/bodyParser/	
+13:19-13:23	@types/body-parser `index.d.ts`/bodyParser/BodyParser#json().	
+14:0-14:3	@api/source src/`main.ts`/app.	
+14:4-14:7	@types/express-serve-static-core `index.d.ts`/Application#use.	
+14:8-14:18	@types/body-parser `index.d.ts`/bodyParser/	
+14:19-14:29	@types/body-parser `index.d.ts`/bodyParser/BodyParser#urlencoded().	
+14:32-14:40	@types/body-parser `index.d.ts`/bodyParser/OptionsUrlencoded#extended.	
+15:0-15:3	@api/source src/`main.ts`/app.	
+15:4-15:7	@types/express-serve-static-core `index.d.ts`/Application#use.	
+15:8-15:14	local 0	
+18:0-18:3	@api/source src/`main.ts`/app.	
+18:4-18:7	@types/express-serve-static-core `index.d.ts`/Application#use.	
+18:8-18:15	@types/express `index.d.ts`/e().	
+18:8-18:15	@types/express `index.d.ts`/e/	
+18:16-18:22	@types/express `index.d.ts`/e/static.	
+18:23-18:32	node:module global/__dirname.	
+20:0-20:3	@api/source src/`main.ts`/app.	
+20:4-20:7	@types/express-serve-static-core `index.d.ts`/Application#get.	
+20:14-20:17	local 4	definition
+20:19-20:26	@types/express `index.d.ts`/e().	
+20:19-20:26	@types/express `index.d.ts`/e/	
+20:27-20:34	@types/express `index.d.ts`/e/Request#	
+20:36-20:39	local 5	definition
+20:41-20:48	@types/express `index.d.ts`/e().	
+20:41-20:48	@types/express `index.d.ts`/e/	
+20:49-20:57	@types/express `index.d.ts`/e/Response#	
+21:2-21:5	local 5	
+21:6-21:10	@types/express-serve-static-core `index.d.ts`/Response#json.	
+21:13-21:19	@api/source src/`main.ts`/status0:	definition
+25:0-25:3	@api/source src/`main.ts`/app.	
+25:4-25:7	@types/express-serve-static-core `index.d.ts`/Application#use.	
+27:4-27:7	local 9	definition
+27:9-27:14	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Error#	
+27:9-27:14	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Error.	
+27:17-27:30	@api/source src/app/models/`http-exception.model.ts`/HttpException#	
+28:4-28:7	local 10	definition
+28:9-28:16	@types/express `index.d.ts`/e().	
+28:9-28:16	@types/express `index.d.ts`/e/	
+28:17-28:24	@types/express `index.d.ts`/e/Request#	
+29:4-29:7	local 11	definition
+29:9-29:16	@types/express `index.d.ts`/e().	
+29:9-29:16	@types/express `index.d.ts`/e/	
+29:17-29:25	@types/express `index.d.ts`/e/Response#	
+30:4-30:8	local 12	definition
+30:10-30:17	@types/express `index.d.ts`/e().	
+30:10-30:17	@types/express `index.d.ts`/e/	
+30:18-30:30	@types/express `index.d.ts`/e/NextFunction#	
+33:8-33:11	local 9	
+33:15-33:18	local 9	
+33:19-33:23	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Error#name.	
+34:13-34:16	local 11	
+34:17-34:23	@types/express-serve-static-core `index.d.ts`/Response#status().	
+34:29-34:33	@types/express-serve-static-core `index.d.ts`/Response#json.	
+35:8-35:14	@api/source src/`main.ts`/status1:	definition
+36:8-36:15	@api/source src/`main.ts`/message0:	definition
+39:15-39:18	local 9	
+39:22-39:25	local 9	
+41:6-41:9	local 11	
+41:10-41:16	@types/express-serve-static-core `index.d.ts`/Response#status().	
+41:17-41:20	local 9	
+41:32-41:36	@types/express-serve-static-core `index.d.ts`/Response#json.	
+41:37-41:40	local 9	
+41:41-41:48	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().(message)	
+41:41-41:48	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Error#message.	
+42:15-42:18	local 9	
+43:6-43:9	local 11	
+43:10-43:16	@types/express-serve-static-core `index.d.ts`/Response#status().	
+43:22-43:26	@types/express-serve-static-core `index.d.ts`/Response#json.	
+43:27-43:30	local 9	
+43:31-43:38	@api/source src/app/models/`http-exception.model.ts`/HttpException#`<constructor>`().(message)	
+43:31-43:38	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Error#message.	
+52:6-52:10	@api/source src/`main.ts`/PORT.	definition
+52:13-52:20	@types/node `globals.d.ts`/process.	
+52:13-52:20	node:process global/process.	
+52:13-52:20	node:process global/process/	
+52:21-52:24	node:process global/NodeJS/Process#env.	
+54:0-54:3	@api/source src/`main.ts`/app.	
+54:4-54:10	@types/express-serve-static-core `index.d.ts`/Application#listen().	
+54:11-54:15	@api/source src/`main.ts`/PORT.	
+55:2-55:9	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.dom.d.ts`/console.	
+55:2-55:9	@types/node web-globals/`console.d.ts`/global/console.	
+55:10-55:14	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.dom.d.ts`/Console#info().	
+55:36-55:40	@api/source src/`main.ts`/PORT.	

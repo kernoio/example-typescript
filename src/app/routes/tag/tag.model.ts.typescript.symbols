@@ -1,0 +1,15 @@
+@api/source src/app/routes/tag/`tag.model.ts`/
+	```ts
+	module "tag.model.ts"
+	```
+
+@api/source src/app/routes/tag/`tag.model.ts`/Tag#
+	```ts
+	interface Tag
+	```
+
+@api/source src/app/routes/tag/`tag.model.ts`/Tag#name.
+	```ts
+	(property) name: string
+	```
+

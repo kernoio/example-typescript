@@ -1,0 +1,23 @@
+0:0-0:0	@api/source src/app/routes/auth/`user.model.ts`/	definition
+0:9-0:16	@api/source src/app/routes/article/`article.model.ts`/Article#	
+0:24-0:50	@api/source src/app/routes/article/`article.model.ts`/	
+1:9-1:16	@api/source src/app/routes/article/`comment.model.ts`/Comment#	
+1:24-1:50	@api/source src/app/routes/article/`comment.model.ts`/	
+3:17-3:21	@api/source src/app/routes/auth/`user.model.ts`/User#	definition
+4:2-4:4	@api/source src/app/routes/auth/`user.model.ts`/User#id.	definition
+5:2-5:10	@api/source src/app/routes/auth/`user.model.ts`/User#username.	definition
+6:2-6:7	@api/source src/app/routes/auth/`user.model.ts`/User#email.	definition
+7:2-7:10	@api/source src/app/routes/auth/`user.model.ts`/User#password.	definition
+8:2-8:5	@api/source src/app/routes/auth/`user.model.ts`/User#bio.	definition
+9:2-9:7	@api/source src/app/routes/auth/`user.model.ts`/User#image.	definition
+10:2-10:10	@api/source src/app/routes/auth/`user.model.ts`/User#articles.	definition
+10:12-10:19	@api/source src/app/routes/article/`article.model.ts`/Article#	
+11:2-11:11	@api/source src/app/routes/auth/`user.model.ts`/User#favorites.	definition
+11:13-11:20	@api/source src/app/routes/article/`article.model.ts`/Article#	
+12:2-12:12	@api/source src/app/routes/auth/`user.model.ts`/User#followedBy.	definition
+12:14-12:18	@api/source src/app/routes/auth/`user.model.ts`/User#	
+13:2-13:11	@api/source src/app/routes/auth/`user.model.ts`/User#following.	definition
+13:13-13:17	@api/source src/app/routes/auth/`user.model.ts`/User#	
+14:2-14:10	@api/source src/app/routes/auth/`user.model.ts`/User#comments.	definition
+14:12-14:19	@api/source src/app/routes/article/`comment.model.ts`/Comment#	
+15:2-15:6	@api/source src/app/routes/auth/`user.model.ts`/User#demo.	definition

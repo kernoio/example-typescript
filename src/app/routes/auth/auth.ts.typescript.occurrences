@@ -1,0 +1,57 @@
+0:0-0:0	@api/source src/app/routes/auth/`auth.ts`/	definition
+0:9-0:19	express-jwt dist/`index.d.ts`/expressjwt.	
+0:23-0:26	express-jwt dist/`index.d.ts`/expressjwt.	
+0:34-0:47	express-jwt dist/`index.d.ts`/	
+1:12-1:19	@types/express `index.d.ts`/e().	
+1:12-1:19	@types/express `index.d.ts`/e/	
+1:25-1:34	@types/express `index.d.ts`/	
+3:6-3:25	@api/source src/app/routes/auth/`auth.ts`/getTokenFromHeaders.	definition
+3:29-3:32	local 1	definition
+3:34-3:41	@types/express `index.d.ts`/e().	
+3:42-3:49	@types/express `index.d.ts`/e/Request#	
+5:5-5:8	local 1	
+5:9-5:16	node:http IncomingMessage#headers.	
+5:17-5:30	node:http IncomingHttpHeaders#authorization.	
+5:34-5:37	local 1	
+5:38-5:45	node:http IncomingMessage#headers.	
+5:46-5:59	node:http IncomingHttpHeaders#authorization.	
+5:60-5:65	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/String#split().	
+5:60-5:65	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.symbol.wellknown.d.ts`/String#split().	
+6:5-6:8	local 1	
+6:9-6:16	node:http IncomingMessage#headers.	
+6:17-6:30	node:http IncomingHttpHeaders#authorization.	
+6:34-6:37	local 1	
+6:38-6:45	node:http IncomingMessage#headers.	
+6:46-6:59	node:http IncomingHttpHeaders#authorization.	
+6:60-6:65	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/String#split().	
+6:60-6:65	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.symbol.wellknown.d.ts`/String#split().	
+8:11-8:14	local 1	
+8:15-8:22	node:http IncomingMessage#headers.	
+8:23-8:36	node:http IncomingHttpHeaders#authorization.	
+8:37-8:42	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/String#split().	
+8:37-8:42	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.symbol.wellknown.d.ts`/String#split().	
+13:6-13:10	@api/source src/app/routes/auth/`auth.ts`/auth.	definition
+14:2-14:10	@api/source src/app/routes/auth/`auth.ts`/required0:	definition
+14:12-14:15	express-jwt dist/`index.d.ts`/expressjwt.	
+15:4-15:10	local 4	
+15:12-15:19	@types/node `globals.d.ts`/process.	
+15:12-15:19	node:process global/process.	
+15:12-15:19	node:process global/process/	
+15:20-15:23	node:process global/NodeJS/Process#env.	
+16:4-16:12	local 5	
+16:14-16:33	@api/source src/app/routes/auth/`auth.ts`/getTokenFromHeaders.	
+17:4-17:14	local 6	
+17:4-17:14	@types/jsonwebtoken `index.d.ts`/VerifyOptions#algorithms.	
+19:2-19:10	@api/source src/app/routes/auth/`auth.ts`/optional0:	definition
+19:12-19:15	express-jwt dist/`index.d.ts`/expressjwt.	
+20:4-20:10	local 4	
+20:12-20:19	@types/node `globals.d.ts`/process.	
+20:12-20:19	node:process global/process.	
+20:12-20:19	node:process global/process/	
+20:20-20:23	node:process global/NodeJS/Process#env.	
+21:4-21:23	local 7	
+22:4-22:12	local 5	
+22:14-22:33	@api/source src/app/routes/auth/`auth.ts`/getTokenFromHeaders.	
+23:4-23:14	local 6	
+23:4-23:14	@types/jsonwebtoken `index.d.ts`/VerifyOptions#algorithms.	
+27:15-27:19	@api/source src/app/routes/auth/`auth.ts`/auth.	

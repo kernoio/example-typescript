@@ -1,0 +1,68 @@
+0:0-0:0	@api/source prisma/`seed.ts`/	definition
+1:2-1:11	@ngneat/falso src/lib/`email.d.ts`/randEmail().	
+2:2-2:14	@ngneat/falso src/lib/`full-name.d.ts`/randFullName().	
+3:2-3:11	@ngneat/falso src/lib/`lines.d.ts`/randLines().	
+4:2-4:15	@ngneat/falso src/lib/`paragraph.d.ts`/randParagraph().	
+5:2-5:14	@ngneat/falso src/lib/`password.d.ts`/randPassword().	
+6:2-6:12	@ngneat/falso src/lib/`phrase.d.ts`/randPhrase().	
+7:2-7:10	@ngneat/falso src/lib/`word.d.ts`/randWord().	
+8:7-8:22	@ngneat/falso `index.cjs.d.ts`/	
+9:9-9:21	@prisma/client PrismaClient.	external
+9:29-9:45	@prisma/client `default.d.ts`/	
+10:9-10:23	@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#	
+10:31-10:77	@api/source src/app/routes/auth/`registered-user.model.ts`/	
+11:9-11:19	@api/source src/app/routes/auth/`auth.service.ts`/createUser.	
+11:27-11:64	@api/source src/app/routes/auth/`auth.service.ts`/	
+13:2-13:12	@api/source src/app/routes/article/`article.service.ts`/addComment.	
+14:2-14:15	@api/source src/app/routes/article/`article.service.ts`/createArticle.	
+15:7-15:50	@api/source src/app/routes/article/`article.service.ts`/	
+17:6-17:12	@api/source prisma/`seed.ts`/prisma.	definition
+17:19-17:31	@prisma/client PrismaClient.	
+19:13-19:25	@api/source prisma/`seed.ts`/generateUser.	definition
+19:38-19:45	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Promise#	
+19:38-19:45	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.iterable.d.ts`/Promise#	
+19:38-19:45	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.promise.d.ts`/Promise.	
+19:38-19:45	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2015.symbol.wellknown.d.ts`/Promise#	
+19:38-19:45	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es2018.promise.d.ts`/Promise#	
+19:46-19:60	@api/source src/app/routes/auth/`registered-user.model.ts`/RegisteredUser#	
+20:2-20:12	@api/source src/app/routes/auth/`auth.service.ts`/createUser.	
+21:4-21:12	@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#username.	
+21:14-21:26	@ngneat/falso src/lib/`full-name.d.ts`/randFullName().	
+22:4-22:9	@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#email.	
+22:11-22:20	@ngneat/falso src/lib/`email.d.ts`/randEmail().	
+23:4-23:12	@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#password.	
+23:14-23:26	@ngneat/falso src/lib/`password.d.ts`/randPassword().	
+24:4-24:9	@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#image.	
+25:4-25:8	@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#demo.	
+28:13-28:28	@api/source prisma/`seed.ts`/generateArticle.	definition
+28:38-28:40	local 1	definition
+29:2-29:15	@api/source src/app/routes/article/`article.service.ts`/createArticle.	
+31:6-31:11	@api/source prisma/`seed.ts`/title0:	definition
+31:13-31:23	@ngneat/falso src/lib/`phrase.d.ts`/randPhrase().	
+32:6-32:17	@api/source prisma/`seed.ts`/description0:	definition
+32:19-32:32	@ngneat/falso src/lib/`paragraph.d.ts`/randParagraph().	
+33:6-33:10	@api/source prisma/`seed.ts`/body0:	definition
+33:12-33:21	@ngneat/falso src/lib/`lines.d.ts`/randLines().	
+33:24-33:30	@api/source prisma/`seed.ts`/length0:	
+33:38-33:42	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Array#join().	
+34:6-34:13	@api/source prisma/`seed.ts`/tagList0:	definition
+34:15-34:23	@ngneat/falso src/lib/`word.d.ts`/randWord().	
+34:26-34:32	@api/source prisma/`seed.ts`/length1:	
+36:4-36:6	local 1	
+39:13-39:28	@api/source prisma/`seed.ts`/generateComment.	definition
+39:38-39:40	local 3	definition
+39:50-39:54	local 4	definition
+40:2-40:12	@api/source src/app/routes/article/`article.service.ts`/addComment.	
+40:13-40:26	@ngneat/falso src/lib/`paragraph.d.ts`/randParagraph().	
+40:30-40:34	local 4	
+40:36-40:38	local 3	
+42:6-42:10	@api/source prisma/`seed.ts`/main.	definition
+68:0-68:4	@api/source prisma/`seed.ts`/main.	
+69:3-69:7	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Promise#then().	
+70:10-70:16	@api/source prisma/`seed.ts`/prisma.	
+72:3-72:8	. home/eggbert/`.kerno`/assets/scip/tools/scip-typescript/`2026.4.28`/`lib.es5.d.ts`/Promise#catch().	
+73:10-73:16	@api/source prisma/`seed.ts`/prisma.	
+74:4-74:11	@types/node `globals.d.ts`/process.	
+74:4-74:11	node:process global/process.	
+74:4-74:11	node:process global/process/	
+74:12-74:16	node:process global/NodeJS/Process#exit().	

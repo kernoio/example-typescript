@@ -1,0 +1,16 @@
+0:0-0:0	@api/source src/app/routes/auth/`token.utils.ts`/	definition
+0:12-0:15	@types/jsonwebtoken `index.d.ts`/	
+0:21-0:35	@types/jsonwebtoken `index.d.ts`/	
+2:6-2:19	@api/source src/app/routes/auth/`token.utils.ts`/generateToken.	definition
+2:23-2:25	local 1	definition
+3:2-3:5	@types/jsonwebtoken `index.d.ts`/	
+3:6-3:10	@types/jsonwebtoken `index.d.ts`/sign().	
+3:13-3:17	@api/source src/app/routes/auth/`token.utils.ts`/user0:	definition
+3:21-3:23	@api/source src/app/routes/auth/`token.utils.ts`/id0:	definition
+3:21-3:23	local 1	
+3:29-3:36	@types/node `globals.d.ts`/process.	
+3:29-3:36	node:process global/process.	
+3:29-3:36	node:process global/process/	
+3:37-3:40	node:process global/NodeJS/Process#env.	
+4:4-4:13	@types/jsonwebtoken `index.d.ts`/SignOptions#expiresIn.	
+7:15-7:28	@api/source src/app/routes/auth/`token.utils.ts`/generateToken.	

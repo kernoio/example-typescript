@@ -1,0 +1,40 @@
+@api/source src/app/routes/auth/`register-input.model.ts`/
+	```ts
+	module "register-input.model.ts"
+	```
+
+@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#
+	```ts
+	interface RegisterInput
+	```
+
+@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#email.
+	```ts
+	(property) email: string
+	```
+
+@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#username.
+	```ts
+	(property) username: string
+	```
+
+@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#password.
+	```ts
+	(property) password: string
+	```
+
+@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#image.
+	```ts
+	(property) image: string
+	```
+
+@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#bio.
+	```ts
+	(property) bio: string
+	```
+
+@api/source src/app/routes/auth/`register-input.model.ts`/RegisterInput#demo.
+	```ts
+	(property) demo: boolean
+	```
+

@@ -1,0 +1,95 @@
+0:0-0:0	@api/source src/app/routes/profile/`profile.controller.ts`/	definition
+0:9-0:21	@types/express `index.d.ts`/e/NextFunction#	
+0:23-0:30	@types/express `index.d.ts`/e/Request#	
+0:32-0:40	@types/express `index.d.ts`/e/Response#	
+0:42-0:48	@types/express `index.d.ts`/e/Router().	
+0:42-0:48	@types/express `index.d.ts`/e/Router#	
+0:56-0:65	@types/express `index.d.ts`/	
+1:7-1:11	@api/source src/app/routes/auth/`auth.ts`/auth.	
+1:17-1:31	@api/source src/app/routes/auth/`auth.ts`/	
+2:9-2:19	@api/source src/app/routes/profile/`profile.service.ts`/followUser.	
+2:21-2:31	@api/source src/app/routes/profile/`profile.service.ts`/getProfile.	
+2:33-2:45	@api/source src/app/routes/profile/`profile.service.ts`/unfollowUser.	
+2:53-2:72	@api/source src/app/routes/profile/`profile.service.ts`/	
+4:6-4:12	@api/source src/app/routes/profile/`profile.controller.ts`/router.	definition
+4:15-4:21	@types/express `index.d.ts`/e/Router().	
+4:15-4:21	@types/express `index.d.ts`/e/Router#	
+13:0-13:6	@api/source src/app/routes/profile/`profile.controller.ts`/router.	
+13:7-13:10	@types/express-serve-static-core `index.d.ts`/IRouter#get.	
+15:2-15:6	@api/source src/app/routes/auth/`auth.ts`/auth.	
+15:7-15:15	@api/source src/app/routes/auth/`auth.ts`/optional0:	
+16:9-16:12	local 3	definition
+16:14-16:21	@types/express `index.d.ts`/e/Request#	
+16:23-16:26	local 4	definition
+16:28-16:36	@types/express `index.d.ts`/e/Response#	
+16:38-16:42	local 5	definition
+16:44-16:56	@types/express `index.d.ts`/e/NextFunction#	
+18:12-18:19	local 8	definition
+18:28-18:38	@api/source src/app/routes/profile/`profile.service.ts`/getProfile.	
+18:39-18:42	local 3	
+18:43-18:49	@types/express-serve-static-core `index.d.ts`/Request#params.	
+18:50-18:58	local 9	
+18:60-18:63	local 3	
+18:64-18:68	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.	
+18:70-18:74	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.	
+18:76-18:78	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.typeLiteral10:id.	
+19:6-19:9	local 4	
+19:10-19:14	@types/express-serve-static-core `index.d.ts`/Response#json.	
+19:17-19:24	@api/source src/app/routes/profile/`profile.controller.ts`/profile0:	definition
+19:17-19:24	local 8	
+20:13-20:18	local 12	definition
+21:6-21:10	local 5	
+21:11-21:16	local 12	
+33:0-33:6	@api/source src/app/routes/profile/`profile.controller.ts`/router.	
+33:7-33:11	@types/express-serve-static-core `index.d.ts`/IRouter#post.	
+35:2-35:6	@api/source src/app/routes/auth/`auth.ts`/auth.	
+35:7-35:15	@api/source src/app/routes/auth/`auth.ts`/required0:	
+36:9-36:12	local 16	definition
+36:14-36:21	@types/express `index.d.ts`/e/Request#	
+36:23-36:26	local 17	definition
+36:28-36:36	@types/express `index.d.ts`/e/Response#	
+36:38-36:42	local 18	definition
+36:44-36:56	@types/express `index.d.ts`/e/NextFunction#	
+38:12-38:19	local 21	definition
+38:28-38:38	@api/source src/app/routes/profile/`profile.service.ts`/followUser.	
+38:39-38:42	local 16	
+38:43-38:49	@types/express-serve-static-core `index.d.ts`/Request#params.	
+38:51-38:59	local 9	
+38:61-38:64	local 16	
+38:65-38:69	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.	
+38:71-38:75	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.	
+38:77-38:79	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.typeLiteral10:id.	
+39:6-39:9	local 17	
+39:10-39:14	@types/express-serve-static-core `index.d.ts`/Response#json.	
+39:17-39:24	@api/source src/app/routes/profile/`profile.controller.ts`/profile1:	definition
+39:17-39:24	local 21	
+40:13-40:18	local 24	definition
+41:6-41:10	local 18	
+41:11-41:16	local 24	
+53:0-53:6	@api/source src/app/routes/profile/`profile.controller.ts`/router.	
+53:7-53:13	@types/express-serve-static-core `index.d.ts`/IRouter#delete.	
+55:2-55:6	@api/source src/app/routes/auth/`auth.ts`/auth.	
+55:7-55:15	@api/source src/app/routes/auth/`auth.ts`/required0:	
+56:9-56:12	local 28	definition
+56:14-56:21	@types/express `index.d.ts`/e/Request#	
+56:23-56:26	local 29	definition
+56:28-56:36	@types/express `index.d.ts`/e/Response#	
+56:38-56:42	local 30	definition
+56:44-56:56	@types/express `index.d.ts`/e/NextFunction#	
+58:12-58:19	local 33	definition
+58:28-58:40	@api/source src/app/routes/profile/`profile.service.ts`/unfollowUser.	
+58:41-58:44	local 28	
+58:45-58:51	@types/express-serve-static-core `index.d.ts`/Request#params.	
+58:52-58:60	local 9	
+58:62-58:65	local 28	
+58:66-58:70	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.	
+58:72-58:76	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.	
+58:78-58:80	@api/source src/app/routes/auth/`user-request.d.ts`/Express/Request#auth.typeLiteral9:user.typeLiteral10:id.	
+59:6-59:9	local 29	
+59:10-59:14	@types/express-serve-static-core `index.d.ts`/Response#json.	
+59:17-59:24	@api/source src/app/routes/profile/`profile.controller.ts`/profile2:	definition
+59:17-59:24	local 33	
+60:13-60:18	local 36	definition
+61:6-61:10	local 30	
+61:11-61:16	local 36	
+66:15-66:21	@api/source src/app/routes/profile/`profile.controller.ts`/router.	
